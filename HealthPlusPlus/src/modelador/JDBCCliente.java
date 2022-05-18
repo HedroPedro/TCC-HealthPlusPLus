@@ -7,10 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelos.Cliente;
 
-public class JDBCHandler {
+public class JDBCCliente {
     Connection con;
     
-    public JDBCHandler(Connection con){
+    public JDBCCliente(Connection con){
         this.con = con;
     }
     
@@ -26,11 +26,9 @@ public class JDBCHandler {
             ps.setString(5, cliente.getCPF());
             ps.executeQuery();
         } catch (SQLException ex) {
-            Logger.getLogger(JDBCHandler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void inserirAgendamento(){}
     
     public List<Cliente> listarCliente(){
         String sql = "Select * from tb_cliente";
@@ -49,7 +47,7 @@ public class JDBCHandler {
                 clientes.add(c);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(JDBCHandler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         return clientes;
     }
@@ -60,7 +58,7 @@ public class JDBCHandler {
             Statement stat = con.createStatement();
             stat.execute(sql);
         }catch(SQLException ex){
-            Logger.getLogger(JDBCHandler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
