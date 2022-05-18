@@ -1,17 +1,17 @@
 package modelos;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Agendamento {
-    private int cod;
+    private int codigo;
     private Date datahora;
     private float preco;
     private int cod_cliente;
     
     public Agendamento(){}
 
-    public Agendamento(int cod, Date datahora, float preco, int cod_cliente) {
-        this.cod = cod;
+    public Agendamento(int codigo, Date datahora, float preco, int cod_cliente) {
+        this.codigo = codigo;
         this.datahora = datahora;
         this.preco = preco;
         this.cod_cliente = cod_cliente;

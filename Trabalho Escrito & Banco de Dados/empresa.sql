@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Maio-2022 às 19:28
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.1
+-- Tempo de geração: 16-Maio-2022 às 19:34
+-- Versão do servidor: 10.4.21-MariaDB
+-- versão do PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `empresa`
 --
+CREATE DATABASE IF NOT EXISTS `empresa` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `empresa`;
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,8 @@ CREATE TABLE `tb_usuario` (
 --
 ALTER TABLE `tb_agendamento`
   ADD PRIMARY KEY (`COD`),
-  ADD KEY `COD_CLIENTE` (`COD_CLIENTE`);
+  ADD KEY `COD_CLIENTE` (`COD_CLIENTE`),
+  ADD KEY `COD_USUARIO` (`COD_USUARIO`);
 
 --
 -- Índices para tabela `tb_cliente`
@@ -106,6 +109,17 @@ ALTER TABLE `tb_cliente`
 --
 ALTER TABLE `tb_usuario`
   MODIFY `COD_USUARIO` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `tb_agendamento`
+--
+ALTER TABLE `tb_agendamento`
+  ADD CONSTRAINT `tb_agendamento_ibfk_1` FOREIGN KEY (`COD_CLIENTE`) REFERENCES `tb_cliente` (`COD_CLIENTE`),
+  ADD CONSTRAINT `tb_agendamento_ibfk_2` FOREIGN KEY (`COD_USUARIO`) REFERENCES `tb_usuario` (`COD_USUARIO`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
