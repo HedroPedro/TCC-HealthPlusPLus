@@ -11,8 +11,8 @@ public class JDBCUsuario {
         this.c = c;
     }
     
-    public int checarUsuario(String nome, String senha){
-        String sql = "SELECT IF (NOME LIKE ? and SENHA LIKE ?, 1 , 0) from tb_usuario ";
+    public boolean checarUsuario(String nome, String senha){
+        String sql = "SELECT COD_USUARIO from tb_usuario WHERE NOME = ? and SENHA = ?";
         PreparedStatement ps;
         try {
             ps = this.c.prepareStatement(sql);
@@ -20,12 +20,12 @@ public class JDBCUsuario {
             ps.setString(2, senha);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                return rs.getInt(1);
+                //System.out.print(rs.getInt(1));
+                return true;
             }
         } catch (Exception ex) {
             Logger.getLogger(JDBCUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            return 0;
         }
-        return 0;
+        return false;
     }
 }

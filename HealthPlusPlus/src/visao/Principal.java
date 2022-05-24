@@ -6,13 +6,11 @@ package visao;
 
 import javax.swing.JFrame;
 import modelador.Conectador;
-import modelador.JDBCUsuario;
 
 
 public class Principal extends javax.swing.JFrame {
     Conectador c = new Conectador();
-    JDBCUsuario usuario = new JDBCUsuario(c.abrirConnection());
-            
+   
     public Principal() {
         initComponents();
     }
@@ -65,8 +63,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        System.out.println(usuario.checarUsuario("pedro", "carl"));
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

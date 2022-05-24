@@ -5,14 +5,14 @@
 package visao;
 
 import javax.swing.JOptionPane;
+import modelador.Conectador;
+import modelador.JDBCUsuario;
 
-/**
- *
- * @author LAB6-PC19
- */
 
 public class FirstScreen extends javax.swing.JFrame {
 
+    Conectador c = new Conectador();
+    JDBCUsuario usuario = new JDBCUsuario(c.abrirConnection());
     /**
      * Creates new form FirstScreen
      */
@@ -123,7 +123,7 @@ public class FirstScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(txtUsuario.getText().equals("aaa")&&txtSenha.getText().equals("123")){
+        if(usuario.checarUsuario(txtUsuario.getText(),txtSenha.getText())){
             Principal p = new Principal();
             p.show();
             dispose();
