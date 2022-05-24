@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Maio-2022 às 19:34
--- Versão do servidor: 10.4.21-MariaDB
--- versão do PHP: 8.0.10
+-- Tempo de geração: 24-Maio-2022 às 19:33
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `empresa`
 --
-CREATE DATABASE IF NOT EXISTS `empresa` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `empresa`;
 
 -- --------------------------------------------------------
 
@@ -63,6 +61,14 @@ CREATE TABLE `tb_usuario` (
   `NOME` varchar(50) NOT NULL,
   `SENHA` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `tb_usuario`
+--
+
+INSERT INTO `tb_usuario` (`COD_USUARIO`, `NOME`, `SENHA`) VALUES
+(1, 'Nero', 'Carl'),
+(2, 'Pedro', 'Carlos');
 
 --
 -- Índices para tabelas despejadas
@@ -108,7 +114,7 @@ ALTER TABLE `tb_cliente`
 -- AUTO_INCREMENT de tabela `tb_usuario`
 --
 ALTER TABLE `tb_usuario`
-  MODIFY `COD_USUARIO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `COD_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para despejos de tabelas
