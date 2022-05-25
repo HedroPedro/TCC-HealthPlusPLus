@@ -11,14 +11,14 @@ public class JDBCUsuario {
         this.c = c;
     }
     
-    public boolean existeUsuario(String nome, String senha){ //Checa se existe usuario
-        System.out.println(nome + " " + senha);
+    public boolean existeUsuario(String nome, char[] senha){ //Checa se existe usuario
+        System.out.println(nome + " " + String.copyValueOf(senha));
         String sql = "SELECT COD_USUARIO from tb_usuario WHERE NOME = ? and SENHA = ?";
         PreparedStatement ps;
         try {
             ps = this.c.prepareStatement(sql);
             ps.setString(1, nome);
-            ps.setString(2, senha);
+            ps.setString(2, String.copyValueOf(senha));
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 System.out.print(rs.getInt(1));
