@@ -12,6 +12,7 @@ public class JDBCUsuario {
     }
     
     public boolean existeUsuario(String nome, String senha){ //Checa se existe usuario
+        System.out.println(nome + " " + senha);
         String sql = "SELECT COD_USUARIO from tb_usuario WHERE NOME = ? and SENHA = ?";
         PreparedStatement ps;
         try {
