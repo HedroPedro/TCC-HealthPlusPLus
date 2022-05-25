@@ -67,5 +67,9 @@ public class Cliente {
         this.CPF = CPF;
     }
     
-    
+    public boolean estaCertoORGCPF(){
+        if(this.CPF.length() == 11 && this.RG.length() == 9 )
+            return true;
+        return false;
+    }
 }
