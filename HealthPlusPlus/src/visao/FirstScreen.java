@@ -114,7 +114,7 @@ public class FirstScreen extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nome = txtUsuario.getText();
-        char[] senha = txtSenha.getPassword();
+        String senha = String.copyValueOf(txtSenha.getPassword());
         if(usuario.existeUsuario(nome,senha)){
             Principal p = new Principal();
             p.show();
