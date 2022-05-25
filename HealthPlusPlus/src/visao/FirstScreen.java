@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
 
 import javax.swing.JOptionPane;
@@ -119,7 +115,6 @@ public class FirstScreen extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nome = txtUsuario.getText();
         String senha = String.valueOf(txtSenha.getPassword());
-        System.out.println(senha);
         if(usuario.existeUsuario(nome,senha)){
             Principal p = new Principal();
             p.show();
