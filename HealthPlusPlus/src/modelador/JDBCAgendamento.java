@@ -26,7 +26,7 @@ COD_CLIENTE
             Statement stat = this.c.createStatement();
             ResultSet rs = stat.executeQuery(sql);
             while(rs.next()){
-                Agendamento agenda = new Agendamento(rs.getInt("COD"), rs.getDate("DATAHORA"), rs.getInt("COD_USUARIO"), rs.getFloat("PRECO"), rs.getInt("COD_CLIENTE"));
+                Agendamento agenda = new Agendamento(rs.getInt("COD"), rs.getDate("DATAHORA").toLocalDate(), rs.getInt("COD_USUARIO"), rs.getFloat("PRECO"), rs.getInt("COD_CLIENTE"));
                 agendamentos.add(agenda);
             }
         } catch (SQLException ex) {
