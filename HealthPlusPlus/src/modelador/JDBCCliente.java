@@ -15,7 +15,7 @@ public class JDBCCliente {
     }
     
     public void adicionarCliente(Cliente cliente){
-        String sql = "insert into Tb_CLiente(nome,telefone,endereco,rg,cpf) values(?,?,?,?,?)";
+        String sql = "insert into Tb_CLiente(COD_CLIENTE, NOME, END_CLIENTE, TEL_CLIENTE, RG_CLIENTE, CPF_CLIENTE) values(?,?,?,?,?)";
         PreparedStatement ps;
         try {
             ps = this.con.prepareStatement(sql);
