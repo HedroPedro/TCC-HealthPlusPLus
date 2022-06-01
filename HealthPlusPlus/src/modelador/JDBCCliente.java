@@ -32,7 +32,7 @@ public class JDBCCliente {
     
     public List<Cliente> listarCliente(){
         String sql = "Select * from tb_cliente";
-        List<Cliente> clientes = new ArrayList<Cliente>();
+        List<Cliente> clientes = new ArrayList<>();
         try {
             Statement stat = con.createStatement();
             ResultSet rs = stat.executeQuery(sql);
