@@ -63,7 +63,9 @@ public class JDBCCliente {
         }
         return clientes;
     }
-    
+    /**
+     * Deleta tudo da TB_CLIENTE
+     */
     public void deletarCliente(){
         String sql = "Delete * from tb_cliente";
         try{

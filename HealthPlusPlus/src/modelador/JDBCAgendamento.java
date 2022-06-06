@@ -9,6 +9,11 @@ import modelos.Agendamento;
 
 public class JDBCAgendamento {
     Connection c;
+    
+    /**
+     * Seta o con
+     * @param con Conection usada para executar todas as funções 
+     */
     JDBCAgendamento(Connection c){
         this.c = c;
     }

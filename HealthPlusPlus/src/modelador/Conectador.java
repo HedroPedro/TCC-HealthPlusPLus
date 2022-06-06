@@ -7,6 +7,10 @@ import java.util.logging.Logger;
 public class Conectador {
     private Connection c;
     
+    /**
+     * 
+     * @return c Retorna a Connection aberta 
+     */
     public Connection abrirConnection(){
         String url = "jdbc:mysql://localhost:3306/empresa?useTimeZone=true&serverTimeZone=UTC";
         String username = "root";
