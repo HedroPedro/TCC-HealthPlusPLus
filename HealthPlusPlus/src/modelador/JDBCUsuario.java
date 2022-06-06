@@ -18,7 +18,7 @@ public class JDBCUsuario {
     /**
      * @param nome Nome do usuario
      * @param senha Senha do usuario 
-     * @return boolean Caso exista usuario da veradeiro se der erro ou não ache da falso
+     * @return boolean Caso exista usuario da veradeiro se der erro ou falso caso n ache ou dê erro
      */
     public boolean existeUsuario(String nome, String senha){ 
         String sql = "SELECT COD_USUARIO from tb_usuario WHERE NOME = ? and SENHA = ?";

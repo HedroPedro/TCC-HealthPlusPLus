@@ -21,7 +21,7 @@ public class JDBCCliente {
     
     /**
     * Metodo usado para adicionar cliente
-    * @param cliente cliente a ser adcionado
+    * @param cliente cliente a ser adicionado
     */
     public void adicionarCliente(Cliente cliente){
         String sql = "insert into Tb_CLiente(COD_CLIENTE, NOME, END_CLIENTE, TEL_CLIENTE, RG_CLIENTE, CPF_CLIENTE) values(?,?,?,?,?)";
