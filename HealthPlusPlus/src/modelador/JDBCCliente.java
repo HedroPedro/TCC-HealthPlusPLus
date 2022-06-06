@@ -10,10 +10,19 @@ import modelos.Cliente;
 public class JDBCCliente {
     Connection con;
     
+    /**
+     * Seta o con
+     * @param con Conection usada para executar todas as funções 
+     */
+    
     public JDBCCliente(Connection con){
         this.con = con;
     }
     
+    /**
+    * Metodo usado para adicionar cliente
+    * @param cliente cliente a ser adcionado
+    */
     public void adicionarCliente(Cliente cliente){
         String sql = "insert into Tb_CLiente(COD_CLIENTE, NOME, END_CLIENTE, TEL_CLIENTE, RG_CLIENTE, CPF_CLIENTE) values(?,?,?,?,?)";
         PreparedStatement ps;
@@ -31,6 +40,9 @@ public class JDBCCliente {
     }
     
     public List<Cliente> listarCliente(){
+        /**
+         * @return clientes lista com todos os clientes
+         */
         String sql = "Select * from tb_cliente";
         List<Cliente> clientes = new ArrayList<>();
         try {

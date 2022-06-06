@@ -1,7 +1,6 @@
 package visao;
 
 import java.awt.Dimension;
-import java.awt.MouseInfo;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;

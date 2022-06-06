@@ -5,17 +5,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JDBCUsuario {
-    private Connection c;
+    private Connection con;
 
-    public JDBCUsuario(Connection c) {
-        this.c = c;
+    /**
+     * Seta o con
+     * @param con Conection usada para executar todas as funções 
+     */
+    public JDBCUsuario(Connection con) {
+        this.con = con;
     }
     
-    public boolean existeUsuario(String nome, String senha){ //Checa se existe usuario
+    /**
+     * @param nome Nome do usuario
+     * @param senha Senha do usuario 
+     * @return boolean Caso exista usuario da veradeiro se der erro ou não ache da falso
+     */
+    public boolean existeUsuario(String nome, String senha){ 
         String sql = "SELECT COD_USUARIO from tb_usuario WHERE NOME = ? and SENHA = ?";
         PreparedStatement ps;
         try {
-            ps = this.c.prepareStatement(sql);
+            ps = this.con.prepareStatement(sql);
             ps.setString(1, nome);
             ps.setString(2, senha);
             ResultSet rs = ps.executeQuery();

@@ -12,13 +12,11 @@ public class JDBCAgendamento {
     JDBCAgendamento(Connection c){
         this.c = c;
     }
-    /*COD
-DATAHORA
-COD_USUARIO
-PREÇO
-COD_CLIENTE
-
-*/
+    
+    /**
+     *
+     * @return agendamento lista com todos os agendamentos
+     */
     public List<Agendamento> listarAgendamentos(){
         String sql = "SELECT * FROM TB_AGENDAMENTO";
         List<Agendamento> agendamentos = new ArrayList<>();
