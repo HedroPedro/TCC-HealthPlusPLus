@@ -41,24 +41,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         txt_CPF = new javax.swing.JTextField();
         txt_nome = new javax.swing.JTextField();
 
-        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameClosed(evt);
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-        });
-
         lbl_nome.setText("Nome:");
 
         lbl_Endereco.setText("Endereço:");
@@ -148,12 +130,8 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
     private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
         dispose();
+        Principal.DesktopPane.setVisible(false);
     }//GEN-LAST:event_btn_CancelarActionPerformed
-
-    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        
-    }//GEN-LAST:event_formInternalFrameClosed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Cancelar;
