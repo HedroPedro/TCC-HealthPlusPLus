@@ -148,7 +148,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
     private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
         dispose();
-        Principal.DesktopPane.setVisible(false);
     }//GEN-LAST:event_btn_CancelarActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
