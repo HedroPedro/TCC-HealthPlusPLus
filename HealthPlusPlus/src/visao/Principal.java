@@ -15,7 +15,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
    
     public Principal() {
         initComponents();
-        DesktopPane.setVisible(false);
     }
 
     /**
@@ -28,40 +27,38 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        DesktopPane = new javax.swing.JDesktopPane();
-        jButton3 = new javax.swing.JButton();
+        btn_agendamento = new javax.swing.JButton();
         btn_NovoCadastro = new javax.swing.JButton();
         tabelaCliente = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(this);
 
         jPanel1.setBackground(new java.awt.Color(142, 81, 228));
         jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
+        jPanel1.setLayout(null);
 
-        DesktopPane.setBackground(new java.awt.Color(102, 255, 255));
-        DesktopPane.setPreferredSize(new java.awt.Dimension(1600, 900));
-
-        javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
-        DesktopPane.setLayout(DesktopPaneLayout);
-        DesktopPaneLayout.setHorizontalGroup(
-            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
-        );
-        DesktopPaneLayout.setVerticalGroup(
-            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 396, Short.MAX_VALUE)
-        );
-
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(this);
+        btn_agendamento.setText("AGENDAR CONSULTA");
+        btn_agendamento.addActionListener(this);
+        jPanel1.add(btn_agendamento);
+        btn_agendamento.setBounds(1300, 650, 250, 86);
 
         btn_NovoCadastro.setText("NOVO CADASTRO");
         btn_NovoCadastro.addMouseListener(this);
         btn_NovoCadastro.addActionListener(this);
+        jPanel1.add(btn_NovoCadastro);
+        btn_NovoCadastro.setBounds(1301, 750, 250, 83);
 
+        tabelaCliente.setBackground(new java.awt.Color(153, 153, 153));
+        tabelaCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tabelaCliente.setForeground(new java.awt.Color(0, 0, 0));
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, "Pedro", "Rua Alves", "9666", "14", "136"}
             },
             new String [] {
@@ -83,45 +80,12 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
                 return canEdit [columnIndex];
             }
         });
+        jPanel1.add(tabelaCliente);
+        tabelaCliente.setBounds(170, 160, 1040, 670);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 863, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(334, 334, 334))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btn_NovoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(310, 310, 310))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(tabelaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(tabelaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(DesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(114, 114, 114)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_NovoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("E:\\TCC SURPREENDENTE\\Design\\Tela Principal Cadastro (2) - X.jpg")); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1600, 900);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,8 +102,8 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     // Code for dispatching events from components to event handlers.
 
     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        if (evt.getSource() == jButton3) {
-            Principal.this.jButton3ActionPerformed(evt);
+        if (evt.getSource() == btn_agendamento) {
+            Principal.this.btn_agendamentoActionPerformed(evt);
         }
         else if (evt.getSource() == btn_NovoCadastro) {
             Principal.this.btn_NovoCadastroActionPerformed(evt);
@@ -209,19 +173,16 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_NovoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NovoCadastroActionPerformed
-        CadastroUsuario cadusu = new CadastroUsuario();
-        DesktopPane.add(cadusu);
-        DesktopPane.setVisible(true);
-        cadusu.setVisible(true);
+     
     }//GEN-LAST:event_btn_NovoCadastroActionPerformed
 
     private void btn_NovoCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NovoCadastroMouseClicked
        
     }//GEN-LAST:event_btn_NovoCadastroMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_agendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn_agendamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,9 +216,9 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JButton btn_NovoCadastro;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btn_agendamento;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTable tabelaCliente;
     // End of variables declaration//GEN-END:variables

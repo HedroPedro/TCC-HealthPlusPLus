@@ -5,12 +5,12 @@ import modelador.Conectador;
 import modelador.JDBCUsuario;
 
 
-public class FirstScreen extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     Conectador c = new Conectador();
     JDBCUsuario usuario = new JDBCUsuario(c.abrirConnection());
     
-    public FirstScreen() {       
+    public Login() {       
         initComponents();
     }
 
@@ -19,13 +19,16 @@ public class FirstScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        lbl_imagem = new javax.swing.JLabel();
+        Pn_telaLogin = new javax.swing.JPanel();
         btn_login = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
         btn_cancelar = new javax.swing.JButton();
         btn_programadores = new javax.swing.JButton();
-        lbl_imagem = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        lbl_imagem.setIcon(new javax.swing.ImageIcon("E:\\TCC SURPREENDENTE\\Design\\Tela Login - X.jpg")); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -33,11 +36,16 @@ public class FirstScreen extends javax.swing.JFrame {
         setLocation(new java.awt.Point(1600, 900));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(600, 800));
+        getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel1.setName(""); // NOI18N
-        jPanel1.setLayout(null);
+        Pn_telaLogin.setBackground(new java.awt.Color(204, 204, 255));
+        Pn_telaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Pn_telaLogin.setMaximumSize(new java.awt.Dimension(600, 800));
+        Pn_telaLogin.setName(""); // NOI18N
+        Pn_telaLogin.setLayout(null);
 
+        btn_login.setBackground(new java.awt.Color(255, 255, 255));
+        btn_login.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btn_login.setText("Login");
         btn_login.setToolTipText("");
         btn_login.setBorder(null);
@@ -46,22 +54,29 @@ public class FirstScreen extends javax.swing.JFrame {
                 btn_loginActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_login);
-        btn_login.setBounds(283, 643, 188, 86);
-        jPanel1.add(txtUsuario);
+        Pn_telaLogin.add(btn_login);
+        btn_login.setBounds(180, 620, 280, 90);
+        Pn_telaLogin.add(txtUsuario);
         txtUsuario.setBounds(180, 490, 278, 38);
-        jPanel1.add(txtSenha);
+
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
+        Pn_telaLogin.add(txtSenha);
         txtSenha.setBounds(180, 560, 278, 41);
 
-        btn_cancelar.setBackground(new java.awt.Color(255, 58, 245));
+        btn_cancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(160, 660, 110, 50);
+        Pn_telaLogin.add(btn_cancelar);
+        btn_cancelar.setBounds(260, 730, 110, 50);
 
         btn_programadores.setText("only for programers");
         btn_programadores.addActionListener(new java.awt.event.ActionListener() {
@@ -69,23 +84,16 @@ public class FirstScreen extends javax.swing.JFrame {
                 btn_programadoresActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_programadores);
-        btn_programadores.setBounds(400, 100, 135, 22);
+        Pn_telaLogin.add(btn_programadores);
+        btn_programadores.setBounds(430, 40, 135, 22);
 
-        lbl_imagem.setIcon(new javax.swing.ImageIcon("E:\\TCC SURPREENDENTE\\Design\\Tela Login - X.jpg")); // NOI18N
-        jPanel1.add(lbl_imagem);
-        lbl_imagem.setBounds(0, 0, 600, 800);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/Tela Login - X.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        Pn_telaLogin.add(jLabel1);
+        jLabel1.setBounds(0, 0, 600, 800);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(Pn_telaLogin);
+        Pn_telaLogin.setBounds(0, 0, 600, 800);
 
         pack();
         setLocationRelativeTo(null);
@@ -114,6 +122,10 @@ public class FirstScreen extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
     /**.
      * @param args the command line arguments
      */
@@ -131,29 +143,31 @@ public class FirstScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FirstScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FirstScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FirstScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FirstScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FirstScreen().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Pn_telaLogin;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_programadores;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_imagem;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
