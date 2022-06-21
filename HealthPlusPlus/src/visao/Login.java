@@ -28,8 +28,6 @@ public class Login extends javax.swing.JFrame {
         btn_programadores = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        lbl_imagem.setIcon(new javax.swing.ImageIcon("E:\\TCC SURPREENDENTE\\Design\\Tela Login - X.jpg")); // NOI18N
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
         setBackground(new java.awt.Color(0, 0, 255));
@@ -39,12 +37,10 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         Pn_telaLogin.setBackground(new java.awt.Color(204, 204, 255));
-        Pn_telaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Pn_telaLogin.setMaximumSize(new java.awt.Dimension(600, 800));
         Pn_telaLogin.setName(""); // NOI18N
         Pn_telaLogin.setLayout(null);
 
-        btn_login.setBackground(new java.awt.Color(255, 255, 255));
         btn_login.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btn_login.setText("Login");
         btn_login.setToolTipText("");
@@ -67,7 +63,6 @@ public class Login extends javax.swing.JFrame {
         Pn_telaLogin.add(txtSenha);
         txtSenha.setBounds(180, 560, 278, 41);
 
-        btn_cancelar.setBackground(new java.awt.Color(255, 255, 255));
         btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
