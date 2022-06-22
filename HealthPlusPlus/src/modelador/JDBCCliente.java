@@ -24,16 +24,16 @@ public class JDBCCliente {
     * @param cliente cliente a ser adicionado
     */
     public void adicionarCliente(Cliente cliente){
-        String sql = "insert into Tb_CLiente(COD_CLIENTE, NOME, END_CLIENTE, TEL_CLIENTE, RG_CLIENTE, CPF_CLIENTE) values(?,?,?,?,?)";
+        String sql = "insert into Tb_CLiente(NOME, END_CLIENTE, TEL_CLIENTE, RG_CLIENTE, CPF_CLIENTE) values(?,?,?,?,?)";
         PreparedStatement ps;
         try {
             ps = this.con.prepareStatement(sql);
             ps.setString(1, cliente.getNome());
-            ps.setString(2, cliente.getTelefone());
-            ps.setString(3, cliente.getEndereco());
+            ps.setString(2, cliente.getEndereco());
+            ps.setString(3, cliente.getTelefone());
             ps.setString(4, cliente.getRG());
             ps.setString(5, cliente.getCPF());
-            ps.executeQuery();
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
         }

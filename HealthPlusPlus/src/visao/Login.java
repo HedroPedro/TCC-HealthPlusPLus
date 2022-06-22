@@ -41,6 +41,7 @@ public class Login extends javax.swing.JFrame {
         Pn_telaLogin.setName(""); // NOI18N
         Pn_telaLogin.setLayout(null);
 
+        btn_login.setBackground(new java.awt.Color(204, 204, 204));
         btn_login.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btn_login.setText("Login");
         btn_login.setToolTipText("");
@@ -51,9 +52,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
         Pn_telaLogin.add(btn_login);
-        btn_login.setBounds(180, 620, 280, 90);
+        btn_login.setBounds(170, 630, 280, 90);
         Pn_telaLogin.add(txtUsuario);
-        txtUsuario.setBounds(180, 490, 278, 38);
+        txtUsuario.setBounds(130, 480, 330, 38);
 
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,7 +62,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         Pn_telaLogin.add(txtSenha);
-        txtSenha.setBounds(180, 560, 278, 41);
+        txtSenha.setBounds(140, 570, 330, 41);
 
         btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
@@ -99,7 +100,7 @@ public class Login extends javax.swing.JFrame {
         String senha = String.copyValueOf(txtSenha.getPassword());
         if(usuario.existeUsuario(nome,senha)){
             Principal p = new Principal();
-            p.show();
+            p.setVisible(true);
             dispose();
         }else{
             JOptionPane.showMessageDialog(null, "TA ERRADO PIA");

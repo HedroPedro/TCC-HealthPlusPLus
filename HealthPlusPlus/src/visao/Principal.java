@@ -1,6 +1,7 @@
 package visao;
 
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowListener;
 import javax.swing.JFrame;
@@ -10,8 +11,8 @@ import modelador.JDBCCliente;
 import modelos.Cliente;
 
 
-public class Principal extends javax.swing.JFrame implements ActionListener, MouseListener, WindowListener {
-    JDBCCliente clientes = new JDBCCliente(new Conectador().abrirConnection());
+public class Principal extends javax.swing.JFrame implements ActionListener, MouseListener, WindowListener, FocusListener {
+    private JDBCCliente clientes = new JDBCCliente(new Conectador().abrirConnection());
    
     public Principal() {
         initComponents();
@@ -31,8 +32,10 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         btn_NovoCadastro = new javax.swing.JButton();
         tabelaCliente = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        btn_Atualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addFocusListener(this);
         addWindowListener(this);
 
         jPanel1.setBackground(new java.awt.Color(142, 81, 228));
@@ -46,18 +49,15 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
 
         btn_NovoCadastro.setText("NOVO CADASTRO");
         btn_NovoCadastro.addMouseListener(this);
+        btn_NovoCadastro.addActionListener(this);
         jPanel1.add(btn_NovoCadastro);
-        btn_NovoCadastro.setBounds(1301, 750, 250, 83);
+        btn_NovoCadastro.setBounds(1300, 560, 250, 83);
 
         tabelaCliente.setBackground(new java.awt.Color(153, 153, 153));
         tabelaCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, "Pedro", "Rua Alves", "9666", "14", "136"}
+                {null, null, null, null, null, null}
             },
             new String [] {
                 "Código", "Nome", "Endereço", "Telefone", "RG", "CPF"
@@ -78,10 +78,17 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
                 return canEdit [columnIndex];
             }
         });
+        tabelaCliente.setShowGrid(true);
         jPanel1.add(tabelaCliente);
-        tabelaCliente.setBounds(170, 160, 1040, 670);
+        tabelaCliente.setBounds(10, 10, 1040, 670);
         jPanel1.add(jLabel1);
         jLabel1.setBounds(-130, -50, 1600, 900);
+
+        btn_Atualizar.setText("ATUALIZAR");
+        btn_Atualizar.addMouseListener(this);
+        btn_Atualizar.addActionListener(this);
+        jPanel1.add(btn_Atualizar);
+        btn_Atualizar.setBounds(1301, 750, 250, 83);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,11 +108,29 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         if (evt.getSource() == btn_agendamento) {
             Principal.this.btn_agendamentoActionPerformed(evt);
         }
+        else if (evt.getSource() == btn_NovoCadastro) {
+            Principal.this.btn_NovoCadastroActionPerformed(evt);
+        }
+        else if (evt.getSource() == btn_Atualizar) {
+            Principal.this.btn_AtualizarActionPerformed(evt);
+        }
+    }
+
+    public void focusGained(java.awt.event.FocusEvent evt) {
+        if (evt.getSource() == Principal.this) {
+            Principal.this.formFocusGained(evt);
+        }
+    }
+
+    public void focusLost(java.awt.event.FocusEvent evt) {
     }
 
     public void mouseClicked(java.awt.event.MouseEvent evt) {
         if (evt.getSource() == btn_NovoCadastro) {
             Principal.this.btn_NovoCadastroMouseClicked(evt);
+        }
+        else if (evt.getSource() == btn_Atualizar) {
+            Principal.this.btn_AtualizarMouseClicked(evt);
         }
     }
 
@@ -170,8 +195,25 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     }//GEN-LAST:event_btn_NovoCadastroMouseClicked
 
     private void btn_agendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendamentoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_agendamentoActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        carregarTabela();
+    }//GEN-LAST:event_formFocusGained
+
+    private void btn_NovoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NovoCadastroActionPerformed
+       Cadastro cadastro = new Cadastro(this);
+       cadastro.setVisible(true);
+    }//GEN-LAST:event_btn_NovoCadastroActionPerformed
+
+    private void btn_AtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AtualizarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_AtualizarMouseClicked
+
+    private void btn_AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AtualizarActionPerformed
+        carregarTabela();
+    }//GEN-LAST:event_btn_AtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,6 +247,7 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Atualizar;
     private javax.swing.JButton btn_NovoCadastro;
     private javax.swing.JButton btn_agendamento;
     private javax.swing.JLabel jLabel1;

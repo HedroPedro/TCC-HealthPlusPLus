@@ -18,6 +18,11 @@ public class Cliente {
         this.RG = RG;
         this.CPF = CPF;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "codigo=" + codigo + ", nome=" + nome + ", telefone=" + telefone + ", endereco=" + endereco + ", RG=" + RG + ", CPF=" + CPF + '}';
+    }
     
     public Cliente(String nome, String telefone, String endereco, String RG, String CPF) {
         this.nome = nome;
@@ -76,8 +81,7 @@ public class Cliente {
     }
     
     public boolean estaCertoORGCPF(){
-        if(this.CPF.length() == 11 && this.RG.length() == 9 )
-            return true;
-        return false;
+            return this.CPF.length() == 11 && this.RG.length() == 9;
+                    
     }
 }
