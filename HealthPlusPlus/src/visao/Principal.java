@@ -81,6 +81,11 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         tabelaCliente.setShowGrid(true);
         jPanel1.add(tabelaCliente);
         tabelaCliente.setBounds(10, 10, 1040, 670);
+        if (tabelaCliente.getColumnModel().getColumnCount() > 0) {
+            tabelaCliente.getColumnModel().getColumn(0).setMinWidth(20);
+            tabelaCliente.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tabelaCliente.getColumnModel().getColumn(0).setMaxWidth(40);
+        }
         jPanel1.add(jLabel1);
         jLabel1.setBounds(-130, -50, 1600, 900);
 
