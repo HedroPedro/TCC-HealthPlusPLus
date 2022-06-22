@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Jun-2022 às 17:01
+-- Tempo de geração: 22-Jun-2022 às 19:49
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -51,10 +51,21 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
   `NOME` varchar(50) NOT NULL,
   `END_CLIENTE` varchar(70) NOT NULL,
   `TEL_CLIENTE` varchar(13) NOT NULL,
-  `RG_CLIENTE` char(11) NOT NULL,
+  `RG_CLIENTE` char(9) NOT NULL,
   `CPF_CLIENTE` char(11) NOT NULL,
   PRIMARY KEY (`COD_CLIENTE`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `tb_cliente`
+--
+
+INSERT INTO `tb_cliente` (`COD_CLIENTE`, `NOME`, `END_CLIENTE`, `TEL_CLIENTE`, `RG_CLIENTE`, `CPF_CLIENTE`) VALUES
+(1, 'Pedro Henrique', 'Rua Carlos Andrômeda, nº 69', '5514997155472', '111111111', '222222222'),
+(2, 'Zecão Pica de Mel', 'Rua Texeira Pica de Mel, n° 51', '551499789102', '123456789', '123426789'),
+(3, 'rafael', 'rua asda', '11203812093', '123123123', '12312312312'),
+(4, 'Rafael ', 'Rua POees', '1239890', '123123213', '12312312312'),
+(5, 'Pedro', 'Rua Carla Da Xuxupana, n° 51', '99751481', '102345678', '12345678000');
 
 -- --------------------------------------------------------
 
