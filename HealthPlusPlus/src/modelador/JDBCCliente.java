@@ -50,9 +50,9 @@ public class JDBCCliente {
             ResultSet rs = stat.executeQuery(sql);
             while(rs.next()){
                 int codigo = rs.getInt(1);
-                String telefone = rs.getString(2);
+                String nome = rs.getString(2);
                 String endereco = rs.getString(3);
-                String nome = rs.getString(4);
+                String telefone = rs.getString(4);
                 String RG = rs.getString(5);
                 String CPF = rs.getString(6);
                 Cliente c = new Cliente(codigo, nome, telefone, endereco, RG, CPF);

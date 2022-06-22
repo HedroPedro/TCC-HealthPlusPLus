@@ -32,9 +32,9 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         btn_NovoCadastro = new javax.swing.JButton();
         tabelaCliente = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        btn_Atualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("HeatlhPlusPlus - Tela Principal");
         addFocusListener(this);
         addWindowListener(this);
 
@@ -84,12 +84,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         jPanel1.add(jLabel1);
         jLabel1.setBounds(-130, -50, 1600, 900);
 
-        btn_Atualizar.setText("ATUALIZAR");
-        btn_Atualizar.addMouseListener(this);
-        btn_Atualizar.addActionListener(this);
-        jPanel1.add(btn_Atualizar);
-        btn_Atualizar.setBounds(1301, 750, 250, 83);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,9 +105,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         else if (evt.getSource() == btn_NovoCadastro) {
             Principal.this.btn_NovoCadastroActionPerformed(evt);
         }
-        else if (evt.getSource() == btn_Atualizar) {
-            Principal.this.btn_AtualizarActionPerformed(evt);
-        }
     }
 
     public void focusGained(java.awt.event.FocusEvent evt) {
@@ -128,9 +119,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     public void mouseClicked(java.awt.event.MouseEvent evt) {
         if (evt.getSource() == btn_NovoCadastro) {
             Principal.this.btn_NovoCadastroMouseClicked(evt);
-        }
-        else if (evt.getSource() == btn_Atualizar) {
-            Principal.this.btn_AtualizarMouseClicked(evt);
         }
     }
 
@@ -174,13 +162,7 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
         modelo.setNumRows(0);
         for(Cliente cliente : clientes.listarCliente()){
-            Object [] objeto = new Object[6];
-            objeto[0] = cliente.getCodigo();
-            objeto[1] = cliente.getNome();
-            objeto[2] = cliente.getEndereco();
-            objeto[3] = cliente.getTelefone();
-            objeto[4] = cliente.getRG();
-            objeto[5] = cliente.getCPF();
+            Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getRG(), cliente.getCPF()};
             modelo.addRow(objeto);
         }
     }
@@ -203,22 +185,14 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     }//GEN-LAST:event_formFocusGained
 
     private void btn_NovoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NovoCadastroActionPerformed
-       Cadastro cadastro = new Cadastro(this);
+       Cadastrar_Cliente cadastro = new Cadastrar_Cliente(this);
        cadastro.setVisible(true);
     }//GEN-LAST:event_btn_NovoCadastroActionPerformed
-
-    private void btn_AtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AtualizarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_AtualizarMouseClicked
-
-    private void btn_AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AtualizarActionPerformed
-        carregarTabela();
-    }//GEN-LAST:event_btn_AtualizarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
         
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -238,16 +212,15 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         }
         //</editor-fold>
 
-        /* Create and display the form */
+         Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Atualizar;
     private javax.swing.JButton btn_NovoCadastro;
     private javax.swing.JButton btn_agendamento;
     private javax.swing.JLabel jLabel1;
