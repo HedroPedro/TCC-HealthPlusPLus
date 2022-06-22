@@ -18,6 +18,14 @@ public class Cliente {
         this.RG = RG;
         this.CPF = CPF;
     }
+    
+    public Cliente(String nome, String telefone, String endereco, String RG, String CPF) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.RG = RG;
+        this.CPF = CPF;
+    }
 
     public int getCodigo() {
         return codigo;

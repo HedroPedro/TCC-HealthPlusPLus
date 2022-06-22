@@ -46,13 +46,11 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
 
         btn_NovoCadastro.setText("NOVO CADASTRO");
         btn_NovoCadastro.addMouseListener(this);
-        btn_NovoCadastro.addActionListener(this);
         jPanel1.add(btn_NovoCadastro);
         btn_NovoCadastro.setBounds(1301, 750, 250, 83);
 
         tabelaCliente.setBackground(new java.awt.Color(153, 153, 153));
         tabelaCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tabelaCliente.setForeground(new java.awt.Color(0, 0, 0));
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -82,10 +80,8 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         });
         jPanel1.add(tabelaCliente);
         tabelaCliente.setBounds(170, 160, 1040, 670);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("E:\\TCC SURPREENDENTE\\Design\\Tela Principal Cadastro (2) - X.jpg")); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 1600, 900);
+        jLabel1.setBounds(-130, -50, 1600, 900);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,9 +100,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     public void actionPerformed(java.awt.event.ActionEvent evt) {
         if (evt.getSource() == btn_agendamento) {
             Principal.this.btn_agendamentoActionPerformed(evt);
-        }
-        else if (evt.getSource() == btn_NovoCadastro) {
-            Principal.this.btn_NovoCadastroActionPerformed(evt);
         }
     }
 
@@ -172,12 +165,8 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         carregarTabela();
     }//GEN-LAST:event_formWindowOpened
 
-    private void btn_NovoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NovoCadastroActionPerformed
-     
-    }//GEN-LAST:event_btn_NovoCadastroActionPerformed
-
     private void btn_NovoCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NovoCadastroMouseClicked
-       
+        
     }//GEN-LAST:event_btn_NovoCadastroMouseClicked
 
     private void btn_agendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendamentoActionPerformed
