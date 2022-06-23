@@ -75,6 +75,15 @@ public class JDBCCliente {
             Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    public void deletarClienteCod(int codigo){
+        String sql = "Delete * from tb_cliente where CODIGO_CLIENTE = ?";
+        try{
+            PreparedStatement rs = con.prepareStatement(sql);
+            rs.setInt(1, codigo);
+            rs.execute(sql);
+        }catch(SQLException ex){
+            Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
