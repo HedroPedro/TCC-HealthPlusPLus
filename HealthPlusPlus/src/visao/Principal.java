@@ -31,14 +31,13 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         btn_agendamento = new javax.swing.JButton();
         btn_NovoCadastro = new javax.swing.JButton();
         tabelaCliente = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HeatlhPlusPlus - Tela Principal");
         addFocusListener(this);
         addWindowListener(this);
 
-        jPanel1.setBackground(new java.awt.Color(142, 81, 228));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
         jPanel1.setLayout(null);
 
@@ -53,11 +52,12 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         jPanel1.add(btn_NovoCadastro);
         btn_NovoCadastro.setBounds(1300, 560, 250, 83);
 
-        tabelaCliente.setBackground(new java.awt.Color(153, 153, 153));
+        tabelaCliente.setBackground(new java.awt.Color(204, 204, 255));
+        tabelaCliente.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         tabelaCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Endereço", "Telefone", "RG", "CPF"
@@ -66,28 +66,23 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
         });
+        tabelaCliente.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        tabelaCliente.setCellSelectionEnabled(true);
+        tabelaCliente.setDoubleBuffered(true);
+        tabelaCliente.setName("k"); // NOI18N
         tabelaCliente.setShowGrid(true);
+        tabelaCliente.getTableHeader().setResizingAllowed(false);
+        tabelaCliente.getTableHeader().setReorderingAllowed(false);
         jPanel1.add(tabelaCliente);
-        tabelaCliente.setBounds(10, 10, 1040, 670);
+        tabelaCliente.setBounds(20, 50, 1040, 820);
         if (tabelaCliente.getColumnModel().getColumnCount() > 0) {
-            tabelaCliente.getColumnModel().getColumn(0).setMinWidth(20);
             tabelaCliente.getColumnModel().getColumn(0).setPreferredWidth(20);
-            tabelaCliente.getColumnModel().getColumn(0).setMaxWidth(40);
         }
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(-130, -50, 1600, 900);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,6 +161,7 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     private void carregarTabela(){
         DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
         modelo.setNumRows(0);
+        modelo.setRowCount(0);
         for(Cliente cliente : clientes.listarCliente()){
             Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getRG(), cliente.getCPF()};
             modelo.addRow(objeto);
@@ -228,7 +224,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_NovoCadastro;
     private javax.swing.JButton btn_agendamento;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTable tabelaCliente;
     // End of variables declaration//GEN-END:variables
