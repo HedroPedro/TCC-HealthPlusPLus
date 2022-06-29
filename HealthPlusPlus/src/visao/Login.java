@@ -3,12 +3,13 @@ package visao;
 import javax.swing.JOptionPane;
 import modelador.Conectador;
 import modelador.JDBCUsuario;
+import modelos.Usuario;
 
 
 public class Login extends javax.swing.JFrame {
 
-    Conectador c = new Conectador();
-    JDBCUsuario usuario = new JDBCUsuario(c.abrirConnection());
+    JDBCUsuario checadorDeUsuario = new JDBCUsuario(new Conectador().abrirConnection());
+    public static Usuario usuario;
     
     public Login() {       
         initComponents();
@@ -37,6 +38,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         Pn_telaLogin.setBackground(new java.awt.Color(204, 204, 255));
+        Pn_telaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Pn_telaLogin.setMaximumSize(new java.awt.Dimension(600, 800));
         Pn_telaLogin.setName(""); // NOI18N
         Pn_telaLogin.setLayout(null);
@@ -98,7 +100,7 @@ public class Login extends javax.swing.JFrame {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         String nome = txtUsuario.getText();
         String senha = String.copyValueOf(txtSenha.getPassword());
-        if(usuario.existeUsuario(nome,senha)){
+        if(checadorDeUsuario.existeUsuario(nome,senha)){
             Principal p = new Principal();
             p.setVisible(true);
             dispose();

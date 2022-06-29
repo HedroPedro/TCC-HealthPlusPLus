@@ -30,15 +30,9 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         jPanel1 = new javax.swing.JPanel();
         btn_agendamento = new javax.swing.JButton();
         btn_NovoCadastro = new javax.swing.JButton();
-        tabelaCliente = new javax.swing.JTable();
-<<<<<<< HEAD
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-=======
->>>>>>> 44a51b85873310a8f54e533c205b1dc0e58c04db
+        tabelaCliente = new javax.swing.JTable();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HeatlhPlusPlus - Tela Principal");
@@ -60,52 +54,54 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         jPanel1.add(btn_NovoCadastro);
         btn_NovoCadastro.setBounds(1300, 560, 250, 83);
 
-        tabelaCliente.setBackground(new java.awt.Color(204, 204, 255));
-        tabelaCliente.setBorder(javax.swing.BorderFactory.createLineBorder(null));
-        tabelaCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "Endereço", "Telefone", "RG", "CPF"
+                "Codigo", "Nome", "Endereço", "Telefone", "RG", "CPF"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        tabelaCliente.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        tabelaCliente.setCellSelectionEnabled(true);
-        tabelaCliente.setDoubleBuffered(true);
-        tabelaCliente.setName("k"); // NOI18N
-        tabelaCliente.setShowGrid(true);
-        tabelaCliente.getTableHeader().setResizingAllowed(false);
         tabelaCliente.getTableHeader().setReorderingAllowed(false);
-        jPanel1.add(tabelaCliente);
-        tabelaCliente.setBounds(20, 50, 1040, 820);
+        jScrollPane1.setViewportView(tabelaCliente);
         if (tabelaCliente.getColumnModel().getColumnCount() > 0) {
-            tabelaCliente.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tabelaCliente.getColumnModel().getColumn(0).setResizable(false);
+            tabelaCliente.getColumnModel().getColumn(1).setResizable(false);
+            tabelaCliente.getColumnModel().getColumn(2).setResizable(false);
+            tabelaCliente.getColumnModel().getColumn(3).setResizable(false);
+            tabelaCliente.getColumnModel().getColumn(4).setResizable(false);
+            tabelaCliente.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        jScrollPane1.setViewportView(jEditorPane1);
-
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(1350, 150, 115, 22);
+        jScrollPane1.setBounds(0, 0, 650, 490);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList1);
+        jLayeredPane1.setBackground(new java.awt.Color(51, 51, 255));
 
-        jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(1290, 210, 47, 146);
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jLayeredPane1);
+        jLayeredPane1.setBounds(600, 260, 100, 100);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,7 +180,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     private void carregarTabela(){
         DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
         modelo.setNumRows(0);
-        modelo.setRowCount(0);
         for(Cliente cliente : clientes.listarCliente()){
             Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getRG(), cliente.getCPF()};
             modelo.addRow(objeto);
@@ -247,15 +242,9 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_NovoCadastro;
     private javax.swing.JButton btn_agendamento;
-<<<<<<< HEAD
-    private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-=======
->>>>>>> 44a51b85873310a8f54e533c205b1dc0e58c04db
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabelaCliente;
     // End of variables declaration//GEN-END:variables
 }

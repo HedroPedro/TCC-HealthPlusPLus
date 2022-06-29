@@ -3,6 +3,7 @@ package modelador;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import visao.Login;
 
 public class JDBCUsuario {
     private Connection con;
@@ -29,6 +30,8 @@ public class JDBCUsuario {
             ps.setString(2, senha);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
+                Login.usuario.setCod(rs.getInt(1));
+                Login.usuario.setNome(rs.getString(2));
                 return true;
             }
         } catch (Exception ex) {
