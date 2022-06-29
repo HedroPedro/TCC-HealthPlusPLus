@@ -32,6 +32,10 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         btn_NovoCadastro = new javax.swing.JButton();
         tabelaCliente = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HeatlhPlusPlus - Tela Principal");
@@ -88,6 +92,21 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         }
         jPanel1.add(jLabel1);
         jLabel1.setBounds(-130, -50, 1600, 900);
+
+        jScrollPane1.setViewportView(jEditorPane1);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(1350, 150, 115, 22);
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
+
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(1290, 210, 47, 146);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,8 +247,12 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_NovoCadastro;
     private javax.swing.JButton btn_agendamento;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabelaCliente;
     // End of variables declaration//GEN-END:variables
 }
