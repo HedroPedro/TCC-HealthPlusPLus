@@ -46,7 +46,13 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                              <Component id="jXDatePicker1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Component id="jFormattedTextField1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jXDatePicker1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -75,6 +81,8 @@
                       <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="jXDatePicker1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jFormattedTextField1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="113" max="32767" attributes="0"/>
@@ -162,6 +170,12 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXDatePicker1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(new javax.swing.text.MaskFormatter(&quot;##:##&quot;));"/>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Agendar_consulta_jFormattedTextField1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
