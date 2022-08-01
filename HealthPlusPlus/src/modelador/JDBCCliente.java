@@ -24,15 +24,14 @@ public class JDBCCliente {
     * @param cliente cliente a ser adicionado
     */
     public void adicionarCliente(Cliente cliente){
-        String sql = "insert into Tb_CLiente(NOME, END_CLIENTE, TEL_CLIENTE, RG_CLIENTE, CPF_CLIENTE) values(?,?,?,?,?)";
+        String sql = "insert into Tb_CLiente(NOME, END_CLIENTE, TEL_CLIENTE, CPF_CLIENTE) values(?,?,?,?)";
         PreparedStatement ps;
         try {
             ps = this.con.prepareStatement(sql);
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getEndereco());
             ps.setString(3, cliente.getTelefone());
-            ps.setString(4, cliente.getRG());
-            ps.setString(5, cliente.getCPF());
+            ps.setString(4, cliente.getCPF());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,9 +52,8 @@ public class JDBCCliente {
                 String nome = rs.getString(2);
                 String endereco = rs.getString(3);
                 String telefone = rs.getString(4);
-                String RG = rs.getString(5);
-                String CPF = rs.getString(6);
-                Cliente c = new Cliente(codigo, nome, telefone, endereco, RG, CPF);
+                String CPF = rs.getString(5);
+                Cliente c = new Cliente(codigo, nome, telefone, endereco, CPF);
                 clientes.add(c);
             }
         } catch (SQLException ex) {

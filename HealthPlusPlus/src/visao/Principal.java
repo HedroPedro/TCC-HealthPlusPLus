@@ -56,17 +56,17 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
 
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nome", "Endereço", "Telefone", "RG", "CPF"
+                "Codigo", "Nome", "Endereço", "Telefone", "CPF"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -81,7 +81,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
             tabelaCliente.getColumnModel().getColumn(2).setResizable(false);
             tabelaCliente.getColumnModel().getColumn(3).setResizable(false);
             tabelaCliente.getColumnModel().getColumn(4).setResizable(false);
-            tabelaCliente.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jPanel1.add(jScrollPane1);
@@ -179,9 +178,8 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
 
     private void carregarTabela(){
         DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
-        modelo.setNumRows(0);
         for(Cliente cliente : clientes.listarCliente()){
-            Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getRG(), cliente.getCPF()};
+            Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF()};
             modelo.addRow(objeto);
         }
     }
