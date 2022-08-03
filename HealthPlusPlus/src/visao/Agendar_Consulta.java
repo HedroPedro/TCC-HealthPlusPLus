@@ -89,10 +89,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     
     DateTimeFormatter formartador = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
     private void btn_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendarActionPerformed
-        LocalDateTime parsedDate = LocalDateTime.parse(edt_data.getText() + " " + edt_hora.getText(), formartador);
-        if(verificarData(parsedDate))
-            JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
-        else{}
+       
     }//GEN-LAST:event_btn_agendarActionPerformed
 
     /**
