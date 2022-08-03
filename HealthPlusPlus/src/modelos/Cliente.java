@@ -69,7 +69,8 @@ public class Cliente {
         this.CPF = CPF;
     }
     
-    public boolean estaCertoORGCPF(){
-            return this.CPF.length() == 11;                
+    public boolean estaCertoCPF(){
+            String cpfVerif = CPF.replace(',', ' ').replace('.', ' ').trim();
+            return cpfVerif.length() == 11;
     }
 }

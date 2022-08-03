@@ -46,20 +46,17 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         btn_agendamento.setText("AGENDAR CONSULTA");
         btn_agendamento.addActionListener(this);
         jPanel1.add(btn_agendamento);
-        btn_agendamento.setBounds(1300, 650, 250, 86);
+        btn_agendamento.setBounds(1030, 650, 250, 86);
 
         btn_NovoCadastro.setText("NOVO CADASTRO");
         btn_NovoCadastro.addMouseListener(this);
         btn_NovoCadastro.addActionListener(this);
         jPanel1.add(btn_NovoCadastro);
-        btn_NovoCadastro.setBounds(1300, 560, 250, 83);
+        btn_NovoCadastro.setBounds(1030, 560, 250, 83);
 
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Codigo", "Nome", "Endereço", "Telefone", "CPF"
@@ -194,7 +191,8 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     }//GEN-LAST:event_btn_NovoCadastroMouseClicked
 
     private void btn_agendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendamentoActionPerformed
-        
+        Agendar_Consulta consulta = new Agendar_Consulta();
+        consulta.setVisible(true);
     }//GEN-LAST:event_btn_agendamentoActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained

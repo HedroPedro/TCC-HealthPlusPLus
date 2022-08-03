@@ -32,11 +32,11 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         lbl_end = new javax.swing.JLabel();
         Edt_Endereco = new javax.swing.JTextField();
         lbl_telefone = new javax.swing.JLabel();
-        Edt_Telefone1 = new javax.swing.JTextField();
         lbl_CPF = new javax.swing.JLabel();
         edt_CPF = new javax.swing.JFormattedTextField();
         btn_confirmar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
+        edt_Telefone = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 155, 243));
@@ -56,12 +56,6 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         lbl_telefone.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         lbl_telefone.setText("Telefone:");
 
-        Edt_Telefone1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                Edt_Telefone1KeyTyped(evt);
-            }
-        });
-
         lbl_CPF.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         lbl_CPF.setText("CPF:");
 
@@ -78,12 +72,18 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
             }
         });
 
-        btn_cancelar.setText("cancelar");
+        btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelarActionPerformed(evt);
             }
         });
+
+        try {
+            edt_Telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,15 +97,16 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addGap(113, 113, 113)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_end)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Edt_Endereco))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_nome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Edt_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lbl_end)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Edt_Endereco))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lbl_nome)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Edt_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_CPF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -113,8 +114,8 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_telefone)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Edt_Telefone1)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                        .addComponent(edt_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,8 +135,8 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
                         .addComponent(edt_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_telefone)
-                        .addComponent(Edt_Telefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 425, Short.MAX_VALUE)
+                        .addComponent(edt_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                     .addComponent(btn_confirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -147,8 +148,8 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
-        Cliente cliente = new Cliente(Edt_Nome.getText(),Edt_Telefone1.getText(), Edt_Endereco.getText(), edt_CPF.getText());
-        if(cliente.estaCertoORGCPF()){
+        Cliente cliente = new Cliente(Edt_Nome.getText(),edt_Telefone.getText(), Edt_Endereco.getText(), edt_CPF.getText());
+        if(cliente.estaCertoCPF()){
             lidaCliente.adicionarCliente(cliente);
             p.requestFocus();
             dispose();
@@ -161,17 +162,13 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
-    private void Edt_Telefone1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edt_Telefone1KeyTyped
-        
-    }//GEN-LAST:event_Edt_Telefone1KeyTyped
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Edt_Endereco;
     private javax.swing.JTextField Edt_Nome;
-    private javax.swing.JTextField Edt_Telefone1;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_confirmar;
     private javax.swing.JFormattedTextField edt_CPF;
+    private javax.swing.JFormattedTextField edt_Telefone;
     private javax.swing.JLabel lbl_CPF;
     private javax.swing.JLabel lbl_end;
     private javax.swing.JLabel lbl_nome;
