@@ -7,11 +7,12 @@ package visao;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import modelador.JDBCAgendamento;
+import modelador.Conectador;
 public class Agendar_Consulta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Agendar_COnsulta
-     */
+    JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
+    
     public Agendar_Consulta() {
         initComponents();
     }
@@ -89,10 +90,16 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     
     DateTimeFormatter formartador = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
     private void btn_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendarActionPerformed
-         LocalDateTime parsedDate = LocalDateTime.parse(edt_data.getText() + " " + edt_hora.getText(), formartador);
-        if(verificarData(parsedDate))
-            JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
-        else{}
+        if(!edt_data.getText().equals("") && !edt_hora.getText().equals("")){
+            LocalDateTime parsedDate = LocalDateTime.parse(edt_data.getText() + " " + edt_hora.getText(), formartador);
+            if(verificarData(parsedDate))
+                JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
+            else{
+                modelaAgendamento
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Um deles está vazio, digitar novamente");
+        }
     }//GEN-LAST:event_btn_agendarActionPerformed
 
     /**

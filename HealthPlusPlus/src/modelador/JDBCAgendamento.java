@@ -1,6 +1,7 @@
 package modelador;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -12,9 +13,9 @@ public class JDBCAgendamento {
     
     /**
      * Seta o con
-     * @param con Conection usada para executar todas as funções 
+     * @param c 
      */
-    JDBCAgendamento(Connection c){
+    public JDBCAgendamento(Connection c){
         this.c = c;
     }
     
@@ -29,7 +30,7 @@ public class JDBCAgendamento {
             Statement stat = this.c.createStatement();
             ResultSet rs = stat.executeQuery(sql);
             while(rs.next()){
-                Agendamento agenda = new Agendamento(rs.getInt("COD"), rs.getDate("DATAHORA").toLocalDate(), rs.getInt("COD_USUARIO"), rs.getFloat("PRECO"), rs.getInt("COD_CLIENTE"));
+                Agendamento agenda = new Agendamento(rs.getInt("COD"), LocalDateTime.parse(rs.getDate("DATAHORA").toString()), rs.getInt("COD_USUARIO"), rs.getFloat("PRECO"), rs.getInt("COD_CLIENTE"));
                 agendamentos.add(agenda);
             }
         } catch (SQLException ex) {
@@ -37,5 +38,16 @@ public class JDBCAgendamento {
         }
         
         return agendamentos;
-    } 
+    }
+    
+    public void inserirAgendamento(Agendamento a){
+        String sql = "Insert into Tb_Agendamento values(?,?,?,)";
+        try {
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setDate(0, a.getDatahora());
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }
