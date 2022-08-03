@@ -4,9 +4,9 @@
  */
 package visao;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 public class Agendar_Consulta extends javax.swing.JFrame {
 
     /**
@@ -86,12 +86,13 @@ public class Agendar_Consulta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    DateTimeFormatter formartador = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
     private void btn_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendarActionPerformed
-        DateTimeFormatter formartador = DateTimeFormatter.ofPattern("DD/MM/uuuu HH:mm");
-        String texto = edt_data.getText() + " " + edt_hora.getText();
-        LocalDate parsedDate = LocalDate.parse(texto, formartador);
-        System.out.println();
+        LocalDateTime parsedDate = LocalDateTime.parse(edt_data.getText() + " " + edt_hora.getText(), formartador);
+        if(verificarData(parsedDate))
+            JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
+        else{}
     }//GEN-LAST:event_btn_agendarActionPerformed
 
     /**
@@ -129,8 +130,8 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             }
         });
     }
-    private boolean verificarData(LocalDate date){
-        return date.equals(LocalDate.now());
+    private boolean verificarData(LocalDateTime date){
+        return date.isBefore(LocalDateTime.now());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agendar;
