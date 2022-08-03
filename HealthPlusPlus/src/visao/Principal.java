@@ -33,6 +33,7 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCliente = new javax.swing.JTable();
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HeatlhPlusPlus - Tela Principal");
@@ -46,13 +47,13 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         btn_agendamento.setText("AGENDAR CONSULTA");
         btn_agendamento.addActionListener(this);
         jPanel1.add(btn_agendamento);
-        btn_agendamento.setBounds(1030, 650, 250, 86);
+        btn_agendamento.setBounds(1270, 690, 250, 86);
 
         btn_NovoCadastro.setText("NOVO CADASTRO");
         btn_NovoCadastro.addMouseListener(this);
         btn_NovoCadastro.addActionListener(this);
         jPanel1.add(btn_NovoCadastro);
-        btn_NovoCadastro.setBounds(1030, 560, 250, 83);
+        btn_NovoCadastro.setBounds(1270, 590, 250, 83);
 
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,7 +82,7 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         }
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 650, 490);
+        jScrollPane1.setBounds(120, 140, 650, 490);
 
         jLayeredPane1.setBackground(new java.awt.Color(51, 51, 255));
 
@@ -98,6 +99,11 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
 
         jPanel1.add(jLayeredPane1);
         jLayeredPane1.setBounds(600, 260, 100, 100);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("H:\\TCC SURPREENDENTE\\Design\\Tela Principal Cadastro (2) - X.jpg")); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(1600, 900));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1600, 900);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,6 +244,7 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_NovoCadastro;
     private javax.swing.JButton btn_agendamento;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

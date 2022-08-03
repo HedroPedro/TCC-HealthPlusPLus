@@ -27,7 +27,7 @@ public class Login extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
         btn_cancelar = new javax.swing.JButton();
         btn_programadores = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -83,8 +83,10 @@ public class Login extends javax.swing.JFrame {
         });
         Pn_telaLogin.add(btn_programadores);
         btn_programadores.setBounds(430, 40, 135, 22);
-        Pn_telaLogin.add(jLabel1);
-        jLabel1.setBounds(0, 0, 600, 800);
+
+        lbl_fundo.setIcon(new javax.swing.ImageIcon("H:\\TCC SURPREENDENTE\\Design\\Tela Login - X.jpg")); // NOI18N
+        Pn_telaLogin.add(lbl_fundo);
+        lbl_fundo.setBounds(0, 0, 600, 800);
 
         getContentPane().add(Pn_telaLogin);
         Pn_telaLogin.setBounds(0, 0, 600, 800);
@@ -161,7 +163,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_programadores;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbl_fundo;
     private javax.swing.JLabel lbl_imagem;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
