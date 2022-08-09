@@ -11,7 +11,7 @@ import modelador.JDBCAgendamento;
 import modelador.Conectador;
 public class Agendar_Consulta extends javax.swing.JFrame {
 
-    JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
+    public JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
     
     public Agendar_Consulta() {
         initComponents();
@@ -21,13 +21,18 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         edt_hora = new javax.swing.JFormattedTextField();
         edt_data = new javax.swing.JFormattedTextField();
         btn_agendar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
+        jFormattedTextField1.setText("jFormattedTextField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setExtendedState(MAXIMIZED_BOTH);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
 
@@ -95,7 +100,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             if(verificarData(parsedDate))
                 JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
             else{
-                modelaAgendamento
+ 
             }
         }else{
             JOptionPane.showMessageDialog(null, "Um deles está vazio, digitar novamente");
@@ -144,6 +149,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     private javax.swing.JButton btn_agendar;
     private javax.swing.JFormattedTextField edt_data;
     private javax.swing.JFormattedTextField edt_hora;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

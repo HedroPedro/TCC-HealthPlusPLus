@@ -37,6 +37,8 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HeatlhPlusPlus - Tela Principal");
+        setExtendedState(MAXIMIZED_BOTH);
+        setFocusCycleRoot(false);
         addFocusListener(this);
         addWindowListener(this);
 
@@ -82,7 +84,7 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         }
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(120, 140, 650, 490);
+        jScrollPane1.setBounds(20, 20, 650, 490);
 
         jLayeredPane1.setBackground(new java.awt.Color(51, 51, 255));
 
@@ -100,7 +102,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         jPanel1.add(jLayeredPane1);
         jLayeredPane1.setBounds(600, 260, 100, 100);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("H:\\TCC SURPREENDENTE\\Design\\Tela Principal Cadastro (2) - X.jpg")); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(1600, 900));
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 1600, 900);
@@ -188,7 +189,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     }
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         carregarTabela();
     }//GEN-LAST:event_formWindowOpened
 
@@ -209,37 +209,6 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
        Cadastrar_Cliente cadastro = new Cadastrar_Cliente(this);
        cadastro.setVisible(true);
     }//GEN-LAST:event_btn_NovoCadastroActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-   /* public static void main(String args[]) {
-        
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-         Create and display the form 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Principal().setVisible(true);
-            }
-        });
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_NovoCadastro;

@@ -5,16 +5,14 @@ import java.time.LocalDateTime;
 public class Agendamento {
     private int codigo;
     private LocalDateTime datahora;
-    private int cod_usuario;
     private float preco;
     private int cod_cliente;
     
     public Agendamento(){}
 
-    public Agendamento(int codigo, LocalDateTime datahora, int cod_usuario, float preco, int cod_cliente) {
+    public Agendamento(int codigo, LocalDateTime datahora, float preco, int cod_cliente) {
         this.codigo = codigo;
         this.datahora = datahora;
-        this.cod_usuario = cod_usuario;
         this.preco = preco;
         this.cod_cliente = cod_cliente;
     }
@@ -34,15 +32,7 @@ public class Agendamento {
     public void setDatahora(LocalDateTime datahora) {
         this.datahora = datahora;
     }
-
-    public int getCod_usuario() {
-        return cod_usuario;
-    }
-
-    public void setCod_usuario(int cod_usuario) {
-        this.cod_usuario = cod_usuario;
-    }
-
+    
     public float getPreco() {
         return preco;
     }

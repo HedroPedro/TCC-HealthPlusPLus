@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Ago-2022 às 19:40
+-- Tempo de geração: 09-Ago-2022 às 19:37
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -29,12 +29,12 @@ USE `empresa`;
 -- Estrutura da tabela `tb_agendamento`
 --
 
+DROP TABLE IF EXISTS `tb_agendamento`;
 CREATE TABLE `tb_agendamento` (
   `COD` int(11) NOT NULL,
   `DATAHORA` datetime NOT NULL,
-  `COD_USUARIO` int(11) NOT NULL,
-  `PRECO` float NOT NULL,
-  `COD_CLIENTE` int(11) NOT NULL
+  `COD_CLIENTE` int(11) NOT NULL,
+  `TIPO_CONSULTA` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -43,6 +43,7 @@ CREATE TABLE `tb_agendamento` (
 -- Estrutura da tabela `tb_cliente`
 --
 
+DROP TABLE IF EXISTS `tb_cliente`;
 CREATE TABLE `tb_cliente` (
   `COD_CLIENTE` int(11) NOT NULL,
   `NOME` varchar(50) NOT NULL,
@@ -54,9 +55,23 @@ CREATE TABLE `tb_cliente` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tb_tiposdeconsulta`
+--
+
+DROP TABLE IF EXISTS `tb_tiposdeconsulta`;
+CREATE TABLE `tb_tiposdeconsulta` (
+  `COD` int(11) NOT NULL,
+  `NomeConsulta` varchar(100) COLLATE utf8_bin NOT NULL,
+  `Preco` decimal(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tb_usuario`
 --
 
+DROP TABLE IF EXISTS `tb_usuario`;
 CREATE TABLE `tb_usuario` (
   `COD_USUARIO` int(11) NOT NULL,
   `NOME` varchar(50) NOT NULL,
@@ -80,14 +95,19 @@ INSERT INTO `tb_usuario` (`COD_USUARIO`, `NOME`, `SENHA`) VALUES
 --
 ALTER TABLE `tb_agendamento`
   ADD PRIMARY KEY (`COD`),
-  ADD KEY `COD_CLIENTE` (`COD_CLIENTE`),
-  ADD KEY `COD_USUARIO` (`COD_USUARIO`);
+  ADD KEY `COD_CLIENTE` (`COD_CLIENTE`);
 
 --
 -- Índices para tabela `tb_cliente`
 --
 ALTER TABLE `tb_cliente`
   ADD PRIMARY KEY (`COD_CLIENTE`);
+
+--
+-- Índices para tabela `tb_tiposdeconsulta`
+--
+ALTER TABLE `tb_tiposdeconsulta`
+  ADD PRIMARY KEY (`COD`);
 
 --
 -- Índices para tabela `tb_usuario`
@@ -112,6 +132,12 @@ ALTER TABLE `tb_cliente`
   MODIFY `COD_CLIENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de tabela `tb_tiposdeconsulta`
+--
+ALTER TABLE `tb_tiposdeconsulta`
+  MODIFY `COD` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `tb_usuario`
 --
 ALTER TABLE `tb_usuario`
@@ -126,7 +152,7 @@ ALTER TABLE `tb_usuario`
 --
 ALTER TABLE `tb_agendamento`
   ADD CONSTRAINT `tb_agendamento_ibfk_1` FOREIGN KEY (`COD_CLIENTE`) REFERENCES `tb_cliente` (`COD_CLIENTE`),
-  ADD CONSTRAINT `tb_agendamento_ibfk_2` FOREIGN KEY (`COD_USUARIO`) REFERENCES `tb_usuario` (`COD_USUARIO`);
+  ADD CONSTRAINT `tb_agendamento_ibfk_2` FOREIGN KEY (`TIPO_CONSULTA`) REFERENCES `tb_tiposdeconsulta` (`COD`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
