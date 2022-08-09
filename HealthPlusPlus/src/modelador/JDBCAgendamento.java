@@ -44,7 +44,7 @@ public class JDBCAgendamento {
         String sql = "Insert into Tb_Agendamento values(?,?,?,)";
         try {
             PreparedStatement ps = c.prepareStatement(sql);
-            ps.setDate(0, a.getDatahora());
+            //ps.setDate(0, a.getDatahora());
         } catch (SQLException ex) {
             Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
         }
