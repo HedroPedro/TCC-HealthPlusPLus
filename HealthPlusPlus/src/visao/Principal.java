@@ -28,12 +28,15 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btn_agendamento = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pn_guia_clientes = new javax.swing.JPanel();
         btn_NovoCadastro = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCliente = new javax.swing.JTable();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel1 = new javax.swing.JLabel();
+        pn_guia_consultas = new javax.swing.JPanel();
+        btn_agendamento = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelaConsultas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HeatlhPlusPlus - Tela Principal");
@@ -46,16 +49,16 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
         jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
         jPanel1.setLayout(null);
 
-        btn_agendamento.setText("AGENDAR CONSULTA");
-        btn_agendamento.addActionListener(this);
-        jPanel1.add(btn_agendamento);
-        btn_agendamento.setBounds(1270, 690, 250, 86);
+        jTabbedPane1.setBackground(new java.awt.Color(51, 255, 204));
+
+        pn_guia_clientes.setLayout(null);
 
         btn_NovoCadastro.setText("NOVO CADASTRO");
+        btn_NovoCadastro.setPreferredSize(new java.awt.Dimension(148, 22));
         btn_NovoCadastro.addMouseListener(this);
         btn_NovoCadastro.addActionListener(this);
-        jPanel1.add(btn_NovoCadastro);
-        btn_NovoCadastro.setBounds(1270, 590, 250, 83);
+        pn_guia_clientes.add(btn_NovoCadastro);
+        btn_NovoCadastro.setBounds(1320, 620, 220, 80);
 
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,28 +86,62 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
             tabelaCliente.getColumnModel().getColumn(4).setResizable(false);
         }
 
+<<<<<<< HEAD
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(20, 20, 650, 490);
+=======
+        pn_guia_clientes.add(jScrollPane1);
+        jScrollPane1.setBounds(110, 120, 1100, 630);
+>>>>>>> 9664c9d27b673253b6f583ea480eff7dc58ad387
 
-        jLayeredPane1.setBackground(new java.awt.Color(51, 51, 255));
+        jTabbedPane1.addTab("Clientes", pn_guia_clientes);
 
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        btn_agendamento.setText("AGENDAR CONSULTA");
+        btn_agendamento.addActionListener(this);
+
+        tabelaConsultas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "COD", "Hora/Data", "COD Cliente", "Tipo"
+            }
+        ));
+        jScrollPane2.setViewportView(tabelaConsultas);
+
+        javax.swing.GroupLayout pn_guia_consultasLayout = new javax.swing.GroupLayout(pn_guia_consultas);
+        pn_guia_consultas.setLayout(pn_guia_consultasLayout);
+        pn_guia_consultasLayout.setHorizontalGroup(
+            pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_guia_consultasLayout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(871, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_guia_consultasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_agendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79))
         );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        pn_guia_consultasLayout.setVerticalGroup(
+            pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_guia_consultasLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                .addComponent(btn_agendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120))
         );
 
-        jPanel1.add(jLayeredPane1);
-        jLayeredPane1.setBounds(600, 260, 100, 100);
+        jTabbedPane1.addTab("Consultas", pn_guia_consultas);
 
+<<<<<<< HEAD
         jLabel1.setPreferredSize(new java.awt.Dimension(1600, 900));
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 1600, 900);
+=======
+        jPanel1.add(jTabbedPane1);
+        jTabbedPane1.setBounds(0, 0, 1600, 900);
+>>>>>>> 9664c9d27b673253b6f583ea480eff7dc58ad387
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,10 +250,13 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_NovoCadastro;
     private javax.swing.JButton btn_agendamento;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel pn_guia_clientes;
+    private javax.swing.JPanel pn_guia_consultas;
     private javax.swing.JTable tabelaCliente;
+    private javax.swing.JTable tabelaConsultas;
     // End of variables declaration//GEN-END:variables
 }
