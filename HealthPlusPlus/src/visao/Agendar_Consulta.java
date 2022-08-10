@@ -100,11 +100,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             if(verificarData(parsedDate))
                 JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
             else{
-<<<<<<< HEAD
- 
-=======
                // modelaAgendamento
->>>>>>> 9664c9d27b673253b6f583ea480eff7dc58ad387
             }
         }else{
             JOptionPane.showMessageDialog(null, "Um deles está vazio, digitar novamente");

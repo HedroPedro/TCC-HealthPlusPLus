@@ -1,19 +1,21 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package visao;
 
-import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowListener;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import modelador.Conectador;
 import modelador.JDBCCliente;
 import modelos.Cliente;
 
-
-public class Principal extends javax.swing.JFrame implements ActionListener, MouseListener, WindowListener, FocusListener {
-    private JDBCCliente clientes = new JDBCCliente(new Conectador().abrirConnection());
-   
+/**
+ *
+ * @author Etec
+ */
+public class Principal extends javax.swing.JFrame {
+    JDBCCliente clientes = new JDBCCliente(new Conectador().abrirConnection());
+    
     public Principal() {
         initComponents();
     }
@@ -27,236 +29,65 @@ public class Principal extends javax.swing.JFrame implements ActionListener, Mou
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        pn_guia_clientes = new javax.swing.JPanel();
-        btn_NovoCadastro = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaCliente = new javax.swing.JTable();
-        pn_guia_consultas = new javax.swing.JPanel();
-        btn_agendamento = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaConsultas = new javax.swing.JTable();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("HeatlhPlusPlus - Tela Principal");
-        setExtendedState(MAXIMIZED_BOTH);
-        setFocusCycleRoot(false);
-        addFocusListener(this);
-        addWindowListener(this);
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
-        jPanel1.setLayout(null);
-
-        jTabbedPane1.setBackground(new java.awt.Color(51, 255, 204));
-
-        pn_guia_clientes.setLayout(null);
-
-        btn_NovoCadastro.setText("NOVO CADASTRO");
-        btn_NovoCadastro.setPreferredSize(new java.awt.Dimension(148, 22));
-        btn_NovoCadastro.addMouseListener(this);
-        btn_NovoCadastro.addActionListener(this);
-        pn_guia_clientes.add(btn_NovoCadastro);
-        btn_NovoCadastro.setBounds(1320, 620, 220, 80);
-
-        tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo", "Nome", "Endereço", "Telefone", "CPF"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabelaCliente.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tabelaCliente);
-        if (tabelaCliente.getColumnModel().getColumnCount() > 0) {
-            tabelaCliente.getColumnModel().getColumn(0).setResizable(false);
-            tabelaCliente.getColumnModel().getColumn(1).setResizable(false);
-            tabelaCliente.getColumnModel().getColumn(2).setResizable(false);
-            tabelaCliente.getColumnModel().getColumn(3).setResizable(false);
-            tabelaCliente.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-<<<<<<< HEAD
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 20, 650, 490);
-=======
-        pn_guia_clientes.add(jScrollPane1);
-        jScrollPane1.setBounds(110, 120, 1100, 630);
->>>>>>> 9664c9d27b673253b6f583ea480eff7dc58ad387
-
-        jTabbedPane1.addTab("Clientes", pn_guia_clientes);
-
-        btn_agendamento.setText("AGENDAR CONSULTA");
-        btn_agendamento.addActionListener(this);
-
-        tabelaConsultas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "COD", "Hora/Data", "COD Cliente", "Tipo"
-            }
-        ));
-        jScrollPane2.setViewportView(tabelaConsultas);
-
-        javax.swing.GroupLayout pn_guia_consultasLayout = new javax.swing.GroupLayout(pn_guia_consultas);
-        pn_guia_consultas.setLayout(pn_guia_consultasLayout);
-        pn_guia_consultasLayout.setHorizontalGroup(
-            pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_guia_consultasLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(871, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_guia_consultasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_agendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
-        );
-        pn_guia_consultasLayout.setVerticalGroup(
-            pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_guia_consultasLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
-                .addComponent(btn_agendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120))
-        );
-
-        jTabbedPane1.addTab("Consultas", pn_guia_consultas);
-
-<<<<<<< HEAD
-        jLabel1.setPreferredSize(new java.awt.Dimension(1600, 900));
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 1600, 900);
-=======
-        jPanel1.add(jTabbedPane1);
-        jTabbedPane1.setBounds(0, 0, 1600, 900);
->>>>>>> 9664c9d27b673253b6f583ea480eff7dc58ad387
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
-    }
 
-    // Code for dispatching events from components to event handlers.
-
-    public void actionPerformed(java.awt.event.ActionEvent evt) {
-        if (evt.getSource() == btn_agendamento) {
-            Principal.this.btn_agendamentoActionPerformed(evt);
-        }
-        else if (evt.getSource() == btn_NovoCadastro) {
-            Principal.this.btn_NovoCadastroActionPerformed(evt);
-        }
-    }
-
-    public void focusGained(java.awt.event.FocusEvent evt) {
-        if (evt.getSource() == Principal.this) {
-            Principal.this.formFocusGained(evt);
-        }
-    }
-
-    public void focusLost(java.awt.event.FocusEvent evt) {
-    }
-
-    public void mouseClicked(java.awt.event.MouseEvent evt) {
-        if (evt.getSource() == btn_NovoCadastro) {
-            Principal.this.btn_NovoCadastroMouseClicked(evt);
-        }
-    }
-
-    public void mouseEntered(java.awt.event.MouseEvent evt) {
-    }
-
-    public void mouseExited(java.awt.event.MouseEvent evt) {
-    }
-
-    public void mousePressed(java.awt.event.MouseEvent evt) {
-    }
-
-    public void mouseReleased(java.awt.event.MouseEvent evt) {
-    }
-
-    public void windowActivated(java.awt.event.WindowEvent evt) {
-    }
-
-    public void windowClosed(java.awt.event.WindowEvent evt) {
-    }
-
-    public void windowClosing(java.awt.event.WindowEvent evt) {
-    }
-
-    public void windowDeactivated(java.awt.event.WindowEvent evt) {
-    }
-
-    public void windowDeiconified(java.awt.event.WindowEvent evt) {
-    }
-
-    public void windowIconified(java.awt.event.WindowEvent evt) {
-    }
-
-    public void windowOpened(java.awt.event.WindowEvent evt) {
-        if (evt.getSource() == Principal.this) {
-            Principal.this.formWindowOpened(evt);
-        }
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void carregarTabela(){
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Principal().setVisible(true);
+            }
+        });
+        
+        /*private void carregarTabela(){
         DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
         for(Cliente cliente : clientes.listarCliente()){
             Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF()};
             modelo.addRow(objeto);
+            }
         }
-    }
-    
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        carregarTabela();
-    }//GEN-LAST:event_formWindowOpened
-
-    private void btn_NovoCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NovoCadastroMouseClicked
-        
-    }//GEN-LAST:event_btn_NovoCadastroMouseClicked
-
-    private void btn_agendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendamentoActionPerformed
-        Agendar_Consulta consulta = new Agendar_Consulta();
-        consulta.setVisible(true);
-    }//GEN-LAST:event_btn_agendamentoActionPerformed
-
-    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-        carregarTabela();
-    }//GEN-LAST:event_formFocusGained
-
-    private void btn_NovoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NovoCadastroActionPerformed
-       Cadastrar_Cliente cadastro = new Cadastrar_Cliente(this);
-       cadastro.setVisible(true);
-    }//GEN-LAST:event_btn_NovoCadastroActionPerformed
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_NovoCadastro;
-    private javax.swing.JButton btn_agendamento;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JPanel pn_guia_clientes;
-    private javax.swing.JPanel pn_guia_consultas;
-    private javax.swing.JTable tabelaCliente;
-    private javax.swing.JTable tabelaConsultas;
     // End of variables declaration//GEN-END:variables
 }
