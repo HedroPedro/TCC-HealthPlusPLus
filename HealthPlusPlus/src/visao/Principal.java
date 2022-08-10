@@ -29,22 +29,35 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(MAXIMIZED_BOTH);
+
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(10, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void carregarTabelaCliente(){
+        /*DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
+        for(Cliente cliente : clientes.listarCliente()){
+            Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF()};
+            modelo.addRow(objeto);
+            }*/
+        }
+    
     /**
      * @param args the command line arguments
      */
@@ -77,17 +90,9 @@ public class Principal extends javax.swing.JFrame {
             public void run() {
                 new Principal().setVisible(true);
             }
-        });
-        
-        /*private void carregarTabela(){
-        DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
-        for(Cliente cliente : clientes.listarCliente()){
-            Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF()};
-            modelo.addRow(objeto);
-            }
-        }
-    }*/
+        });}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
