@@ -29,21 +29,121 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pn_guia_clientes = new javax.swing.JPanel();
+        btn_editar_linha = new javax.swing.JButton();
+        btn_cadastro = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table_clientes = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        pn_guia_consultas = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(MAXIMIZED_BOTH);
+
+        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
+
+        pn_guia_clientes.setBackground(new java.awt.Color(153, 153, 153));
+        pn_guia_clientes.setLayout(null);
+
+        btn_editar_linha.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        btn_editar_linha.setText("Editar Linha");
+        pn_guia_clientes.add(btn_editar_linha);
+        btn_editar_linha.setBounds(1330, 540, 220, 80);
+
+        btn_cadastro.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btn_cadastro.setText("Cadastrar Cliente");
+        btn_cadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastroActionPerformed(evt);
+            }
+        });
+        pn_guia_clientes.add(btn_cadastro);
+        btn_cadastro.setBounds(1330, 640, 220, 80);
+
+        jScrollPane1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+
+        table_clientes.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        table_clientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"seu pai", "seu pai", "seu pai", "seu pai", null}
+            },
+            new String [] {
+                "Código", "Nome", "Endereço", "Telefone", "CPF"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table_clientes.setGridColor(new java.awt.Color(0, 0, 0));
+        table_clientes.setShowGrid(true);
+        jScrollPane1.setViewportView(table_clientes);
+        if (table_clientes.getColumnModel().getColumnCount() > 0) {
+            table_clientes.getColumnModel().getColumn(0).setResizable(false);
+            table_clientes.getColumnModel().getColumn(1).setResizable(false);
+            table_clientes.getColumnModel().getColumn(2).setResizable(false);
+            table_clientes.getColumnModel().getColumn(3).setResizable(false);
+            table_clientes.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        pn_guia_clientes.add(jScrollPane1);
+        jScrollPane1.setBounds(35, 124, 1242, 600);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("H:\\TCC SURPREENDENTE\\Design\\Tela Principal Cadastro (2) - X.jpg")); // NOI18N
+        pn_guia_clientes.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1600, 870);
+
+        jTabbedPane1.addTab("Clientes", pn_guia_clientes);
+
+        pn_guia_consultas.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout pn_guia_consultasLayout = new javax.swing.GroupLayout(pn_guia_consultas);
+        pn_guia_consultas.setLayout(pn_guia_consultasLayout);
+        pn_guia_consultasLayout.setHorizontalGroup(
+            pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1600, Short.MAX_VALUE)
+        );
+        pn_guia_consultasLayout.setVerticalGroup(
+            pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 867, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Consultas", pn_guia_consultas);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,5 +189,14 @@ public class Principal extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cadastro;
+    private javax.swing.JButton btn_editar_linha;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel pn_guia_clientes;
+    private javax.swing.JPanel pn_guia_consultas;
+    private javax.swing.JTable table_clientes;
     // End of variables declaration//GEN-END:variables
 }
