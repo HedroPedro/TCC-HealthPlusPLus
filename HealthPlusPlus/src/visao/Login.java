@@ -41,11 +41,11 @@ public class Login extends javax.swing.JFrame {
 
         Pn_telaLogin.setBackground(new java.awt.Color(204, 204, 255));
         Pn_telaLogin.setMaximumSize(new java.awt.Dimension(600, 800));
-        Pn_telaLogin.setName(""); // NOI18N
+        Pn_telaLogin.setName(""); 
         Pn_telaLogin.setLayout(null);
 
         btn_login.setBackground(new java.awt.Color(204, 204, 204));
-        btn_login.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btn_login.setFont(new java.awt.Font("Segoe UI", 0, 24)); 
         btn_login.setText("Login");
         btn_login.setToolTipText("");
         btn_login.setBorder(null);
@@ -57,7 +57,7 @@ public class Login extends javax.swing.JFrame {
         Pn_telaLogin.add(btn_login);
         btn_login.setBounds(170, 630, 280, 90);
         Pn_telaLogin.add(txtUsuario);
-        txtUsuario.setBounds(130, 480, 330, 38);
+        txtUsuario.setBounds(140, 480, 330, 38);
 
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +85,8 @@ public class Login extends javax.swing.JFrame {
         });
         Pn_telaLogin.add(btn_programadores);
         btn_programadores.setBounds(430, 40, 135, 22);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("H:\\TCC SURPREENDENTE\\Design\\Tela Login - X.jpg")); // NOI18N
         Pn_telaLogin.add(jLabel1);
         jLabel1.setBounds(0, 0, 600, 800);
 

@@ -4,10 +4,9 @@
  */
 package visao;
 
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 import modelador.Conectador;
 import modelador.JDBCCliente;
-import modelos.Cliente;
 
 /**
  *
@@ -19,7 +18,6 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,60 +31,86 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         pn_guia_clientes = new javax.swing.JPanel();
-        btn_editar_linha = new javax.swing.JButton();
-        btn_cadastro = new javax.swing.JButton();
+        btn_excluir = new javax.swing.JButton();
+        btn_novocadastro = new javax.swing.JButton();
+        btn_editarlinha = new javax.swing.JButton();
+        btn_novaconsulta = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_clientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         pn_guia_consultas = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table_consultas = new javax.swing.JTable();
+        btn_excluirC = new javax.swing.JButton();
+        btn_editarC = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
 
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(10, 1));
         getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
-
         jTabbedPane2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
+        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
+        jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 20)); 
 
         pn_guia_clientes.setBackground(new java.awt.Color(153, 153, 153));
         pn_guia_clientes.setLayout(null);
 
-        btn_editar_linha.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        btn_editar_linha.setText("Editar Linha");
-        pn_guia_clientes.add(btn_editar_linha);
-        btn_editar_linha.setBounds(1330, 540, 220, 80);
-
-        btn_cadastro.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        btn_cadastro.setText("Cadastrar Cliente");
-        btn_cadastro.addActionListener(new java.awt.event.ActionListener() {
+        btn_excluir.setFont(new java.awt.Font("Arial", 0, 20));
+        btn_excluir.setText("Excluir");
+        btn_excluir.setEnabled(false);
+        btn_excluir.setPreferredSize(new java.awt.Dimension(220, 80));
+        btn_excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cadastroActionPerformed(evt);
+                btn_excluirActionPerformed(evt);
             }
         });
-        pn_guia_clientes.add(btn_cadastro);
-        btn_cadastro.setBounds(1330, 640, 220, 80);
+        pn_guia_clientes.add(btn_excluir);
+        btn_excluir.setBounds(1350, 380, 220, 80);
 
-        jScrollPane1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btn_novocadastro.setFont(new java.awt.Font("Arial", 0, 20));
+        btn_novocadastro.setText("Novo Cadastro");
+        btn_novocadastro.setPreferredSize(new java.awt.Dimension(220, 80));
+        pn_guia_clientes.add(btn_novocadastro);
+        btn_novocadastro.setBounds(1350, 650, 220, 80);
 
-        table_clientes.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        btn_editarlinha.setFont(new java.awt.Font("Arial", 0, 20)); 
+        btn_editarlinha.setText("Editar");
+        btn_editarlinha.setEnabled(false);
+        btn_editarlinha.setPreferredSize(new java.awt.Dimension(220, 80));
+        pn_guia_clientes.add(btn_editarlinha);
+        btn_editarlinha.setBounds(1350, 470, 220, 80);
+
+        btn_novaconsulta.setFont(new java.awt.Font("Arial", 0, 20)); 
+        btn_novaconsulta.setText("Nova Consulta");
+        btn_novaconsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_novaconsultaActionPerformed(evt);
+            }
+        });
+        pn_guia_clientes.add(btn_novaconsulta);
+        btn_novaconsulta.setBounds(1350, 560, 220, 80);
+
+        jScrollPane1.setFont(new java.awt.Font("Comic Sans MS", 0, 18));
+
+        table_clientes.setBackground(new java.awt.Color(204, 204, 204));
+        table_clientes.setFont(new java.awt.Font("Arial", 0, 14));
         table_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"seu pai", "seu pai", "seu pai", "seu pai", null}
+                {"0", "A", "12", "1", null}
             },
             new String [] {
                 "Código", "Nome", "Endereço", "Telefone", "CPF"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         table_clientes.setGridColor(new java.awt.Color(0, 0, 0));
         table_clientes.setShowGrid(true);
+        table_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_clientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table_clientes);
         if (table_clientes.getColumnModel().getColumnCount() > 0) {
             table_clientes.getColumnModel().getColumn(0).setResizable(false);
@@ -97,13 +121,16 @@ public class Principal extends javax.swing.JFrame {
         }
 
         pn_guia_clientes.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 1242, 600);
+        jScrollPane1.setBounds(35, 124, 1242, 600);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 20));
+        jLabel1.setMaximumSize(new java.awt.Dimension(1600, 805));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1600, 805));
         pn_guia_clientes.add(jLabel1);
-        jLabel1.setBounds(0, 0, 1600, 870);
-
+        jLabel1.setBounds(0, 0, 1600, 805);
         jTabbedPane2.addTab("Clientes", pn_guia_clientes);
-
         pn_guia_consultas.setBackground(new java.awt.Color(153, 153, 153));
+        pn_guia_consultas.setLayout(null);
 
         javax.swing.GroupLayout pn_guia_consultasLayout = new javax.swing.GroupLayout(pn_guia_consultas);
         pn_guia_consultas.setLayout(pn_guia_consultasLayout);
@@ -115,7 +142,66 @@ public class Principal extends javax.swing.JFrame {
             pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 867, Short.MAX_VALUE)
         );
+        jScrollPane2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
+        table_consultas.setBackground(new java.awt.Color(204, 204, 204));
+        table_consultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        table_consultas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                { new Integer(0), "A",  new Float(0.0),  new Integer(0), null}
+            },
+            new String [] {
+                "Código", "Data/Hora", "Preço", "Cod. Cliente", "Tipo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        table_consultas.setGridColor(new java.awt.Color(0, 0, 0));
+        table_consultas.setShowGrid(true);
+        table_consultas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_consultasMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(table_consultas);
+        if (table_consultas.getColumnModel().getColumnCount() > 0) {
+            table_consultas.getColumnModel().getColumn(0).setResizable(false);
+            table_consultas.getColumnModel().getColumn(1).setResizable(false);
+            table_consultas.getColumnModel().getColumn(2).setResizable(false);
+            table_consultas.getColumnModel().getColumn(3).setResizable(false);
+            table_consultas.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        pn_guia_consultas.add(jScrollPane2);
+        jScrollPane2.setBounds(35, 124, 1242, 600);
+
+        btn_excluirC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        btn_excluirC.setText("Excluir");
+        btn_excluirC.setEnabled(false);
+        btn_excluirC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluirCActionPerformed(evt);
+            }
+        });
+        pn_guia_consultas.add(btn_excluirC);
+        btn_excluirC.setBounds(1350, 560, 220, 80);
+
+        btn_editarC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        btn_editarC.setText("Editar");
+        btn_editarC.setEnabled(false);
+        btn_editarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarCActionPerformed(evt);
+            }
+        });
+        pn_guia_consultas.add(btn_editarC);
+        btn_editarC.setBounds(1350, 650, 220, 80);
         jTabbedPane2.addTab("Consultas", pn_guia_consultas);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -145,18 +231,40 @@ public class Principal extends javax.swing.JFrame {
         }
     
     private void btn_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastroActionPerformed
+    private void table_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_clientesMouseClicked
+       int index = table_clientes.getSelectedRow();
+       int cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
+       btn_excluir.setEnabled(true);
+       btn_editarlinha.setEnabled(true);
+    }//GEN-LAST:event_table_clientesMouseClicked
+
+    private void table_consultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_consultasMouseClicked
+       int index = table_consultas.getSelectedRow();
+       int cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
+       btn_excluirC.setEnabled(true);
+       btn_editarC.setEnabled(true);
+    }//GEN-LAST:event_table_consultasMouseClicked
+
+    private void btn_excluirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirCActionPerformed
+        
+    }//GEN-LAST:event_btn_excluirCActionPerformed
+
+    private void btn_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaconsultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_cadastroActionPerformed
+    }//GEN-LAST:event_btn_novaconsultaActionPerformed
+
+    private void btn_editarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCActionPerformed
+        
+    }//GEN-LAST:event_btn_editarCActionPerformed
+
+    private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
+        JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION);
+    }//GEN-LAST:event_btn_excluirActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -182,16 +290,34 @@ public class Principal extends javax.swing.JFrame {
             }
         });}
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cadastro;
-    private javax.swing.JButton btn_editar_linha;
+        });
+        
+        /*private void carregarTabela(){
+        DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
+        for(Cliente cliente : clientes.listarCliente()){
+            Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF()};
+            modelo.addRow(objeto);
+            }
+        }
+    }*/
+
+   // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_editarC;
+    private javax.swing.JButton btn_editarlinha;
+    private javax.swing.JButton btn_excluir;
+    private javax.swing.JButton btn_excluirC;
+    private javax.swing.JButton btn_novaconsulta;
+    private javax.swing.JButton btn_novocadastro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JPanel pn_guia_clientes;
     private javax.swing.JPanel pn_guia_consultas;
     private javax.swing.JTable table_clientes;
-    // End of variables declaration//GEN-END:variables
+    private javax.swing.JTable table_consultas;
+    // End of variables declaration//GEN-END:variables 
+	
 }
