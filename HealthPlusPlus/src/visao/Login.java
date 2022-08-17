@@ -55,7 +55,7 @@ public class Login extends javax.swing.JFrame {
         Pn_telaLogin.add(btn_login);
         btn_login.setBounds(170, 630, 280, 90);
         Pn_telaLogin.add(txtUsuario);
-        txtUsuario.setBounds(130, 480, 330, 38);
+        txtUsuario.setBounds(140, 480, 330, 38);
 
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +83,8 @@ public class Login extends javax.swing.JFrame {
         });
         Pn_telaLogin.add(btn_programadores);
         btn_programadores.setBounds(430, 40, 135, 22);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("H:\\TCC SURPREENDENTE\\Design\\Tela Login - X.jpg")); // NOI18N
         Pn_telaLogin.add(jLabel1);
         jLabel1.setBounds(0, 0, 600, 800);
 

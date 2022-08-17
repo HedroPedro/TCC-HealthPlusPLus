@@ -4,6 +4,7 @@
  */
 package visao;
 
+import javax.swing.JOptionPane;
 import modelador.Conectador;
 import modelador.JDBCCliente;
 
@@ -32,6 +33,7 @@ public class Principal extends javax.swing.JFrame {
         btn_excluir = new javax.swing.JButton();
         btn_novocadastro = new javax.swing.JButton();
         btn_editarlinha = new javax.swing.JButton();
+        btn_novaconsulta = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_clientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -39,12 +41,12 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         table_consultas = new javax.swing.JTable();
         btn_excluirC = new javax.swing.JButton();
-        btn_novaconsulta = new javax.swing.JButton();
         btn_editarC = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
-        setPreferredSize(new java.awt.Dimension(1600, 900));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
 
         jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -56,8 +58,13 @@ public class Principal extends javax.swing.JFrame {
         btn_excluir.setText("Excluir");
         btn_excluir.setEnabled(false);
         btn_excluir.setPreferredSize(new java.awt.Dimension(220, 80));
+        btn_excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluirActionPerformed(evt);
+            }
+        });
         pn_guia_clientes.add(btn_excluir);
-        btn_excluir.setBounds(1350, 470, 220, 80);
+        btn_excluir.setBounds(1350, 380, 220, 80);
 
         btn_novocadastro.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_novocadastro.setText("Novo Cadastro");
@@ -70,7 +77,17 @@ public class Principal extends javax.swing.JFrame {
         btn_editarlinha.setEnabled(false);
         btn_editarlinha.setPreferredSize(new java.awt.Dimension(220, 80));
         pn_guia_clientes.add(btn_editarlinha);
-        btn_editarlinha.setBounds(1350, 560, 220, 80);
+        btn_editarlinha.setBounds(1350, 470, 220, 80);
+
+        btn_novaconsulta.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        btn_novaconsulta.setText("Nova Consulta");
+        btn_novaconsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_novaconsultaActionPerformed(evt);
+            }
+        });
+        pn_guia_clientes.add(btn_novaconsulta);
+        btn_novaconsulta.setBounds(1350, 560, 220, 80);
 
         jScrollPane1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
@@ -120,7 +137,7 @@ public class Principal extends javax.swing.JFrame {
         table_consultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         table_consultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, "A", null, null, null}
+                { new Integer(0), "A",  new Float(0.0),  new Integer(0), null}
             },
             new String [] {
                 "Código", "Data/Hora", "Preço", "Cod. Cliente", "Tipo"
@@ -162,17 +179,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         pn_guia_consultas.add(btn_excluirC);
-        btn_excluirC.setBounds(1350, 470, 220, 80);
-
-        btn_novaconsulta.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        btn_novaconsulta.setText("Nova Consulta");
-        btn_novaconsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_novaconsultaActionPerformed(evt);
-            }
-        });
-        pn_guia_consultas.add(btn_novaconsulta);
-        btn_novaconsulta.setBounds(1350, 650, 220, 80);
+        btn_excluirC.setBounds(1350, 560, 220, 80);
 
         btn_editarC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_editarC.setText("Editar");
@@ -183,7 +190,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         pn_guia_consultas.add(btn_editarC);
-        btn_editarC.setBounds(1350, 560, 220, 80);
+        btn_editarC.setBounds(1350, 650, 220, 80);
 
         jTabbedPane1.addTab("Consultas", pn_guia_consultas);
 
@@ -220,10 +227,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_table_clientesMouseClicked
 
     private void table_consultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_consultasMouseClicked
-       int index = table_clientes.getSelectedRow();
-       int cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
+       int index = table_consultas.getSelectedRow();
+       int cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
        btn_excluirC.setEnabled(true);
-       btn_editarC.setEnabled(true); 
+       btn_editarC.setEnabled(true);
     }//GEN-LAST:event_table_consultasMouseClicked
 
     private void btn_excluirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirCActionPerformed
@@ -235,8 +242,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_novaconsultaActionPerformed
 
     private void btn_editarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_editarCActionPerformed
+
+    private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
+        JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION);
+    }//GEN-LAST:event_btn_excluirActionPerformed
 
     /**
      * @param args the command line arguments
