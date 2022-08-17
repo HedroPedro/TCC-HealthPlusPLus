@@ -234,7 +234,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_table_consultasMouseClicked
 
     private void btn_excluirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirCActionPerformed
-        
+        JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION);
     }//GEN-LAST:event_btn_excluirCActionPerformed
 
     private void btn_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaconsultaActionPerformed
