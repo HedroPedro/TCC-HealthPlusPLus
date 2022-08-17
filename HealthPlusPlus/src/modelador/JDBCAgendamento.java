@@ -30,7 +30,7 @@ public class JDBCAgendamento {
             Statement stat = this.c.createStatement();
             ResultSet rs = stat.executeQuery(sql);
             while(rs.next()){
-                Agendamento agenda = new Agendamento(rs.getInt("COD"), LocalDateTime.parse(rs.getDate("DATAHORA").toString()), rs.getFloat("PRECO"), rs.getInt("COD_CLIENTE"), rs.getInt("TIPO_CONSULTA"));
+                Agendamento agenda = new Agendamento(rs.getInt("COD"), LocalDateTime.parse(rs.getDate("DATAHORA").toString()), rs.getInt("COD_CLIENTE"), rs.getInt("TIPO_CONSULTA"));
                 agendamentos.add(agenda);
             }
         } catch (SQLException ex) {
@@ -41,11 +41,11 @@ public class JDBCAgendamento {
     }
     
     public void inserirAgendamento(Agendamento a, String nome){
-        String sql = "Insert into Tb_Agendamento(DATAHORA, PRECO) values(?,?)";
+        String sql = "Insert into Tb_Agendamento(DATAHORA, TIPO_CONSULTA) values(?,?,?)";
         try {
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setDate(1,Date.valueOf(a.getDatahora().toString()));
-            ps.setFloat(2, a.getPreco());
+            ps.setFloat(2, a.getTipo_consulta());
             ps.setInt(3, a.getCod_cliente());
             ps.execute();
         } catch (SQLException ex) {

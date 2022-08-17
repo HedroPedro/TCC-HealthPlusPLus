@@ -31,7 +31,7 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         pn_guia_clientes = new javax.swing.JPanel();
         btn_editar_linha = new javax.swing.JButton();
         btn_cadastro = new javax.swing.JButton();
@@ -44,7 +44,9 @@ public class Principal extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
 
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(10, 1));
-        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
+
+        jTabbedPane2.setBackground(new java.awt.Color(204, 204, 204));
 
         pn_guia_clientes.setBackground(new java.awt.Color(153, 153, 153));
         pn_guia_clientes.setLayout(null);
@@ -95,13 +97,11 @@ public class Principal extends javax.swing.JFrame {
         }
 
         pn_guia_clientes.add(jScrollPane1);
-        jScrollPane1.setBounds(35, 124, 1242, 600);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("H:\\TCC SURPREENDENTE\\Design\\Tela Principal Cadastro (2) - X.jpg")); // NOI18N
+        jScrollPane1.setBounds(0, 0, 1242, 600);
         pn_guia_clientes.add(jLabel1);
         jLabel1.setBounds(0, 0, 1600, 870);
 
-        jTabbedPane1.addTab("Clientes", pn_guia_clientes);
+        jTabbedPane2.addTab("Clientes", pn_guia_clientes);
 
         pn_guia_consultas.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -109,42 +109,29 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_consultas.setLayout(pn_guia_consultasLayout);
         pn_guia_consultasLayout.setHorizontalGroup(
             pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1600, Short.MAX_VALUE)
+            .addGap(0, 741, Short.MAX_VALUE)
         );
         pn_guia_consultasLayout.setVerticalGroup(
             pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 867, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Consultas", pn_guia_consultas);
+        jTabbedPane2.addTab("Consultas", pn_guia_consultas);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 741, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane2)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -196,13 +183,13 @@ public class Principal extends javax.swing.JFrame {
         });}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton btn_cadastro;
     private javax.swing.JButton btn_editar_linha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JPanel pn_guia_clientes;
     private javax.swing.JPanel pn_guia_consultas;
     private javax.swing.JTable table_clientes;
