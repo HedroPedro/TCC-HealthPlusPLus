@@ -69,6 +69,11 @@ public class Principal extends javax.swing.JFrame {
         btn_novocadastro.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_novocadastro.setText("Novo Cadastro");
         btn_novocadastro.setPreferredSize(new java.awt.Dimension(220, 80));
+        btn_novocadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_novocadastroActionPerformed(evt);
+            }
+        });
         pn_guia_clientes.add(btn_novocadastro);
         btn_novocadastro.setBounds(1350, 650, 220, 80);
 
@@ -238,7 +243,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_excluirCActionPerformed
 
     private void btn_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaconsultaActionPerformed
-        // TODO add your handling code here:
+       Agendar_Consulta consultaNova = new Agendar_Consulta();
+       consultaNova.setVisible(true);
     }//GEN-LAST:event_btn_novaconsultaActionPerformed
 
     private void btn_editarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCActionPerformed
@@ -248,6 +254,10 @@ public class Principal extends javax.swing.JFrame {
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
         JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION);
     }//GEN-LAST:event_btn_excluirActionPerformed
+
+    private void btn_novocadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novocadastroActionPerformed
+        new Cadastrar_Cliente(this).setVisible(true);
+    }//GEN-LAST:event_btn_novocadastroActionPerformed
 
     /**
      * @param args the command line arguments
