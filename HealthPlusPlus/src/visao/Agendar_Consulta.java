@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
 
 import java.time.LocalDateTime;
@@ -22,19 +18,45 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     private void initComponents() {
 
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        edt_hora = new javax.swing.JFormattedTextField();
-        edt_data = new javax.swing.JFormattedTextField();
-        btn_agendar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btn_cancelar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        edt_data = new javax.swing.JFormattedTextField();
+        edt_hora = new javax.swing.JFormattedTextField();
+        lbl_nome = new javax.swing.JLabel();
+        btn_agendar = new javax.swing.JButton();
+        lbl_hora = new javax.swing.JLabel();
+        lbl_data = new javax.swing.JLabel();
+        lbl_fundo = new javax.swing.JLabel();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setExtendedState(MAXIMIZED_BOTH);
-        setMaximumSize(new java.awt.Dimension(800, 600));
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMaximumSize(new java.awt.Dimension(505, 345));
+        setMinimumSize(new java.awt.Dimension(505, 345));
+
+        jPanel1.setLayout(null);
+
+        btn_cancelar.setText("Agendar");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_cancelar);
+        btn_cancelar.setBounds(340, 280, 130, 40);
+        jPanel1.add(jTextField1);
+        jTextField1.setBounds(121, 112, 326, 22);
+
+        try {
+            edt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel1.add(edt_data);
+        edt_data.setBounds(144, 146, 100, 22);
 
         try {
             edt_hora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
@@ -42,12 +64,12 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         edt_hora.setPreferredSize(new java.awt.Dimension(100, 22));
+        jPanel1.add(edt_hora);
+        edt_hora.setBounds(305, 146, 100, 22);
 
-        try {
-            edt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        lbl_nome.setText("Nome:");
+        jPanel1.add(lbl_nome);
+        lbl_nome.setBounds(79, 115, 36, 16);
 
         btn_agendar.setText("Agendar");
         btn_agendar.addActionListener(new java.awt.event.ActionListener() {
@@ -55,42 +77,29 @@ public class Agendar_Consulta extends javax.swing.JFrame {
                 btn_agendarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_agendar);
+        btn_agendar.setBounds(204, 280, 130, 40);
 
-        jLabel1.setText("Nome");
+        lbl_hora.setText("Horário:");
+        jPanel1.add(lbl_hora);
+        lbl_hora.setBounds(256, 149, 43, 16);
+
+        lbl_data.setText("Data:");
+        jPanel1.add(lbl_data);
+        lbl_data.setBounds(111, 149, 27, 16);
+        jPanel1.add(lbl_fundo);
+        lbl_fundo.setBounds(0, 0, 505, 345);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_agendar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(edt_hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(edt_data)))
-                .addContainerGap(144, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(edt_hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edt_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_agendar)
-                .addContainerGap(200, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
     
     DateTimeFormatter formartador = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
@@ -106,6 +115,10 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Um deles está vazio, digitar novamente");
         }
     }//GEN-LAST:event_btn_agendarActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,10 +160,15 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agendar;
+    private javax.swing.JButton btn_cancelar;
     private javax.swing.JFormattedTextField edt_data;
     private javax.swing.JFormattedTextField edt_hora;
     private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbl_data;
+    private javax.swing.JLabel lbl_fundo;
+    private javax.swing.JLabel lbl_hora;
+    private javax.swing.JLabel lbl_nome;
     // End of variables declaration//GEN-END:variables
 }

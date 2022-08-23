@@ -27,8 +27,9 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_nome = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         Edt_Nome = new javax.swing.JTextField();
+        lbl_nome = new javax.swing.JLabel();
         lbl_end = new javax.swing.JLabel();
         Edt_Endereco = new javax.swing.JTextField();
         lbl_telefone = new javax.swing.JLabel();
@@ -37,6 +38,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         btn_confirmar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
         edt_Telefone = new javax.swing.JFormattedTextField();
+        lbl_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 155, 243));
@@ -47,23 +49,39 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
 
-        lbl_nome.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jPanel1.setLayout(null);
+        jPanel1.add(Edt_Nome);
+        Edt_Nome.setBounds(181, 176, 508, 24);
+
+        lbl_nome.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lbl_nome.setText("Nome:");
+        jPanel1.add(lbl_nome);
+        lbl_nome.setBounds(121, 174, 48, 21);
 
         lbl_end.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         lbl_end.setText("Endereço");
+        jPanel1.add(lbl_end);
+        lbl_end.setBounds(110, 206, 68, 24);
+        jPanel1.add(Edt_Endereco);
+        Edt_Endereco.setBounds(190, 208, 499, 24);
 
         lbl_telefone.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         lbl_telefone.setText("Telefone:");
+        jPanel1.add(lbl_telefone);
+        lbl_telefone.setBounds(396, 238, 68, 24);
 
         lbl_CPF.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         lbl_CPF.setText("CPF:");
+        jPanel1.add(lbl_CPF);
+        lbl_CPF.setBounds(95, 238, 37, 24);
 
         try {
             edt_CPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jPanel1.add(edt_CPF);
+        edt_CPF.setBounds(138, 241, 252, 22);
 
         btn_confirmar.setText("Confirmar");
         btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +89,8 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
                 btn_confirmarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_confirmar);
+        btn_confirmar.setBounds(640, 480, 130, 52);
 
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,69 +98,28 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
                 btn_cancelarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_cancelar);
+        btn_cancelar.setBounds(490, 480, 131, 52);
 
         try {
             edt_Telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jPanel1.add(edt_Telefone);
+        edt_Telefone.setBounds(470, 241, 252, 22);
+        jPanel1.add(lbl_fundo);
+        lbl_fundo.setBounds(0, 0, 800, 600);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lbl_end)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Edt_Endereco))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lbl_nome)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Edt_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_CPF)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edt_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_telefone)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edt_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Edt_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_nome))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_end)
-                    .addComponent(Edt_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbl_CPF)
-                        .addComponent(edt_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbl_telefone)
-                        .addComponent(edt_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                    .addComponent(btn_confirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(17, 17, 17))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -169,8 +148,10 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
     private javax.swing.JButton btn_confirmar;
     private javax.swing.JFormattedTextField edt_CPF;
     private javax.swing.JFormattedTextField edt_Telefone;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_CPF;
     private javax.swing.JLabel lbl_end;
+    private javax.swing.JLabel lbl_fundo;
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JLabel lbl_telefone;
     // End of variables declaration//GEN-END:variables
