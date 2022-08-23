@@ -138,14 +138,14 @@ public class Principal extends javax.swing.JFrame {
         table_consultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         table_consultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(0), "A",  new Float(0.0),  new Integer(0), null}
+                { new Integer(0), "A",  new Float(0.0),  new Integer(0)}
             },
             new String [] {
-                "Código", "Data/Hora", "Preço", "Cod. Cliente", "Tipo"
+                "Código", "Data/Hora", "Preço", "Cod. Cliente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -165,7 +165,6 @@ public class Principal extends javax.swing.JFrame {
             table_consultas.getColumnModel().getColumn(1).setResizable(false);
             table_consultas.getColumnModel().getColumn(2).setResizable(false);
             table_consultas.getColumnModel().getColumn(3).setResizable(false);
-            table_consultas.getColumnModel().getColumn(4).setResizable(false);
         }
 
         pn_guia_consultas.add(jScrollPane2);
