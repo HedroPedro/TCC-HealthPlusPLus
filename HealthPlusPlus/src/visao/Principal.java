@@ -18,7 +18,7 @@ public class Principal extends javax.swing.JFrame {
     int cod = 0;
     public Principal() {
         initComponents();
-        carregarTabelas();
+        carregarTabelaCliente();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +47,11 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
 
@@ -102,7 +107,7 @@ public class Principal extends javax.swing.JFrame {
         table_clientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         table_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"0", "A", "12", "1", null}
+
             },
             new String [] {
                 "Código", "Nome", "Endereço", "Telefone", "CPF"
@@ -261,6 +266,10 @@ public class Principal extends javax.swing.JFrame {
         new Cadastrar_Cliente(this).setVisible(true);
     }//GEN-LAST:event_btn_novocadastroActionPerformed
 
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        carregarTabelaCliente();
+    }//GEN-LAST:event_formFocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -295,15 +304,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 }     
-        private void carregarTabelas(){
+        private void carregarTabelaCliente(){
         DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
         for(Cliente cliente : clientes.listarCliente()){
             Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF()};
-            modelo.addRow(objeto);
-            }
-        modelo = (DefaultTableModel) table_consultas.getModel();
-        for(Agendamento agendamento : agendamentos.listarAgendamentos()){
-            Object[] objeto = {agendamento.getCodigo(), agendamento.getDatahora(), agendamento.getCod_cliente()};
             modelo.addRow(objeto);
             }
         }

@@ -31,8 +31,8 @@ public class JDBCUsuario {
             ResultSet rs = ps.executeQuery();
             System.out.println(rs.toString());
             while(rs.next()){
-            Login.usuario.setCod(rs.getInt(0));
-            Login.usuario.setNome(rs.getString(1)); }
+            Login.usuario.setCod(rs.getInt(1));
+            Login.usuario.setNome(nome); }
             return true;
         } catch (Exception ex) {
             Logger.getLogger(JDBCUsuario.class.getName()).log(Level.SEVERE, null, ex);

@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `empresa`
 --
-CREATE DATABASE IF NOT EXISTS `empresa` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+CREATE DATABASE IF NOT EXISTS `empresa` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `empresa`;
 
 -- --------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE `tb_agendamento` (
   `DATAHORA` datetime NOT NULL,
   `COD_CLIENTE` int(11) NOT NULL,
   `TIPO_CONSULTA` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ CREATE TABLE `tb_cliente` (
   `END_CLIENTE` varchar(70) NOT NULL,
   `TEL_CLIENTE` varchar(13) NOT NULL,
   `CPF_CLIENTE` char(14) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -61,9 +61,9 @@ CREATE TABLE `tb_cliente` (
 DROP TABLE IF EXISTS `tb_tiposdeconsulta`;
 CREATE TABLE `tb_tiposdeconsulta` (
   `COD` int(11) NOT NULL,
-  `NomeConsulta` varchar(100) COLLATE utf8_bin NOT NULL,
+  `NomeConsulta` varchar(100) COLLATE utf8_general_ci NOT NULL,
   `Preco` decimal(5,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ CREATE TABLE `tb_usuario` (
   `COD_USUARIO` int(11) NOT NULL,
   `NOME` varchar(50) NOT NULL,
   `SENHA` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `tb_usuario`
