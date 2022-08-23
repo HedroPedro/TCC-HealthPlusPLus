@@ -1,8 +1,12 @@
 package visao;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelador.Conectador;
+import modelador.JDBCAgendamento;
 import modelador.JDBCCliente;
+import modelos.Agendamento;
+import modelos.Cliente;
 
 /**
  *
@@ -10,9 +14,11 @@ import modelador.JDBCCliente;
  */
 public class Principal extends javax.swing.JFrame {
     JDBCCliente clientes = new JDBCCliente(new Conectador().abrirConnection());
-    
+    JDBCAgendamento agendamentos = new JDBCAgendamento(new Conectador().abrirConnection());
+    int cod = 0;
     public Principal() {
         initComponents();
+        carregarTabelas();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -232,6 +238,7 @@ public class Principal extends javax.swing.JFrame {
        int cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
        btn_excluirC.setEnabled(true);
        btn_editarC.setEnabled(true);
+       this.cod = cod;
     }//GEN-LAST:event_table_consultasMouseClicked
 
     private void btn_excluirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirCActionPerformed
@@ -288,16 +295,20 @@ public class Principal extends javax.swing.JFrame {
                 new Principal().setVisible(true);
             }
         });
-        
-        /*private void carregarTabela(){
-        DefaultTableModel modelo = (DefaultTableModel) tabelaCliente.getModel();
+}     
+        private void carregarTabelas(){
+        DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
         for(Cliente cliente : clientes.listarCliente()){
             Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF()};
             modelo.addRow(objeto);
             }
+        modelo = (DefaultTableModel) table_consultas.getModel();
+        for(Agendamento agendamento : agendamentos.listarAgendamentos()){
+            Object[] objeto = {agendamento.getCodigo(), agendamento.getDatahora(), agendamento.getCod_cliente()};
+            modelo.addRow(objeto);
+            }
         }
-    }*/
-}
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_editarC;
     private javax.swing.JButton btn_editarlinha;

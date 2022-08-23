@@ -22,18 +22,18 @@ public class JDBCUsuario {
      * @return boolean Caso exista usuario da veradeiro se der erro ou falso caso n ache ou dê erro
      */
     public boolean existeUsuario(String nome, String senha){ 
-        String sql = "SELECT COD_USUARIO from tb_usuario WHERE NOME = ? and SENHA = ?";
+        String sql = "SELECT COD_USUARIO from tb_usuario WHERE NOME = ?  and SENHA = ?";
         PreparedStatement ps;
         try {
             ps = this.con.prepareStatement(sql);
             ps.setString(1, nome);
             ps.setString(2, senha);
             ResultSet rs = ps.executeQuery();
+            System.out.println(rs.toString());
             while(rs.next()){
-                Login.usuario.setCod(rs.getInt(1));
-                Login.usuario.setNome(rs.getString(2));
-                return true;
-            }
+            Login.usuario.setCod(rs.getInt(0));
+            Login.usuario.setNome(rs.getString(1)); }
+            return true;
         } catch (Exception ex) {
             Logger.getLogger(JDBCUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }

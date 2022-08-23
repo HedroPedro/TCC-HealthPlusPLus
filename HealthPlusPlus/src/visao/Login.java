@@ -9,7 +9,7 @@ import modelos.Usuario;
 public class Login extends javax.swing.JFrame {
 
     JDBCUsuario checadorDeUsuario = new JDBCUsuario(new Conectador().abrirConnection());
-    public static Usuario usuario;
+    public static Usuario usuario = new Usuario();
     
     public Login() {       
         initComponents();
@@ -38,6 +38,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         Pn_telaLogin.setBackground(new java.awt.Color(204, 204, 255));
+        Pn_telaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Pn_telaLogin.setMaximumSize(new java.awt.Dimension(600, 800));
         Pn_telaLogin.setName(""); // NOI18N
         Pn_telaLogin.setLayout(null);

@@ -7,11 +7,34 @@ public class Agendamento {
     private LocalDateTime datahora;
     private int cod_cliente;
     private int tipo_consulta;
+    private float preco;
     
     public Agendamento(){}
 
+    public Agendamento(int codigo, LocalDateTime datahora, int cod_cliente, int tipo_consulta, float preco) {
+        this.codigo = codigo;
+        this.datahora = datahora;
+        this.cod_cliente = cod_cliente;
+        this.tipo_consulta = tipo_consulta;
+        this.preco = preco;
+    }
+
     public Agendamento(int codigo, LocalDateTime datahora, int cod_cliente, int tipo_consulta) {
         this.codigo = codigo;
+        this.datahora = datahora;
+        this.cod_cliente = cod_cliente;
+        this.tipo_consulta = tipo_consulta;
+    }
+
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }
+    
+    public Agendamento(LocalDateTime datahora, int cod_cliente, int tipo_consulta) {
         this.datahora = datahora;
         this.cod_cliente = cod_cliente;
         this.tipo_consulta = tipo_consulta;

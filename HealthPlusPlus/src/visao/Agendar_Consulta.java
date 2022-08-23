@@ -5,12 +5,19 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import modelador.JDBCAgendamento;
 import modelador.Conectador;
+import modelos.Agendamento;
 public class Agendar_Consulta extends javax.swing.JFrame {
 
     public JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
+    private Principal p;
     
     public Agendar_Consulta() {
         initComponents();
+    }
+    
+    public Agendar_Consulta(Principal p) {
+        initComponents();
+        this.p = p;
     }
 
     @SuppressWarnings("unchecked")
@@ -20,7 +27,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         btn_cancelar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        edt_nome = new javax.swing.JTextField();
         edt_data = new javax.swing.JFormattedTextField();
         edt_hora = new javax.swing.JFormattedTextField();
         lbl_nome = new javax.swing.JLabel();
@@ -28,6 +35,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         lbl_hora = new javax.swing.JLabel();
         lbl_data = new javax.swing.JLabel();
         lbl_fundo = new javax.swing.JLabel();
+        ComboBox_Consultas = new javax.swing.JComboBox<>();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -39,7 +47,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        btn_cancelar.setText("Agendar");
+        btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelarActionPerformed(evt);
@@ -47,8 +55,8 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         });
         jPanel1.add(btn_cancelar);
         btn_cancelar.setBounds(340, 280, 130, 40);
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(121, 112, 326, 22);
+        jPanel1.add(edt_nome);
+        edt_nome.setBounds(121, 112, 326, 22);
 
         try {
             edt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -90,6 +98,10 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 505, 345);
 
+        ComboBox_Consultas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 - Consulta", "2- Plano" }));
+        jPanel1.add(ComboBox_Consultas);
+        ComboBox_Consultas.setBounds(300, 220, 110, 22);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,15 +121,15 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             if(verificarData(parsedDate))
                 JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
             else{
-               // modelaAgendamento
+               modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, p.cod, ComboBox_Consultas.getSelectedIndex()+1));
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Um deles está vazio, digitar novamente");
+            JOptionPane.showMessageDialog(null, "Umas das caixas está vazia está vazio, digite novamente");
         }
     }//GEN-LAST:event_btn_agendarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     /**
@@ -159,13 +171,14 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         return date.isBefore(LocalDateTime.now());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBox_Consultas;
     private javax.swing.JButton btn_agendar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JFormattedTextField edt_data;
     private javax.swing.JFormattedTextField edt_hora;
+    private javax.swing.JTextField edt_nome;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_data;
     private javax.swing.JLabel lbl_fundo;
     private javax.swing.JLabel lbl_hora;

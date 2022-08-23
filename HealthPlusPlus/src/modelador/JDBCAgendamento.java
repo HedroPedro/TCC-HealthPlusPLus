@@ -40,13 +40,31 @@ public class JDBCAgendamento {
         return agendamentos;
     }
     
-    public void inserirAgendamento(Agendamento a, String nome){
-        String sql = "Insert into Tb_Agendamento(DATAHORA, TIPO_CONSULTA) values(?,?,?)";
+    public void inserirAgendamento(Agendamento a){
+        String sql = "Select preco from Tb_Tipodeconsulta where COD = ?";
+        float preco = 0.0f;
+        
+        PreparedStatement ps;
+        ResultSet rs;
         try {
-            PreparedStatement ps = c.prepareStatement(sql);
+            ps = this.c.prepareStatement(sql);
+            ps.setInt(1, a.getTipo_consulta());
+            rs = ps.executeQuery();
+            while(rs.next()){
+                preco = rs.getFloat(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        sql = "Insert into Tb_Agendamento(DATAHORA, TIPO_CONSULTA, COD_CLIENTE, PRECO) values(?,?,?,?)";
+        try {
+            ps = c.prepareStatement(sql);
             ps.setDate(1,Date.valueOf(a.getDatahora().toString()));
             ps.setFloat(2, a.getTipo_consulta());
             ps.setInt(3, a.getCod_cliente());
+            ps.setFloat(4, preco);
+            
             ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);} 
