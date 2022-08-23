@@ -49,6 +49,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
         jPanel1.add(Edt_Nome);
         Edt_Nome.setBounds(181, 176, 508, 24);
@@ -90,7 +91,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_confirmar);
-        btn_confirmar.setBounds(640, 480, 130, 52);
+        btn_confirmar.setBounds(640, 390, 130, 52);
 
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +100,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(490, 480, 131, 52);
+        btn_cancelar.setBounds(490, 390, 131, 52);
 
         try {
             edt_Telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));

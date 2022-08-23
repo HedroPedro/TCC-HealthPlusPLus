@@ -84,6 +84,8 @@ public class Login extends javax.swing.JFrame {
         });
         Pn_telaLogin.add(btn_programadores);
         btn_programadores.setBounds(430, 40, 135, 22);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("H:\\TCC SURPREENDENTE\\Design\\Tela Login - X.jpg")); // NOI18N
         Pn_telaLogin.add(jLabel1);
         jLabel1.setBounds(0, 0, 600, 800);
 
