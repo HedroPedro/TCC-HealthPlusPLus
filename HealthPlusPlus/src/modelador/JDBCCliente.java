@@ -65,20 +65,21 @@ public class JDBCCliente {
      * Deleta tudo da TB_CLIENTE
      */
     public void deletarCliente(){
-        String sql = "Delete * from tb_cliente";
+        String sql = "Delete from tb_cliente";
         try{
-            Statement stat = this.con.createStatement();
-            stat.execute(sql);
+            Statement stat = con.createStatement();
+            stat.executeUpdate(sql);
         }catch(SQLException ex){
             Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     } 
     public void deletarCliente(int codigo){
-        String sql = "Delete * from tb_cliente where CODIGO_CLIENTE = ?";
+        String sql = "Delete from tb_cliente where COD_CLIENTE = ?";
+        PreparedStatement ps;
         try{
-            PreparedStatement rs = this.con.prepareStatement(sql);
-            rs.setInt(1, codigo);
-            rs.execute(sql);
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            ps.executeUpdate(sql);
         }catch(SQLException ex){
             Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
         }

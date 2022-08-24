@@ -232,21 +232,20 @@ public class Principal extends javax.swing.JFrame {
 
     private void table_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_clientesMouseClicked
        int index = table_clientes.getSelectedRow();
-       int cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
+       cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
        btn_excluir.setEnabled(true);
        btn_editarlinha.setEnabled(true);
     }//GEN-LAST:event_table_clientesMouseClicked
 
     private void table_consultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_consultasMouseClicked
        int index = table_consultas.getSelectedRow();
-       int cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
+       cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
        btn_excluirC.setEnabled(true);
        btn_editarC.setEnabled(true);
-       this.cod = cod;
     }//GEN-LAST:event_table_consultasMouseClicked
 
     private void btn_excluirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirCActionPerformed
-        JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION);
+        boolean confirmacao = (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION)) == 0;
     }//GEN-LAST:event_btn_excluirCActionPerformed
 
     private void btn_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaconsultaActionPerformed
@@ -259,7 +258,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_editarCActionPerformed
 
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
-        JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION);
+        if(JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION) == 0){
+            System.out.println(cod);
+            clientes.deletarCliente(cod);
+            carregarTabelaCliente();
+        }
     }//GEN-LAST:event_btn_excluirActionPerformed
 
     private void btn_novocadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novocadastroActionPerformed
@@ -306,6 +309,7 @@ public class Principal extends javax.swing.JFrame {
 }     
         private void carregarTabelaCliente(){
         DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
+        modelo.setRowCount(0);
         for(Cliente cliente : clientes.listarCliente()){
             Object[] objeto = {cliente.getCodigo(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF()};
             modelo.addRow(objeto);
