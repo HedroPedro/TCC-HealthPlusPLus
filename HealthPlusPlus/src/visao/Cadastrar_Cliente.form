@@ -178,9 +178,14 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_fundo">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\Etec\Desktop\TCC-Surpresa\HealthPlusPlus\extra\Tela Cadastrar Cliente.jpeg.jpg"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="800" height="600"/>
+              <AbsoluteConstraints x="0" y="0" width="800" height="500"/>
             </Constraint>
           </Constraints>
         </Component>

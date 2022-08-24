@@ -133,6 +133,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setBounds(35, 124, 1242, 600);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Etec\\Desktop\\TCC-Surpresa\\HealthPlusPlus\\extra\\Tela Principal Cadastro.jpg")); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(1600, 805));
         jLabel1.setPreferredSize(new java.awt.Dimension(1600, 805));
         pn_guia_clientes.add(jLabel1);
