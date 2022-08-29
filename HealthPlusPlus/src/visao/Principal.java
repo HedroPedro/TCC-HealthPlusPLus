@@ -319,6 +319,7 @@ public class Principal extends javax.swing.JFrame {
                 model.addRow(objeto);
            }
        }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_editarC;
     private javax.swing.JButton btn_editarlinha;
