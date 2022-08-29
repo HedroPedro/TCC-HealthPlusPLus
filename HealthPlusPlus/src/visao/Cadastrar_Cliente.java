@@ -109,8 +109,10 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         }
         jPanel1.add(edt_Telefone);
         edt_Telefone.setBounds(470, 241, 252, 22);
+
+        lbl_fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Etec\\Desktop\\TCC-Surpresa\\HealthPlusPlus\\extra\\Tela Cadastrar Cliente.jpeg.jpg")); // NOI18N
         jPanel1.add(lbl_fundo);
-        lbl_fundo.setBounds(0, 0, 800, 600);
+        lbl_fundo.setBounds(0, 0, 800, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -39,8 +39,8 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         btn_agendar = new javax.swing.JButton();
         lbl_hora = new javax.swing.JLabel();
         lbl_data = new javax.swing.JLabel();
-        lbl_fundo = new javax.swing.JLabel();
         ComboBox_Consultas = new javax.swing.JComboBox<>();
+        lbl_fundo = new javax.swing.JLabel();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -60,6 +60,8 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         });
         jPanel1.add(btn_cancelar);
         btn_cancelar.setBounds(340, 280, 130, 40);
+
+        edt_nome.setEditable(false);
         jPanel1.add(edt_nome);
         edt_nome.setBounds(121, 112, 326, 22);
 
@@ -68,6 +70,11 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        edt_data.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edt_dataActionPerformed(evt);
+            }
+        });
         jPanel1.add(edt_data);
         edt_data.setBounds(144, 146, 100, 22);
 
@@ -100,29 +107,30 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         lbl_data.setText("Data:");
         jPanel1.add(lbl_data);
         lbl_data.setBounds(111, 149, 27, 16);
-        jPanel1.add(lbl_fundo);
-        lbl_fundo.setBounds(0, 0, 505, 345);
 
         ComboBox_Consultas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 - Consulta", "2- Plano" }));
         jPanel1.add(ComboBox_Consultas);
         ComboBox_Consultas.setBounds(300, 220, 110, 22);
 
+        lbl_fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Etec\\Desktop\\TCC-Surpresa\\HealthPlusPlus\\extra\\Tela Agendar Consulta.jpg")); // NOI18N
+        jPanel1.add(lbl_fundo);
+        lbl_fundo.setBounds(0, 0, 550, 400);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendarActionPerformed
         SimpleDateFormat formartador = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        if(!edt_data.getText().equals("") && !edt_hora.getText().equals("")){
-            
+        if(!edt_data.getText().equals("") && !edt_hora.getText().equals("") && !edt_nome.getText().equals("")){
             Date parsedDate = new Date();
             try {
                 parsedDate = formartador.parse(edt_data.getText() + " " + edt_hora.getText());
@@ -142,6 +150,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             }
         }else{
             JOptionPane.showMessageDialog(null, "Umas das caixas está vazio, digite novamente");
+            JOptionPane.showMessageDialog(null, "Umas das caixas está vazia, digite novamente");
         }
     }//GEN-LAST:event_btn_agendarActionPerformed
 
@@ -149,9 +158,14 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
+    private void edt_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edt_dataActionPerformed
+        
+    }//GEN-LAST:event_edt_dataActionPerformed
+    
     private boolean verificarData(Date date){
         return date.before(new Date());
     }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBox_Consultas;
     private javax.swing.JButton btn_agendar;

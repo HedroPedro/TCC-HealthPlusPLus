@@ -38,7 +38,6 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         Pn_telaLogin.setBackground(new java.awt.Color(204, 204, 255));
-        Pn_telaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Pn_telaLogin.setMaximumSize(new java.awt.Dimension(600, 800));
         Pn_telaLogin.setName(""); // NOI18N
         Pn_telaLogin.setLayout(null);
@@ -85,7 +84,7 @@ public class Login extends javax.swing.JFrame {
         Pn_telaLogin.add(btn_programadores);
         btn_programadores.setBounds(430, 40, 135, 22);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("H:\\TCC SURPREENDENTE\\Design\\Tela Login - X.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Etec\\Desktop\\TCC-Surpresa\\HealthPlusPlus\\extra\\Tela Login - X.jpg")); // NOI18N
         Pn_telaLogin.add(jLabel1);
         jLabel1.setBounds(0, 0, 600, 800);
 
