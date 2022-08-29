@@ -8,12 +8,12 @@ package visao;
  *
  * @author Etec
  */
-public class Editar_Campo_Consulta extends javax.swing.JFrame {
+public class Editar_Linha_Consulta extends javax.swing.JFrame {
 
     /**
      * Creates new form Editar_Campo
      */
-    public Editar_Campo_Consulta() {
+    public Editar_Linha_Consulta() {
         initComponents();
     }
 
@@ -110,8 +110,6 @@ public class Editar_Campo_Consulta extends javax.swing.JFrame {
         btn_cancelar.setMaximumSize(new java.awt.Dimension(120, 40));
         jPanel1.add(btn_cancelar);
         btn_cancelar.setBounds(410, 230, 120, 40);
-
-        lbl_fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Etec\\Desktop\\TCC-Surpresa\\HealthPlusPlus\\extra\\Tela Editar Registro.jpg")); // NOI18N
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 750, 300);
 
@@ -161,21 +159,23 @@ public class Editar_Campo_Consulta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Editar_Campo_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar_Linha_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Editar_Campo_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar_Linha_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Editar_Campo_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar_Linha_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Editar_Campo_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar_Linha_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Editar_Campo_Consulta().setVisible(true);
+                new Editar_Linha_Consulta().setVisible(true);
             }
         });
     }
