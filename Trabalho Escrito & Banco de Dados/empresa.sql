@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Ago-2022 às 16:21
+-- Tempo de geração: 29-Ago-2022 às 14:11
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `empresa`
 --
+CREATE DATABASE IF NOT EXISTS `empresa` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `empresa`;
 
 -- --------------------------------------------------------
 
@@ -27,14 +29,12 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `tb_agendamento`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_agendamento` (
-  `COD` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_agendamento` (
+  `COD` int(11) NOT NULL,
   `DATAHORA` datetime NOT NULL,
   `COD_CLIENTE` int(11) NOT NULL,
   `TIPO_CONSULTA` int(11) NOT NULL,
-  PRIMARY KEY (`COD`),
-  KEY `COD_CLIENTE` (`COD_CLIENTE`),
-  KEY `tb_agendamento_ibfk_2` (`TIPO_CONSULTA`)
+  `PRECO` float(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -43,21 +43,20 @@ CREATE TABLE IF NOT EXISTS `tb_agendamento` (
 -- Estrutura da tabela `tb_cliente`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_cliente` (
-  `COD_CLIENTE` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_cliente` (
+  `COD_CLIENTE` int(11) NOT NULL,
   `NOME` varchar(50) COLLATE utf8_bin NOT NULL,
   `END_CLIENTE` varchar(70) COLLATE utf8_bin NOT NULL,
-  `TEL_CLIENTE` varchar(13) COLLATE utf8_bin NOT NULL,
-  `CPF_CLIENTE` char(14) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`COD_CLIENTE`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `TEL_CLIENTE` varchar(15) COLLATE utf8_bin NOT NULL,
+  `CPF_CLIENTE` char(14) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `tb_cliente`
 --
 
 INSERT INTO `tb_cliente` (`COD_CLIENTE`, `NOME`, `END_CLIENTE`, `TEL_CLIENTE`, `CPF_CLIENTE`) VALUES
-(1, 'Rodrigo Faro', 'Rua Antônio Carlos Moraes, n° 65', '(68)3786-8423', '690.883.270-84');
+(2, 'Carlos', 'RUa ALmeida', '(14) 9999-9999', '355.725.290-60');
 
 -- --------------------------------------------------------
 
@@ -65,12 +64,19 @@ INSERT INTO `tb_cliente` (`COD_CLIENTE`, `NOME`, `END_CLIENTE`, `TEL_CLIENTE`, `
 -- Estrutura da tabela `tb_tiposdeconsulta`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_tiposdeconsulta` (
-  `COD` int(11) NOT NULL AUTO_INCREMENT,
-  `NomeConsulta` varchar(100) COLLATE utf8_bin NOT NULL,
-  `Preco` decimal(5,2) NOT NULL,
-  PRIMARY KEY (`COD`)
+CREATE TABLE `tb_tiposdeconsulta` (
+  `COD` int(11) NOT NULL,
+  `NOMECONSULTA` varchar(100) COLLATE utf8_bin NOT NULL,
+  `PRECO` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Extraindo dados da tabela `tb_tiposdeconsulta`
+--
+
+INSERT INTO `tb_tiposdeconsulta` (`COD`, `NOMECONSULTA`, `PRECO`) VALUES
+(1, 'Consulta única', '50.00'),
+(2, 'Consulta por plano', '40.00');
 
 -- --------------------------------------------------------
 
@@ -78,12 +84,11 @@ CREATE TABLE IF NOT EXISTS `tb_tiposdeconsulta` (
 -- Estrutura da tabela `tb_usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_usuario` (
-  `COD_USUARIO` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_usuario` (
+  `COD_USUARIO` int(11) NOT NULL,
   `NOME` varchar(50) COLLATE utf8_bin NOT NULL,
-  `SENHA` varchar(30) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`COD_USUARIO`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `SENHA` varchar(30) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `tb_usuario`
@@ -92,6 +97,64 @@ CREATE TABLE IF NOT EXISTS `tb_usuario` (
 INSERT INTO `tb_usuario` (`COD_USUARIO`, `NOME`, `SENHA`) VALUES
 (1, 'Nero', 'Carl'),
 (2, 'Pedro', 'Carlos');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `tb_agendamento`
+--
+ALTER TABLE `tb_agendamento`
+  ADD PRIMARY KEY (`COD`),
+  ADD KEY `COD_CLIENTE` (`COD_CLIENTE`),
+  ADD KEY `TIPO_CONSULTA` (`TIPO_CONSULTA`);
+
+--
+-- Índices para tabela `tb_cliente`
+--
+ALTER TABLE `tb_cliente`
+  ADD PRIMARY KEY (`COD_CLIENTE`);
+
+--
+-- Índices para tabela `tb_tiposdeconsulta`
+--
+ALTER TABLE `tb_tiposdeconsulta`
+  ADD PRIMARY KEY (`COD`);
+
+--
+-- Índices para tabela `tb_usuario`
+--
+ALTER TABLE `tb_usuario`
+  ADD PRIMARY KEY (`COD_USUARIO`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `tb_agendamento`
+--
+ALTER TABLE `tb_agendamento`
+  MODIFY `COD` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `tb_cliente`
+--
+ALTER TABLE `tb_cliente`
+  MODIFY `COD_CLIENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `tb_tiposdeconsulta`
+--
+ALTER TABLE `tb_tiposdeconsulta`
+  MODIFY `COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `tb_usuario`
+--
+ALTER TABLE `tb_usuario`
+  MODIFY `COD_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para despejos de tabelas

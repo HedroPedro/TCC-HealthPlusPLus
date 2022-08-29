@@ -1,7 +1,6 @@
 package modelador;
 
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,7 +29,7 @@ public class JDBCAgendamento {
             Statement stat = this.c.createStatement();
             ResultSet rs = stat.executeQuery(sql);
             while(rs.next()){
-                Agendamento agenda = new Agendamento(rs.getInt("COD"), LocalDateTime.parse(rs.getDate("DATAHORA").toString()), rs.getInt("COD_CLIENTE"), rs.getInt("TIPO_CONSULTA"));
+                Agendamento agenda = new Agendamento(rs.getInt(1), new java.util.Date(rs.getTimestamp(2).getTime()), rs.getInt(3), rs.getInt(4), rs.getFloat(5));
                 agendamentos.add(agenda);
             }
         } catch (SQLException ex) {
@@ -41,43 +40,50 @@ public class JDBCAgendamento {
     }
     
     public void inserirAgendamento(Agendamento a){
-        String sql = "Select preco from Tb_Tipodeconsulta where COD = ?";
-        float preco = 0.0f;
-        
+        String  sql = "Insert into Tb_Agendamento(DATAHORA, TIPO_CONSULTA, COD_CLIENTE, PRECO) values(?,?,?,?)";
+        float preco = new JDBCTiposDeConsulta(new Conectador().abrirConnection()).pegarPreco(a.getTipo_consulta());
         PreparedStatement ps;
-        ResultSet rs;
-        try {
-            ps = this.c.prepareStatement(sql);
-            ps.setInt(1, a.getTipo_consulta());
-            rs = ps.executeQuery();
-            while(rs.next()){
-                preco = rs.getFloat(1);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        sql = "Insert into Tb_Agendamento(DATAHORA, TIPO_CONSULTA, COD_CLIENTE, PRECO) values(?,?,?,?)";
         try {
             ps = c.prepareStatement(sql);
-            ps.setDate(1,Date.valueOf(a.getDatahora().toString()));
+            ps.setTimestamp(1, new Timestamp(a.getDatahora().getTime()));
             ps.setFloat(2, a.getTipo_consulta());
             ps.setInt(3, a.getCod_cliente());
             ps.setFloat(4, preco);
             
-            ps.execute();
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);} 
     }
     
     public void deletarAgentademento(int codigo){
-        String sql = "Delete * FROM TB_AGENDAMENTO WHERE COD = ?";
+        String sql = "Delete FROM TB_AGENDAMENTO WHERE COD = ?";
         try {
-            PreparedStatement ps = c.prepareStatement(sql);
+            PreparedStatement ps = this.c.prepareStatement(sql);
             ps.setInt(1, codigo);
-            ps.execute();
+            ps.executeUpdate();
             }catch(SQLException ex) {
             Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public boolean checarDataNoSistema(java.util.Date data){
+        String sql = "SELECT IF(DATE_FORMAT(?, '%d %m %Y %H %i') = DATE_FORMAT(DATAHORA, '%d %m %Y %H %i'), true, false) as AAA FROM TB_AGENDAMENTO WHERE EXISTS (SELECT DATAHORA )";
+        
+        PreparedStatement ps;
+        Timestamp tmstmp = new Timestamp(data.getTime());
+        System.out.println(tmstmp.toString());
+        try {
+            ps = this.c.prepareStatement(sql);
+            ps.setTimestamp(1, tmstmp);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return rs.getBoolean(1);
+            }
+            }catch(SQLException ex) {
+                Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("AAaa");
+        return false;
+    }
+    
 }

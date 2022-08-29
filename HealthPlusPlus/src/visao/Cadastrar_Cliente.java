@@ -135,7 +135,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
             dispose();
         }
         else
-            JOptionPane.showMessageDialog(rootPane, "Verifique o CPF");
+            JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido");
     }//GEN-LAST:event_btn_confirmarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed

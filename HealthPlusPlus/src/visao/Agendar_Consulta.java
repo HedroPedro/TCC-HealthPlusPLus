@@ -1,11 +1,15 @@
 package visao;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelador.JDBCAgendamento;
 import modelador.Conectador;
 import modelos.Agendamento;
+
 public class Agendar_Consulta extends javax.swing.JFrame {
 
     public JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
@@ -15,8 +19,9 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         initComponents();
     }
     
-    public Agendar_Consulta(Principal p) {
+    public Agendar_Consulta(Principal p, String nome) {
         initComponents();
+        edt_nome.setText(nome);
         this.p = p;
     }
 
@@ -113,18 +118,30 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-    
-    DateTimeFormatter formartador = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
+
     private void btn_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendarActionPerformed
+        SimpleDateFormat formartador = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         if(!edt_data.getText().equals("") && !edt_hora.getText().equals("")){
-            LocalDateTime parsedDate = LocalDateTime.parse(edt_data.getText() + " " + edt_hora.getText(), formartador);
-            if(verificarData(parsedDate))
+            
+            Date parsedDate = new Date();
+            try {
+                parsedDate = formartador.parse(edt_data.getText() + " " + edt_hora.getText());
+            } catch (ParseException ex) {
+                Logger.getLogger(Agendar_Consulta.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(verificarData(parsedDate)){
                 JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
-            else{
-               modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, p.cod, ComboBox_Consultas.getSelectedIndex()+1));
+            } else{
+               if(modelaAgendamento.checarDataNoSistema(parsedDate)){
+                   JOptionPane.showMessageDialog(null, "Data e hora já preenchida no sistema");
+               }else{
+                   modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, p.cod, ComboBox_Consultas.getSelectedIndex()+1));
+                   p.requestFocus();
+                   dispose();
+               }
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Umas das caixas está vazia está vazio, digite novamente");
+            JOptionPane.showMessageDialog(null, "Umas das caixas está vazio, digite novamente");
         }
     }//GEN-LAST:event_btn_agendarActionPerformed
 
@@ -132,43 +149,8 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agendar_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agendar_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agendar_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agendar_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Agendar_Consulta().setVisible(true);
-            }
-        });
-    }
-    private boolean verificarData(LocalDateTime date){
-        return date.isBefore(LocalDateTime.now());
+    private boolean verificarData(Date date){
+        return date.before(new Date());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBox_Consultas;

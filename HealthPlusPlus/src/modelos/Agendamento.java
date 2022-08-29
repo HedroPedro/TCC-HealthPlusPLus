@@ -1,17 +1,17 @@
 package modelos;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Agendamento {
     private int codigo;
-    private LocalDateTime datahora;
+    private Date datahora;
     private int cod_cliente;
     private int tipo_consulta;
     private float preco;
     
     public Agendamento(){}
 
-    public Agendamento(int codigo, LocalDateTime datahora, int cod_cliente, int tipo_consulta, float preco) {
+    public Agendamento(int codigo, Date datahora, int cod_cliente, int tipo_consulta, float preco) {
         this.codigo = codigo;
         this.datahora = datahora;
         this.cod_cliente = cod_cliente;
@@ -19,11 +19,18 @@ public class Agendamento {
         this.preco = preco;
     }
 
-    public Agendamento(int codigo, LocalDateTime datahora, int cod_cliente, int tipo_consulta) {
+    public Agendamento(int codigo, Date datahora, int cod_cliente, int tipo_consulta) {
         this.codigo = codigo;
         this.datahora = datahora;
         this.cod_cliente = cod_cliente;
         this.tipo_consulta = tipo_consulta;
+    }
+
+    public Agendamento(Date datahora, int cod_cliente, int tipo_consulta, float preco) {
+        this.datahora = datahora;
+        this.cod_cliente = cod_cliente;
+        this.tipo_consulta = tipo_consulta;
+        this.preco = preco;
     }
 
     public float getPreco() {
@@ -34,7 +41,7 @@ public class Agendamento {
         this.preco = preco;
     }
     
-    public Agendamento(LocalDateTime datahora, int cod_cliente, int tipo_consulta) {
+    public Agendamento(Date datahora, int cod_cliente, int tipo_consulta) {
         this.datahora = datahora;
         this.cod_cliente = cod_cliente;
         this.tipo_consulta = tipo_consulta;
@@ -48,11 +55,11 @@ public class Agendamento {
         this.codigo = codigo;
     }
 
-    public LocalDateTime getDatahora() {
+    public Date getDatahora() {
         return datahora;
     }
 
-    public void setDatahora(LocalDateTime datahora) {
+    public void setDatahora(Date datahora) {
         this.datahora = datahora;
     }
 

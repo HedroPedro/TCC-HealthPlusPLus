@@ -74,12 +74,12 @@ public class JDBCCliente {
         }
     } 
     public void deletarCliente(int codigo){
-        String sql = "Delete from tb_cliente where COD_CLIENTE = ?";
+        String sql = "DELETE FROM tb_cliente where COD_CLIENTE = ?";
         PreparedStatement ps;
         try{
-            ps = con.prepareStatement(sql);
+            ps = this.con.prepareStatement(sql);
             ps.setInt(1, codigo);
-            ps.executeUpdate(sql);
+            ps.executeUpdate();
         }catch(SQLException ex){
             Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
         }

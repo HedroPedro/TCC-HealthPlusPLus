@@ -1,5 +1,6 @@
 package visao;
 
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelador.Conectador;
@@ -18,7 +19,7 @@ public class Principal extends javax.swing.JFrame {
     int cod = 0;
     public Principal() {
         initComponents();
-        carregarTabelaCliente();
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +51,11 @@ public class Principal extends javax.swing.JFrame {
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -93,6 +99,7 @@ public class Principal extends javax.swing.JFrame {
 
         btn_novaconsulta.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_novaconsulta.setText("Nova Consulta");
+        btn_novaconsulta.setEnabled(false);
         btn_novaconsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_novaconsultaActionPerformed(evt);
@@ -149,18 +156,25 @@ public class Principal extends javax.swing.JFrame {
         table_consultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         table_consultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(0), "A",  new Float(0.0),  new Integer(0)}
+
             },
             new String [] {
                 "Código", "Data/Hora", "Preço", "Cod. Cliente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         table_consultas.setGridColor(new java.awt.Color(0, 0, 0));
@@ -235,6 +249,7 @@ public class Principal extends javax.swing.JFrame {
        cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
        btn_excluir.setEnabled(true);
        btn_editarlinha.setEnabled(true);
+       btn_novaconsulta.setEnabled(true);
     }//GEN-LAST:event_table_clientesMouseClicked
 
     private void table_consultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_consultasMouseClicked
@@ -245,12 +260,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_table_consultasMouseClicked
 
     private void btn_excluirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirCActionPerformed
-        boolean confirmacao = (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION)) == 0;
+       if(JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION) == 0){
+            System.out.println(cod);
+            agendamentos.deletarAgentademento(cod);
+            carregarTabelaConsulta();
+        }
     }//GEN-LAST:event_btn_excluirCActionPerformed
 
     private void btn_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaconsultaActionPerformed
-       Agendar_Consulta consultaNova = new Agendar_Consulta();
-       consultaNova.setVisible(true);
+        int index = table_clientes.getSelectedRow();
+        String nome = table_clientes.getModel().getValueAt(index, 1).toString();
+        Agendar_Consulta consultaNova = new Agendar_Consulta(this, nome);
+        consultaNova.setVisible(true);
     }//GEN-LAST:event_btn_novaconsultaActionPerformed
 
     private void btn_editarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCActionPerformed
@@ -271,43 +292,15 @@ public class Principal extends javax.swing.JFrame {
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         carregarTabelaCliente();
+        carregarTabelaConsulta();
     }//GEN-LAST:event_formFocusGained
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        carregarTabelaCliente();
+        carregarTabelaConsulta();
+    }//GEN-LAST:event_formWindowOpened
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Principal().setVisible(true);
-            }
-        });
-}     
-        private void carregarTabelaCliente(){
+      private void carregarTabelaCliente(){
         DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
         modelo.setRowCount(0);
         for(Cliente cliente : clientes.listarCliente()){
@@ -316,6 +309,15 @@ public class Principal extends javax.swing.JFrame {
             }
         }
    
+       private void carregarTabelaConsulta(){
+           DefaultTableModel model = (DefaultTableModel) table_consultas.getModel();
+           model.setRowCount(0);
+           SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+           for(Agendamento agendamento : agendamentos.listarAgendamentos()){
+               Object[] objeto = {agendamento.getCodigo(), formatador.format(agendamento.getDatahora()),  agendamento.getPreco(), agendamento.getCod_cliente()};
+                model.addRow(objeto);
+           }
+       }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_editarC;
     private javax.swing.JButton btn_editarlinha;

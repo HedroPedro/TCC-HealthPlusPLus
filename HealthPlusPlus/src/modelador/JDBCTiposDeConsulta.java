@@ -16,7 +16,7 @@ public class JDBCTiposDeConsulta {
     }
     
     public TiposDeConsulta pegarTiposdeConsulta(int cod){
-        String sql = "Select * from tb_tiposdeconsulta where nomeConsula = ?";
+        String sql = "Select * from tb_tiposdeconsulta where COD = ?";
         TiposDeConsulta tipos = new TiposDeConsulta();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -29,5 +29,25 @@ public class JDBCTiposDeConsulta {
             Logger.getLogger(JDBCTiposDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
         }
         return tipos;
+    }
+    
+    public float pegarPreco(int cod){
+        String sql = "Select preco from Tb_tiposdeconsulta where COD = ?";
+        float preco = 0.0f;
+        PreparedStatement ps;
+        
+        try {
+            ps = this.con.prepareStatement(sql);
+            ps.setInt(1, cod);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                preco = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCTiposDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return preco;
     }
 }
