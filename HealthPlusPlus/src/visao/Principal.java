@@ -9,10 +9,6 @@ import modelador.JDBCCliente;
 import modelos.Agendamento;
 import modelos.Cliente;
 
-/**
- *
- * @author Etec
- */
 public class Principal extends javax.swing.JFrame {
     JDBCCliente clientes = new JDBCCliente(new Conectador().abrirConnection());
     JDBCAgendamento agendamentos = new JDBCAgendamento(new Conectador().abrirConnection());
@@ -273,6 +269,7 @@ public class Principal extends javax.swing.JFrame {
         String nome = table_clientes.getModel().getValueAt(index, 1).toString();
         Agendar_Consulta consultaNova = new Agendar_Consulta(this, nome);
         consultaNova.setVisible(true);
+        pn_guia_consultas.requestFocus();
     }//GEN-LAST:event_btn_novaconsultaActionPerformed
 
     private void btn_editarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCActionPerformed
@@ -288,7 +285,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_excluirActionPerformed
 
     private void btn_novocadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novocadastroActionPerformed
-        new Cadastrar_Cliente(this).setVisible(true);
+        new Cadastrar_Cliente().setVisible(true);
+        pn_guia_clientes.requestFocus();
     }//GEN-LAST:event_btn_novocadastroActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained

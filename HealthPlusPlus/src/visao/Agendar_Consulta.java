@@ -47,7 +47,6 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setExtendedState(MAXIMIZED_BOTH);
-        setMaximumSize(new java.awt.Dimension(505, 345));
         setMinimumSize(new java.awt.Dimension(505, 345));
 
         jPanel1.setLayout(null);
@@ -70,11 +69,6 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        edt_data.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edt_dataActionPerformed(evt);
-            }
-        });
         jPanel1.add(edt_data);
         edt_data.setBounds(144, 146, 100, 22);
 
@@ -111,8 +105,6 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         ComboBox_Consultas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 - Consulta", "2- Plano" }));
         jPanel1.add(ComboBox_Consultas);
         ComboBox_Consultas.setBounds(300, 220, 110, 22);
-
-        lbl_fundo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Etec\\Desktop\\TCC-Surpresa\\HealthPlusPlus\\extra\\Tela Agendar Consulta.jpg")); // NOI18N
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 550, 400);
 
@@ -157,10 +149,6 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
-
-    private void edt_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edt_dataActionPerformed
-        
-    }//GEN-LAST:event_edt_dataActionPerformed
     
     private boolean verificarData(Date date){
         return date.before(new Date());
