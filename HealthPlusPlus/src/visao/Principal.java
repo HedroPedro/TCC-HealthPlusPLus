@@ -35,12 +35,13 @@ public class Principal extends javax.swing.JFrame {
         btn_novaconsulta = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_clientes = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_fundo = new javax.swing.JLabel();
         pn_guia_consultas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_consultas = new javax.swing.JTable();
         btn_excluirC = new javax.swing.JButton();
         btn_editarC = new javax.swing.JButton();
+        lbl_fundo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
@@ -49,15 +50,10 @@ public class Principal extends javax.swing.JFrame {
                 formFocusGained(evt);
             }
         });
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
 
-        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
 
         pn_guia_clientes.setBackground(new java.awt.Color(153, 153, 153));
@@ -95,7 +91,6 @@ public class Principal extends javax.swing.JFrame {
 
         btn_novaconsulta.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_novaconsulta.setText("Nova Consulta");
-        btn_novaconsulta.setEnabled(false);
         btn_novaconsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_novaconsultaActionPerformed(evt);
@@ -106,7 +101,6 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
-        table_clientes.setBackground(new java.awt.Color(204, 204, 204));
         table_clientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         table_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,7 +109,15 @@ public class Principal extends javax.swing.JFrame {
             new String [] {
                 "Código", "Nome", "Endereço", "Telefone", "CPF"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         table_clientes.setGridColor(new java.awt.Color(0, 0, 0));
         table_clientes.setShowGrid(true);
         table_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,12 +137,12 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_clientes.add(jScrollPane1);
         jScrollPane1.setBounds(35, 124, 1242, 600);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Etec\\Desktop\\TCC-Surpresa\\HealthPlusPlus\\extra\\Tela Principal Cadastro.jpg")); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(1600, 805));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1600, 805));
-        pn_guia_clientes.add(jLabel1);
-        jLabel1.setBounds(0, 0, 1600, 805);
+        lbl_fundo.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
+        lbl_fundo.setMaximumSize(new java.awt.Dimension(1600, 805));
+        lbl_fundo.setPreferredSize(new java.awt.Dimension(1600, 805));
+        pn_guia_clientes.add(lbl_fundo);
+        lbl_fundo.setBounds(0, 0, 1600, 805);
 
         jTabbedPane1.addTab("Clientes", pn_guia_clientes);
 
@@ -149,7 +151,6 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
-        table_consultas.setBackground(new java.awt.Color(204, 204, 204));
         table_consultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         table_consultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -160,7 +161,7 @@ public class Principal extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -213,6 +214,10 @@ public class Principal extends javax.swing.JFrame {
         });
         pn_guia_consultas.add(btn_editarC);
         btn_editarC.setBounds(1350, 650, 220, 80);
+
+        lbl_fundo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
+        pn_guia_consultas.add(lbl_fundo2);
+        lbl_fundo2.setBounds(0, 0, 1600, 805);
 
         jTabbedPane1.addTab("Consultas", pn_guia_consultas);
 
@@ -325,11 +330,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_excluirC;
     private javax.swing.JButton btn_novaconsulta;
     private javax.swing.JButton btn_novocadastro;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbl_fundo;
+    private javax.swing.JLabel lbl_fundo2;
     private javax.swing.JPanel pn_guia_clientes;
     private javax.swing.JPanel pn_guia_consultas;
     private javax.swing.JTable table_clientes;

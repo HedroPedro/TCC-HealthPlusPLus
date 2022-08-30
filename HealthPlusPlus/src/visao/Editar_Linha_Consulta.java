@@ -115,6 +115,8 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         });
         jPanel1.add(btn_cancelar);
         btn_cancelar.setBounds(410, 230, 120, 40);
+
+        lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 750, 300);
 

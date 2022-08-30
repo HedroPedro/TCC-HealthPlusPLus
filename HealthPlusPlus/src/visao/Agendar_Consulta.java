@@ -105,6 +105,8 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         ComboBox_Consultas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 - Consulta", "2- Plano" }));
         jPanel1.add(ComboBox_Consultas);
         ComboBox_Consultas.setBounds(300, 220, 110, 22);
+
+        lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Agendar Consulta.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 550, 400);
 

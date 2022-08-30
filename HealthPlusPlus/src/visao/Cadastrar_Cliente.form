@@ -9,9 +9,6 @@
     <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
       <Point value="[0, 0]"/>
     </Property>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 600]"/>
-    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[800, 600]"/>
     </Property>
@@ -180,7 +177,7 @@
         <Component class="javax.swing.JLabel" name="lbl_fundo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Etec\Desktop\TCC-Surpresa\HealthPlusPlus\extra\Tela Cadastrar Cliente.jpeg.jpg"/>
+              <Image iconType="3" name="/visao/imgs/Tela Cadastrar Cliente.jpeg.jpg"/>
             </Property>
           </Properties>
           <Constraints>
