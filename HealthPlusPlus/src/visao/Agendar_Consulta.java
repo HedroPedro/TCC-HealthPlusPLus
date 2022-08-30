@@ -142,7 +142,6 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             }
         }else{
             JOptionPane.showMessageDialog(null, "Umas das caixas está vazio, digite novamente");
-            JOptionPane.showMessageDialog(null, "Umas das caixas está vazia, digite novamente");
         }
     }//GEN-LAST:event_btn_agendarActionPerformed
 
