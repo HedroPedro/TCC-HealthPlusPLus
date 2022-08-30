@@ -108,6 +108,11 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         btn_cancelar.setBorder(null);
         btn_cancelar.setBorderPainted(false);
         btn_cancelar.setMaximumSize(new java.awt.Dimension(120, 40));
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_cancelar);
         btn_cancelar.setBounds(410, 230, 120, 40);
         jPanel1.add(lbl_fundo);
@@ -141,6 +146,10 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btn_cancelarActionPerformed
 
     /**
      * @param args the command line arguments

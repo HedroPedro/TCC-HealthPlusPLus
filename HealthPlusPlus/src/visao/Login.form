@@ -137,7 +137,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Etec\Desktop\TCC-Surpresa\HealthPlusPlus\extra\Tela Login - X.jpg"/>
+              <Image iconType="3" name="/visao/imgs/Tela Login - X.jpg"/>
             </Property>
           </Properties>
           <Constraints>
