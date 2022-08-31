@@ -129,7 +129,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(Agendar_Consulta.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(verificarData(parsedDate)){
+            if(Agendamento.verificarData(parsedDate)){
                 JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
             } else{
                if(modelaAgendamento.checarDataNoSistema(parsedDate)){
@@ -148,10 +148,6 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
-    
-    private boolean verificarData(Date date){
-        return date.before(new Date());
-    }
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBox_Consultas;

@@ -85,4 +85,20 @@ public class JDBCCliente {
         }
     }
     
+    public void atualizarCliente(int codigo, String nome, String endereco, String telefone, String CPF){
+        String sql = "UPDATE tb_cliente SET nome = ?, END_CLIENTE = ?, TEL_CLIENTE = ?, CPF_CLIENTE = ? WHERE COD_CLIENTE = ?";
+        PreparedStatement ps;
+        try {
+            ps = this.con.prepareStatement(sql);
+            ps.setString(1, nome);
+            ps.setString(2, endereco);
+            ps.setString(3, telefone);
+            ps.setString(4, CPF);
+            ps.setInt(5, codigo);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

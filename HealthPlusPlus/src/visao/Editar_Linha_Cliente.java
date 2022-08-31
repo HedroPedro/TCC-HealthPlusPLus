@@ -1,22 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
 
-/**
- *
- * @author LAB6-PC12
- */
-public class Editar_Linha_Cliente extends javax.swing.JFrame {
+import javax.swing.JOptionPane;
+import modelador.Conectador;
+import modelador.JDBCCliente;
+import modelos.Cliente;
 
+
+public class Editar_Linha_Cliente extends javax.swing.JFrame {
+    int cod;
+    JDBCCliente modelaCliente = new JDBCCliente(new Conectador().abrirConnection());
     /**
      * Creates new form Editar_Campo_Cliente
      */
-    public Editar_Linha_Cliente() {
-        initComponents();
-    }
 
+    public Editar_Linha_Cliente(String nome, String endereco, String telefone, String CPF, int cod){
+        initComponents();
+        this.cod = cod;
+        edt_nome.setText(nome);
+        edt_endereco.setText(endereco);
+        edt_telefone.setText(telefone);
+        edt_CPF.setText(CPF);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,14 +33,14 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btn_confirmar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
-        edt_telefone = new javax.swing.JTextField();
-        edt_cpf = new javax.swing.JTextField();
         edt_nome = new javax.swing.JTextField();
         lbl_telefone = new javax.swing.JLabel();
         lbl_CPF = new javax.swing.JLabel();
         lbl_endereco = new javax.swing.JLabel();
         edt_endereco = new javax.swing.JTextField();
         lbl_nome = new javax.swing.JLabel();
+        edt_telefone = new javax.swing.JFormattedTextField();
+        edt_CPF = new javax.swing.JFormattedTextField();
         lbl_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,22 +48,22 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         btn_confirmar.setText("Confirmar");
+        btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_confirmarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_confirmar);
         btn_confirmar.setBounds(590, 230, 120, 40);
 
         btn_cancelar.setText("Cancelar");
-        jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(450, 230, 120, 40);
-        jPanel1.add(edt_telefone);
-        edt_telefone.setBounds(30, 180, 270, 30);
-
-        edt_cpf.addActionListener(new java.awt.event.ActionListener() {
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edt_cpfActionPerformed(evt);
+                btn_cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(edt_cpf);
-        edt_cpf.setBounds(440, 180, 270, 30);
+        jPanel1.add(btn_cancelar);
+        btn_cancelar.setBounds(450, 230, 120, 40);
         jPanel1.add(edt_nome);
         edt_nome.setBounds(30, 110, 340, 30);
 
@@ -80,6 +84,24 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         lbl_nome.setText("Nome:");
         jPanel1.add(lbl_nome);
         lbl_nome.setBounds(30, 80, 50, 30);
+
+        try {
+            edt_telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel1.add(edt_telefone);
+        edt_telefone.setBounds(30, 180, 340, 30);
+
+        try {
+            edt_CPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel1.add(edt_CPF);
+        edt_CPF.setBounds(440, 180, 270, 30);
+
+        lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 750, 300);
 
@@ -87,63 +109,40 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void edt_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edt_cpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edt_cpfActionPerformed
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btn_cancelarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
+        if(edt_nome.getText().equals("") || edt_endereco.getText().equals("") || edt_telefone.getText().equals("") || edt_CPF.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Algumas das caixas está vazia");
+        else{
+            Cliente cliente = new Cliente(edt_nome.getText(), edt_telefone.getText(), edt_endereco.getText(), edt_CPF.getText());
+            if(cliente.estaCertoCPF())
+                modelaCliente.atualizarCliente(cod, cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF());
+            else
+                JOptionPane.showMessageDialog(null, "CPF inválido, tente outro");
         }
-        //</editor-fold>
-        //</editor-fold>
+    }//GEN-LAST:event_btn_confirmarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Editar_Linha_Cliente().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_confirmar;
-    private javax.swing.JTextField edt_cpf;
+    private javax.swing.JFormattedTextField edt_CPF;
     private javax.swing.JTextField edt_endereco;
     private javax.swing.JTextField edt_nome;
-    private javax.swing.JTextField edt_telefone;
+    private javax.swing.JFormattedTextField edt_telefone;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_CPF;
     private javax.swing.JLabel lbl_endereco;

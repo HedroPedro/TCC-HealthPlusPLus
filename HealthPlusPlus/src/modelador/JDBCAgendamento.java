@@ -23,13 +23,13 @@ public class JDBCAgendamento {
      * @return agendamento lista com todos os agendamentos
      */
     public List<Agendamento> listarAgendamentos(){
-        String sql = "SELECT * FROM TB_AGENDAMENTO";
+        String sql = "SELECT COD, DATAHORA, NOME_CLIENTE, PRECO FROM TB_AGENDAMENTO";
         List<Agendamento> agendamentos = new ArrayList<>();
         try {
             Statement stat = this.c.createStatement();
             ResultSet rs = stat.executeQuery(sql);
             while(rs.next()){
-                Agendamento agenda = new Agendamento(rs.getInt(1), new java.util.Date(rs.getTimestamp(2).getTime()), rs.getInt(3), rs.getInt(4), rs.getFloat(5));
+                Agendamento agenda = new Agendamento(rs.getInt(1), new java.util.Date(rs.getTimestamp(2).getTime()), rs.getString(3), rs.getFloat(4));
                 agendamentos.add(agenda);
             }
         } catch (SQLException ex) {
@@ -40,15 +40,29 @@ public class JDBCAgendamento {
     }
     
     public void inserirAgendamento(Agendamento a){
-        String  sql = "Insert into Tb_Agendamento(DATAHORA, TIPO_CONSULTA, COD_CLIENTE, PRECO) values(?,?,?,?)";
-        float preco = new JDBCTiposDeConsulta(new Conectador().abrirConnection()).pegarPreco(a.getTipo_consulta());
+        String sql = "Select NOME from tb_cliente where COD_CLIENTE = ?";
         PreparedStatement ps;
+        String nome = "";
+        
+        try {
+            ps = c.prepareStatement(sql);
+            ps.setInt(1, a.getCod_cliente());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+                nome = rs.getString(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        sql = "Insert into Tb_Agendamento(DATAHORA, TIPO_CONSULTA, COD_CLIENTE, NOME_CLIENTE, PRECO) values(?,?,?,?,?)";
+        float preco = new JDBCTiposDeConsulta(new Conectador().abrirConnection()).pegarPreco(a.getTipo_consulta());
         try {
             ps = c.prepareStatement(sql);
             ps.setTimestamp(1, new Timestamp(a.getDatahora().getTime()));
-            ps.setFloat(2, a.getTipo_consulta());
+            ps.setInt(2, a.getTipo_consulta());
             ps.setInt(3, a.getCod_cliente());
-            ps.setFloat(4, preco);
+            ps.setString(4, nome);
+            ps.setFloat(5, preco);
             
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -66,23 +80,34 @@ public class JDBCAgendamento {
         }
     }
     
-    public boolean checarDataNoSistema(java.util.Date data){
-        String sql = "SELECT IF(DATE_FORMAT(?, '%d %m %Y %H %i') = DATE_FORMAT(DATAHORA, '%d %m %Y %H %i'), true, false) as AAA FROM TB_AGENDAMENTO WHERE EXISTS (SELECT DATAHORA )";
-        
-        PreparedStatement ps;
-        Timestamp tmstmp = new Timestamp(data.getTime());
-        System.out.println(tmstmp.toString());
+    public void atualizarAgendamento(Agendamento a){
+        String sql = "UPDATE tb_agendamento SET DATAHORA = ?, NOME_CLIENTE = ?, PRECO = ? WHERE COD = ?";
         try {
-            ps = this.c.prepareStatement(sql);
-            ps.setTimestamp(1, tmstmp);
-            ResultSet rs = ps.executeQuery();
+            PreparedStatement ps = this.c.prepareStatement(sql);
+            ps.setTimestamp(1, new Timestamp(a.getDatahora().getTime()));
+            ps.setString(2, a.getNome_cliente());
+            ps.setFloat(3, a.getPreco());
+            ps.setInt(4, a.getCodigo());
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public boolean checarDataNoSistema(java.util.Date data){
+        String sql = "SELECT DATAHORA from TB_AGENDAMENTO";
+        Timestamp tmstamp = new Timestamp(data.getTime());
+        Statement ps;
+        try {
+            ps = c.createStatement();
+            ResultSet rs = ps.executeQuery(sql);
             while(rs.next()){
-                return rs.getBoolean(1);
-            }
+                if(rs.getTimestamp(1).equals(tmstamp))
+                    return true;
+            }    
             }catch(SQLException ex) {
                 Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("AAaa");
         return false;
     }
     

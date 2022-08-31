@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Ago-2022 às 01:51
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Tempo de geração: 31-Ago-2022 às 20:15
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,23 +32,21 @@ USE `empresa`;
 CREATE TABLE IF NOT EXISTS `tb_agendamento` (
   `COD` int(11) NOT NULL AUTO_INCREMENT,
   `DATAHORA` datetime NOT NULL,
+  `NOME_CLIENTE` varchar(50) COLLATE utf8_bin NOT NULL,
   `COD_CLIENTE` int(11) NOT NULL,
   `TIPO_CONSULTA` int(11) NOT NULL,
   `PRECO` float(5,2) NOT NULL,
   PRIMARY KEY (`COD`),
   KEY `COD_CLIENTE` (`COD_CLIENTE`),
   KEY `TIPO_CONSULTA` (`TIPO_CONSULTA`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `tb_agendamento`
 --
 
-INSERT INTO `tb_agendamento` (`COD`, `DATAHORA`, `COD_CLIENTE`, `TIPO_CONSULTA`, `PRECO`) VALUES
-(1, '2022-08-30 12:00:00', 2, 1, 50.00),
-(2, '2022-09-30 12:00:00', 2, 1, 50.00),
-(4, '2022-08-30 13:00:00', 3, 2, 40.00),
-(5, '2022-08-30 09:00:00', 2, 1, 50.00);
+INSERT INTO `tb_agendamento` (`COD`, `DATAHORA`, `NOME_CLIENTE`, `COD_CLIENTE`, `TIPO_CONSULTA`, `PRECO`) VALUES
+(6, '2022-09-02 12:00:00', 'Carlos', 2, 1, 80.00);
 
 -- --------------------------------------------------------
 

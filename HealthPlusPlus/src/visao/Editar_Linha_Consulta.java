@@ -1,20 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelador.Conectador;
+import modelador.JDBCAgendamento;
+import modelos.Agendamento;
 
 /**
  *
  * @author Etec
  */
 public class Editar_Linha_Consulta extends javax.swing.JFrame {
-
+    JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
+    int cod;
+    
     /**
      * Creates new form Editar_Campo
      */
     public Editar_Linha_Consulta() {
         initComponents();
+        cod = 6;
     }
 
     /**
@@ -27,16 +36,16 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        edt_nome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btn_confirmar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
+        edt_preco = new javax.swing.JFormattedTextField();
+        edt_data = new javax.swing.JFormattedTextField();
+        edt_hora = new javax.swing.JFormattedTextField();
         lbl_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,18 +54,14 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(750, 300));
         jPanel1.setLayout(null);
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        edt_nome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        edt_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                edt_nomeActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(90, 90, 210, 40);
-
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel1.add(jTextField2);
-        jTextField2.setBounds(460, 90, 210, 40);
+        jPanel1.add(edt_nome);
+        edt_nome.setBounds(90, 90, 210, 40);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Preço da Consulta:");
@@ -64,34 +69,14 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         jLabel2.setBounds(460, 60, 200, 30);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Código do Cliente:");
+        jLabel1.setText("Nome do Cliente:");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(90, 50, 170, 30);
-
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField3.setText("/  /");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField3);
-        jTextField3.setBounds(90, 160, 210, 40);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Data:");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(90, 130, 110, 30);
-
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField4.setText("  :");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField4);
-        jTextField4.setBounds(460, 160, 210, 40);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Hora:");
@@ -101,8 +86,13 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         btn_confirmar.setText("Confirmar");
         btn_confirmar.setBorder(null);
         btn_confirmar.setMaximumSize(new java.awt.Dimension(120, 40));
+        btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_confirmarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_confirmar);
-        btn_confirmar.setBounds(550, 230, 120, 40);
+        btn_confirmar.setBounds(590, 230, 120, 40);
 
         btn_cancelar.setText("Cancelar");
         btn_cancelar.setBorder(null);
@@ -114,7 +104,43 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(410, 230, 120, 40);
+        btn_cancelar.setBounds(450, 230, 120, 40);
+
+        try {
+            edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##,##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel1.add(edt_preco);
+        edt_preco.setBounds(460, 90, 210, 40);
+
+        try {
+            edt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        edt_data.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edt_dataActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edt_data);
+        edt_data.setBounds(90, 170, 210, 40);
+
+        try {
+            edt_hora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        edt_hora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edt_horaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edt_hora);
+        edt_hora.setBounds(460, 170, 210, 40);
+
+        lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 750, 300);
 
@@ -135,21 +161,40 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void edt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edt_nomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_edt_nomeActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void edt_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edt_dataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edt_dataActionPerformed
+
+    private void edt_horaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edt_horaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edt_horaActionPerformed
+
+    private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        if(edt_nome.getText().equals("") || edt_hora.getText().equals("  :  ") || edt_data.getText().equals("  /  /    ") || edt_preco.getText().equals("  ,  ")){
+            JOptionPane.showMessageDialog(null, "Alguns cos campos está vazio");
+        }else{
+            Date data = new Date();
+            try {
+                data = formatador.parse(edt_data.getText() + " " + edt_hora.getText());
+            } catch (ParseException ex) {
+                Logger.getLogger(Editar_Linha_Consulta.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           if(Agendamento.verificarData(data)){
+               JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
+           }else{
+                modelaAgendamento.atualizarAgendamento(new Agendamento(cod, data, edt_nome.getText(), Float.valueOf(edt_preco.getText().replace(',', '.'))));
+               }                  
+        }
+    }//GEN-LAST:event_btn_confirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,8 +223,6 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -192,15 +235,15 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_confirmar;
+    private javax.swing.JFormattedTextField edt_data;
+    private javax.swing.JFormattedTextField edt_hora;
+    private javax.swing.JTextField edt_nome;
+    private javax.swing.JFormattedTextField edt_preco;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lbl_fundo;
     // End of variables declaration//GEN-END:variables
 }
