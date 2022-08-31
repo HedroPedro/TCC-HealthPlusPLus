@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/Users/Etec/Desktop/TCC-Surpresa/HealthPlusPlus/src/visao/Editar_Linha_Consulta.java</file>
+            <file>file:/C:/Users/Etec/Desktop/TCC-Surpresa/HealthPlusPlus/src/visao/Editar_Linha_Cliente.java</file>
+            <file>file:/C:/Users/Etec/Desktop/TCC-Surpresa/HealthPlusPlus/src/visao/Principal.java</file>
+        </group>
+>>>>>>> 868e9fc5018fe65aff12191abc8ee765af6d09ed
     </open-files>
 </project-private>

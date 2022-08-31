@@ -104,6 +104,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
+<<<<<<< HEAD
         btn_cancelar.setBounds(450, 230, 120, 40);
 
         try {
@@ -139,6 +140,9 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         });
         jPanel1.add(edt_hora);
         edt_hora.setBounds(460, 170, 210, 40);
+=======
+        btn_cancelar.setBounds(410, 230, 120, 40);
+>>>>>>> 868e9fc5018fe65aff12191abc8ee765af6d09ed
 
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);

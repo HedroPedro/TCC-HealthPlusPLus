@@ -167,7 +167,11 @@ public class Principal extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
+<<<<<<< HEAD
                 java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class, java.lang.String.class
+=======
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class, java.lang.Integer.class
+>>>>>>> 868e9fc5018fe65aff12191abc8ee765af6d09ed
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
