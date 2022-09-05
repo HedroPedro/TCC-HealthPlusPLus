@@ -151,12 +151,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/visao/imgs/Tela Editar Registro.jpg"/>
             </Property>
-<<<<<<< HEAD
-=======
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[750, 300]"/>
             </Property>
->>>>>>> 868e9fc5018fe65aff12191abc8ee765af6d09ed
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

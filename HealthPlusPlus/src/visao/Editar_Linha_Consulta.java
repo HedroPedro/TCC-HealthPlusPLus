@@ -20,10 +20,13 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
     
     /**
      * Creates new form Editar_Campo
+     * @param cod
+     * @param nome
      */
-    public Editar_Linha_Consulta() {
+    public Editar_Linha_Consulta(int cod, String nome) {
         initComponents();
-        cod = 6;
+        this.cod = cod;
+        edt_nome.setText(nome);
     }
 
     /**
@@ -104,7 +107,6 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-<<<<<<< HEAD
         btn_cancelar.setBounds(450, 230, 120, 40);
 
         try {
@@ -140,10 +142,6 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         });
         jPanel1.add(edt_hora);
         edt_hora.setBounds(460, 170, 210, 40);
-=======
-        btn_cancelar.setBounds(410, 230, 120, 40);
->>>>>>> 868e9fc5018fe65aff12191abc8ee765af6d09ed
-
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 750, 300);
@@ -195,46 +193,14 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
            if(Agendamento.verificarData(data)){
                JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
            }else{
-                modelaAgendamento.atualizarAgendamento(new Agendamento(cod, data, edt_nome.getText(), Float.valueOf(edt_preco.getText().replace(',', '.'))));
+                if(modelaAgendamento.checarDataNoSistema(data, cod))
+                    modelaAgendamento.atualizarAgendamento(new Agendamento(cod, data, edt_nome.getText(), Float.valueOf(edt_preco.getText().replace(',', '.'))));
+                else
+                    JOptionPane.showMessageDialog(null, "Data e hora cadastrada em outro cliente");
+                
                }                  
         }
     }//GEN-LAST:event_btn_confirmarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_Consulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Editar_Linha_Consulta().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancelar;

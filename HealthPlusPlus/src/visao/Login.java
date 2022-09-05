@@ -103,7 +103,7 @@ public class Login extends javax.swing.JFrame {
             p.setVisible(true);
             dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "TA ERRADO PIA");
+            JOptionPane.showMessageDialog(null, "Login e senha inválido");
         }
         
     }//GEN-LAST:event_btn_loginActionPerformed

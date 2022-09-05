@@ -111,4 +111,22 @@ public class JDBCAgendamento {
         return false;
     }
     
+    public boolean checarDataNoSistema(java.util.Date data, int cod){
+        String sql = "SELECT DATAHORA from TB_AGENDAMENTO where COD <> ?";
+        Timestamp tmstamp = new Timestamp(data.getTime());
+        PreparedStatement pr;
+        try {
+            pr = this.c.prepareStatement(sql);
+            pr.setInt(1, cod);
+            ResultSet rs = pr.executeQuery();
+            while(rs.next()){
+                System.out.println(rs.getTimestamp(1).equals(tmstamp));
+                if(rs.getTimestamp(1).equals(tmstamp))
+                    return false;
+            }    
+            }catch(SQLException ex) {
+                Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
 }
