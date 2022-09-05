@@ -138,7 +138,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         pn_guia_clientes.add(jScrollPane1);
-        jScrollPane1.setBounds(35, 124, 1242, 600);
+        jScrollPane1.setBounds(35, 130, 1242, 600);
 
         lbl_fundo.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
@@ -164,7 +164,7 @@ public class Principal extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -194,7 +194,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         pn_guia_consultas.add(jScrollPane2);
-        jScrollPane2.setBounds(50, 120, 1242, 600);
+        jScrollPane2.setBounds(35, 130, 1242, 600);
 
         btn_excluirC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_excluirC.setText("Excluir");
@@ -245,8 +245,6 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void table_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_clientesMouseClicked

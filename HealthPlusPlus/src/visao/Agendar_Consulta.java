@@ -46,8 +46,9 @@ public class Agendar_Consulta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setExtendedState(MAXIMIZED_BOTH);
-        setMinimumSize(new java.awt.Dimension(505, 345));
+        setMinimumSize(new java.awt.Dimension(550, 400));
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setLayout(null);
 
@@ -120,6 +121,9 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
+
+        pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendarActionPerformed

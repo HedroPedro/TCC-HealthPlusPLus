@@ -26,7 +26,6 @@ public class Login extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
         btn_cancelar = new javax.swing.JButton();
-        btn_programadores = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,15 +74,6 @@ public class Login extends javax.swing.JFrame {
         Pn_telaLogin.add(btn_cancelar);
         btn_cancelar.setBounds(260, 730, 110, 50);
 
-        btn_programadores.setText("only for programers");
-        btn_programadores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_programadoresActionPerformed(evt);
-            }
-        });
-        Pn_telaLogin.add(btn_programadores);
-        btn_programadores.setBounds(430, 40, 135, 22);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Login - X.jpg"))); // NOI18N
         Pn_telaLogin.add(jLabel1);
         jLabel1.setBounds(0, 0, 600, 800);
@@ -107,12 +97,6 @@ public class Login extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btn_loginActionPerformed
-
-    private void btn_programadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_programadoresActionPerformed
-        Principal adm = new Principal();
-        adm.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btn_programadoresActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         dispose();
@@ -162,7 +146,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel Pn_telaLogin;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_login;
-    private javax.swing.JButton btn_programadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_imagem;
     private javax.swing.JPasswordField txtSenha;
