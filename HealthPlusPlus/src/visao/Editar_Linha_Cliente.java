@@ -129,7 +129,7 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
 
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
         if(edt_nome.getText().equals("") || edt_endereco.getText().equals("") || edt_telefone.getText().equals("") || edt_CPF.getText().equals(""))
-            JOptionPane.showMessageDialog(null, "Algumas das caixas está vazia");
+            JOptionPane.showMessageDialog(null, "Algumas dos campos está vazio");
         else{
             Cliente cliente = new Cliente(edt_nome.getText(), edt_telefone.getText(), edt_endereco.getText(), edt_CPF.getText());
             if(cliente.estaCertoCPF()){
