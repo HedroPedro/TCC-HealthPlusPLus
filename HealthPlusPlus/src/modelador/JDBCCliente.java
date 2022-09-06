@@ -61,19 +61,9 @@ public class JDBCCliente {
         }
         return clientes;
     }
-    /**
-     * Deleta tudo da TB_CLIENTE
-     */
-    public void deletarCliente(){
-        String sql = "Delete from tb_cliente";
-        try{
-            Statement stat = con.createStatement();
-            stat.executeUpdate(sql);
-        }catch(SQLException ex){
-            Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    } 
+
     public void deletarCliente(int codigo){
+        new JDBCAgendamento(this.con).deletarAgendamentoComCodCliente(codigo);
         String sql = "DELETE FROM tb_cliente where COD_CLIENTE = ?";
         PreparedStatement ps;
         try{

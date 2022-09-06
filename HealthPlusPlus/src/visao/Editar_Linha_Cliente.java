@@ -9,17 +9,19 @@ import modelos.Cliente;
 public class Editar_Linha_Cliente extends javax.swing.JFrame {
     int cod;
     JDBCCliente modelaCliente = new JDBCCliente(new Conectador().abrirConnection());
+    Principal p;
     /**
      * Creates new form Editar_Campo_Cliente
      */
 
-    public Editar_Linha_Cliente(String nome, String endereco, String telefone, String CPF, int cod){
+    public Editar_Linha_Cliente(String nome, String endereco, String telefone, String CPF, int cod, Principal p){
         initComponents();
         this.cod = cod;
         edt_nome.setText(nome);
         edt_endereco.setText(endereco);
         edt_telefone.setText(telefone);
         edt_CPF.setText(CPF);
+        this.p = p;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,9 +132,11 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Algumas das caixas está vazia");
         else{
             Cliente cliente = new Cliente(edt_nome.getText(), edt_telefone.getText(), edt_endereco.getText(), edt_CPF.getText());
-            if(cliente.estaCertoCPF())
+            if(cliente.estaCertoCPF()){
                 modelaCliente.atualizarCliente(cod, cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF());
-            else
+                p.requestFocus();
+                dispose();
+            }else
                 JOptionPane.showMessageDialog(null, "CPF inválido, tente outro");
         }
     }//GEN-LAST:event_btn_confirmarActionPerformed

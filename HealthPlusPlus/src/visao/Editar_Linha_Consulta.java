@@ -17,16 +17,18 @@ import modelos.Agendamento;
 public class Editar_Linha_Consulta extends javax.swing.JFrame {
     JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
     int cod;
+    Principal p;
     
     /**
      * Creates new form Editar_Campo
      * @param cod
      * @param nome
      */
-    public Editar_Linha_Consulta(int cod, String nome) {
+    public Editar_Linha_Consulta(int cod, String nome, Principal p) {
         initComponents();
         this.cod = cod;
         edt_nome.setText(nome);
+        this.p = p;
     }
 
     /**
@@ -182,7 +184,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         if(edt_nome.getText().equals("") || edt_hora.getText().equals("  :  ") || edt_data.getText().equals("  /  /    ") || edt_preco.getText().equals("  ,  ")){
-            JOptionPane.showMessageDialog(null, "Alguns cos campos está vazio");
+            JOptionPane.showMessageDialog(null, "Alguns dos campos está vazio");
         }else{
             Date data = new Date();
             try {
@@ -193,9 +195,11 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
            if(Agendamento.verificarData(data)){
                JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
            }else{
-                if(modelaAgendamento.checarDataNoSistema(data, cod))
+                if(modelaAgendamento.checarDataNoSistema(data, cod)){
                     modelaAgendamento.atualizarAgendamento(new Agendamento(cod, data, edt_nome.getText(), Float.valueOf(edt_preco.getText().replace(',', '.'))));
-                else
+                    p.requestFocus();
+                    dispose();
+                }else
                     JOptionPane.showMessageDialog(null, "Data e hora cadastrada em outro cliente");
                 
                }                  

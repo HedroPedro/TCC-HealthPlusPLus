@@ -281,7 +281,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_editarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCActionPerformed
         int index = table_consultas.getSelectedRow();
         String nome = table_consultas.getModel().getValueAt(index, 3).toString();
-        Editar_Linha_Consulta editarConsulta = new Editar_Linha_Consulta(cod, nome);
+        Editar_Linha_Consulta editarConsulta = new Editar_Linha_Consulta(cod, nome, this);
         editarConsulta.setVisible(true);
         carregarTabelaConsulta();
     }//GEN-LAST:event_btn_editarCActionPerformed
@@ -313,7 +313,7 @@ public class Principal extends javax.swing.JFrame {
         String endereco = table_clientes.getModel().getValueAt(index, 2).toString();
         String telefone = table_clientes.getModel().getValueAt(index, 3).toString();
         String CPF = table_clientes.getModel().getValueAt(index, 4).toString();
-        new Editar_Linha_Cliente(nome, endereco, telefone, CPF, cod).setVisible(true);
+        new Editar_Linha_Cliente(nome, endereco, telefone, CPF, cod, this).setVisible(true);
         carregarTabelaCliente();
     }//GEN-LAST:event_btn_editarlinhaActionPerformed
 

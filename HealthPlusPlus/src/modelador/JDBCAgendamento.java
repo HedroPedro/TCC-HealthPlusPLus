@@ -80,6 +80,17 @@ public class JDBCAgendamento {
         }
     }
     
+    public void deletarAgendamentoComCodCliente(int codigo){
+        String sql = "Delete FROM tb_agendamento where COD_CLIENTE = ?";
+        try {
+            PreparedStatement ps =this.c.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void atualizarAgendamento(Agendamento a){
         String sql = "UPDATE tb_agendamento SET DATAHORA = ?, NOME_CLIENTE = ?, PRECO = ? WHERE COD = ?";
         try {

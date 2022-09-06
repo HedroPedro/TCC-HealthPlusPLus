@@ -34,7 +34,7 @@ public class JDBCUsuario {
             Login.usuario.setCod(rs.getInt(1));
             Login.usuario.setNome(nome); }
             return true;
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(JDBCUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
