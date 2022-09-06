@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31-Ago-2022 às 20:15
+-- Tempo de geração: 06-Set-2022 às 19:19
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -29,6 +29,7 @@ USE `empresa`;
 -- Estrutura da tabela `tb_agendamento`
 --
 
+DROP TABLE IF EXISTS `tb_agendamento`;
 CREATE TABLE IF NOT EXISTS `tb_agendamento` (
   `COD` int(11) NOT NULL AUTO_INCREMENT,
   `DATAHORA` datetime NOT NULL,
@@ -39,14 +40,14 @@ CREATE TABLE IF NOT EXISTS `tb_agendamento` (
   PRIMARY KEY (`COD`),
   KEY `COD_CLIENTE` (`COD_CLIENTE`),
   KEY `TIPO_CONSULTA` (`TIPO_CONSULTA`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `tb_agendamento`
 --
 
 INSERT INTO `tb_agendamento` (`COD`, `DATAHORA`, `NOME_CLIENTE`, `COD_CLIENTE`, `TIPO_CONSULTA`, `PRECO`) VALUES
-(6, '2022-09-02 12:00:00', 'Carlos', 2, 1, 80.00);
+(1, '2022-10-06 12:00:00', 'Carlos', 2, 1, 50.00);
 
 -- --------------------------------------------------------
 
@@ -54,6 +55,7 @@ INSERT INTO `tb_agendamento` (`COD`, `DATAHORA`, `NOME_CLIENTE`, `COD_CLIENTE`, 
 -- Estrutura da tabela `tb_cliente`
 --
 
+DROP TABLE IF EXISTS `tb_cliente`;
 CREATE TABLE IF NOT EXISTS `tb_cliente` (
   `COD_CLIENTE` int(11) NOT NULL AUTO_INCREMENT,
   `NOME` varchar(50) COLLATE utf8_bin NOT NULL,
@@ -61,15 +63,15 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
   `TEL_CLIENTE` varchar(15) COLLATE utf8_bin NOT NULL,
   `CPF_CLIENTE` char(14) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`COD_CLIENTE`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `tb_cliente`
 --
 
 INSERT INTO `tb_cliente` (`COD_CLIENTE`, `NOME`, `END_CLIENTE`, `TEL_CLIENTE`, `CPF_CLIENTE`) VALUES
-(2, 'Carlos', 'RUa ALmeida', '(14) 9999-9999', '355.725.290-60'),
-(3, 'Pedro', 'Rua 4, n° 66', '(14) 7777-7777', '389.748.611-35');
+(1, 'Pedro Paulo', 'Praça Andrômedra, nº 54', '(14) 9964-8481', '684.558.150-94'),
+(2, 'André', 'Rua Almeida', '(14) 9999-9999', '355.725.290-60');
 
 -- --------------------------------------------------------
 
@@ -77,6 +79,7 @@ INSERT INTO `tb_cliente` (`COD_CLIENTE`, `NOME`, `END_CLIENTE`, `TEL_CLIENTE`, `
 -- Estrutura da tabela `tb_tiposdeconsulta`
 --
 
+DROP TABLE IF EXISTS `tb_tiposdeconsulta`;
 CREATE TABLE IF NOT EXISTS `tb_tiposdeconsulta` (
   `COD` int(11) NOT NULL AUTO_INCREMENT,
   `NOMECONSULTA` varchar(100) COLLATE utf8_bin NOT NULL,
@@ -98,6 +101,7 @@ INSERT INTO `tb_tiposdeconsulta` (`COD`, `NOMECONSULTA`, `PRECO`) VALUES
 -- Estrutura da tabela `tb_usuario`
 --
 
+DROP TABLE IF EXISTS `tb_usuario`;
 CREATE TABLE IF NOT EXISTS `tb_usuario` (
   `COD_USUARIO` int(11) NOT NULL AUTO_INCREMENT,
   `NOME` varchar(50) COLLATE utf8_bin NOT NULL,
