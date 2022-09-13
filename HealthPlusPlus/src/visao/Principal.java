@@ -40,21 +40,20 @@ public class Principal extends javax.swing.JFrame {
         btn_excluirC = new javax.swing.JButton();
         btn_editarC = new javax.swing.JButton();
         lbl_fundo2 = new javax.swing.JLabel();
+        pn_guia_funcionarios = new javax.swing.JPanel();
+        pn_guia_tiposDeConsulta = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                formFocusGained(evt);
-            }
-        });
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(110, 129));
 
         pn_guia_clientes.setBackground(new java.awt.Color(153, 153, 153));
+        pn_guia_clientes.setPreferredSize(new java.awt.Dimension(1000, 1000));
         pn_guia_clientes.setLayout(null);
 
         btn_excluir.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -224,15 +223,41 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Consultas", pn_guia_consultas);
 
+        javax.swing.GroupLayout pn_guia_funcionariosLayout = new javax.swing.GroupLayout(pn_guia_funcionarios);
+        pn_guia_funcionarios.setLayout(pn_guia_funcionariosLayout);
+        pn_guia_funcionariosLayout.setHorizontalGroup(
+            pn_guia_funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1600, Short.MAX_VALUE)
+        );
+        pn_guia_funcionariosLayout.setVerticalGroup(
+            pn_guia_funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Funcionários", pn_guia_funcionarios);
+
+        javax.swing.GroupLayout pn_guia_tiposDeConsultaLayout = new javax.swing.GroupLayout(pn_guia_tiposDeConsulta);
+        pn_guia_tiposDeConsulta.setLayout(pn_guia_tiposDeConsultaLayout);
+        pn_guia_tiposDeConsultaLayout.setHorizontalGroup(
+            pn_guia_tiposDeConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1600, Short.MAX_VALUE)
+        );
+        pn_guia_tiposDeConsultaLayout.setVerticalGroup(
+            pn_guia_tiposDeConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Tipos de Consulta", pn_guia_tiposDeConsulta);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -243,7 +268,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1033, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -264,7 +289,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void btn_excluirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirCActionPerformed
        if(JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION) == 0){
-            System.out.println(cod);
             agendamentos.deletarAgentademento(cod);
             carregarTabelaConsulta();
         }
@@ -275,7 +299,8 @@ public class Principal extends javax.swing.JFrame {
         String nome = table_clientes.getModel().getValueAt(index, 1).toString();
         Agendar_Consulta consultaNova = new Agendar_Consulta(this, nome);
         consultaNova.setVisible(true);
-        pn_guia_consultas.requestFocus();
+        carregarTabelaConsulta();
+        table_consultas.requestFocus();
     }//GEN-LAST:event_btn_novaconsultaActionPerformed
 
     private void btn_editarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCActionPerformed
@@ -284,6 +309,9 @@ public class Principal extends javax.swing.JFrame {
         Editar_Linha_Consulta editarConsulta = new Editar_Linha_Consulta(cod, nome, this);
         editarConsulta.setVisible(true);
         carregarTabelaConsulta();
+        pn_guia_consultas.requestFocus();
+        table_consultas.requestFocus();
+        
     }//GEN-LAST:event_btn_editarCActionPerformed
 
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
@@ -295,13 +323,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void btn_novocadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novocadastroActionPerformed
         new Cadastrar_Cliente().setVisible(true);
-        pn_guia_clientes.requestFocus();
     }//GEN-LAST:event_btn_novocadastroActionPerformed
-
-    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-        carregarTabelaCliente();
-        carregarTabelaConsulta();
-    }//GEN-LAST:event_formFocusGained
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
@@ -351,6 +373,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_fundo2;
     private javax.swing.JPanel pn_guia_clientes;
     private javax.swing.JPanel pn_guia_consultas;
+    private javax.swing.JPanel pn_guia_funcionarios;
+    private javax.swing.JPanel pn_guia_tiposDeConsulta;
     private javax.swing.JTable table_clientes;
     private javax.swing.JTable table_consultas;
     // End of variables declaration//GEN-END:variables

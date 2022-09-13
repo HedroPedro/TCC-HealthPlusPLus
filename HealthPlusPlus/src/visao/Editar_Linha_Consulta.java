@@ -10,10 +10,6 @@ import modelador.Conectador;
 import modelador.JDBCAgendamento;
 import modelos.Agendamento;
 
-/**
- *
- * @author Etec
- */
 public class Editar_Linha_Consulta extends javax.swing.JFrame {
     JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
     int cod;
@@ -144,6 +140,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         });
         jPanel1.add(edt_hora);
         edt_hora.setBounds(460, 170, 210, 40);
+
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 750, 300);

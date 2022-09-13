@@ -46,7 +46,7 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         lbl_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 300));
+        setUndecorated(true);
 
         jPanel1.setLayout(null);
 
@@ -87,6 +87,7 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         lbl_nome.setText("Nome:");
         jPanel1.add(lbl_nome);
         lbl_nome.setBounds(30, 80, 50, 30);
+
         try {
             edt_telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
         } catch (java.text.ParseException ex) {
@@ -104,8 +105,6 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         edt_CPF.setBounds(440, 180, 270, 30);
 
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
-
-        lbl_fundo.setMaximumSize(new java.awt.Dimension(750, 300));
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 750, 300);
 

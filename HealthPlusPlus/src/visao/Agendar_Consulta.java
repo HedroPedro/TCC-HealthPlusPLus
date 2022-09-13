@@ -8,16 +8,15 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelador.JDBCAgendamento;
 import modelador.Conectador;
+import modelador.JDBCTiposDeConsulta;
 import modelos.Agendamento;
 
 public class Agendar_Consulta extends javax.swing.JFrame {
 
-    public JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
+    private JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
+    private JDBCTiposDeConsulta nomesConsulta = new JDBCTiposDeConsulta(new Conectador().abrirConnection());
     private Principal p;
     
-    public Agendar_Consulta() {
-        initComponents();
-    }
     
     public Agendar_Consulta(Principal p, String nome) {
         initComponents();
@@ -103,7 +102,11 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         jPanel1.add(lbl_data);
         lbl_data.setBounds(111, 149, 27, 16);
 
-        ComboBox_Consultas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 - Consulta", "2- Plano" }));
+        int i = 1;
+        for(String tipo : nomesConsulta.pegarNome()){
+            ComboBox_Consultas.addItem(i+"- "+tipo);
+            i++;
+        }
         jPanel1.add(ComboBox_Consultas);
         ComboBox_Consultas.setBounds(300, 220, 110, 22);
 

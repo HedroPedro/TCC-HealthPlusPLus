@@ -152,15 +152,8 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JComboBox" name="ComboBox_Consultas">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="1 - Consulta"/>
-                <StringItem index="1" value="2- Plano"/>
-              </StringArray>
-            </Property>
-          </Properties>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="int i = 1;&#xa;for(String tipo : nomesConsulta.pegarNome()){&#xa;    ComboBox_Consultas.addItem(i+&quot;- &quot;+tipo);&#xa;    i++;&#xa;}"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
           <Constraints>

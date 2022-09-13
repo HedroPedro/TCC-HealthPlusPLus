@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelos.TiposDeConsulta;
@@ -49,5 +52,22 @@ public class JDBCTiposDeConsulta {
         }
         
         return preco;
+    }
+    
+    public List<String> pegarNome(){
+        String sql = "Select NOMECONSULTA from Tb_tiposdeconsulta";
+        List<String> nomes = new ArrayList<>();
+        
+        try {
+            Statement st = this.con.createStatement();
+            ResultSet rs = st.executeQuery(sql);             
+            while(rs.next()){
+                nomes.add(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCTiposDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return nomes;
     }
 }

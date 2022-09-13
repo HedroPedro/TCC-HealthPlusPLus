@@ -29,7 +29,6 @@ public class JDBCUsuario {
             ps.setString(1, nome);
             ps.setString(2, senha);
             ResultSet rs = ps.executeQuery();
-            System.out.println(rs.toString());
             while(rs.next()){
             Login.usuario.setCod(rs.getInt(1));
             Login.usuario.setNome(nome); }
