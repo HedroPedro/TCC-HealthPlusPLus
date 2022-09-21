@@ -14,7 +14,7 @@ public class Principal extends javax.swing.JFrame {
     JDBCAgendamento agendamentos = new JDBCAgendamento(new Conectador().abrirConnection());
     int cod = 0;
             
-    public Principal() {
+    public Principal(int nivelAcesso) {
         initComponents();
         carregarTabelaCliente();
         carregarTabelaConsulta();
@@ -40,8 +40,6 @@ public class Principal extends javax.swing.JFrame {
         btn_excluirC = new javax.swing.JButton();
         btn_editarC = new javax.swing.JButton();
         lbl_fundo2 = new javax.swing.JLabel();
-        pn_guia_funcionarios = new javax.swing.JPanel();
-        pn_guia_tiposDeConsulta = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
@@ -51,6 +49,7 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(110, 129));
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         pn_guia_clientes.setBackground(new java.awt.Color(153, 153, 153));
         pn_guia_clientes.setPreferredSize(new java.awt.Dimension(1000, 1000));
@@ -223,37 +222,11 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Consultas", pn_guia_consultas);
 
-        javax.swing.GroupLayout pn_guia_funcionariosLayout = new javax.swing.GroupLayout(pn_guia_funcionarios);
-        pn_guia_funcionarios.setLayout(pn_guia_funcionariosLayout);
-        pn_guia_funcionariosLayout.setHorizontalGroup(
-            pn_guia_funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1600, Short.MAX_VALUE)
-        );
-        pn_guia_funcionariosLayout.setVerticalGroup(
-            pn_guia_funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Funcionários", pn_guia_funcionarios);
-
-        javax.swing.GroupLayout pn_guia_tiposDeConsultaLayout = new javax.swing.GroupLayout(pn_guia_tiposDeConsulta);
-        pn_guia_tiposDeConsulta.setLayout(pn_guia_tiposDeConsultaLayout);
-        pn_guia_tiposDeConsultaLayout.setHorizontalGroup(
-            pn_guia_tiposDeConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1600, Short.MAX_VALUE)
-        );
-        pn_guia_tiposDeConsultaLayout.setVerticalGroup(
-            pn_guia_tiposDeConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Tipos de Consulta", pn_guia_tiposDeConsulta);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1600, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,36 +245,9 @@ public class Principal extends javax.swing.JFrame {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void table_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_clientesMouseClicked
-       int index = table_clientes.getSelectedRow();
-       cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
-       btn_excluir.setEnabled(true);
-       btn_editarlinha.setEnabled(true);
-       btn_novaconsulta.setEnabled(true);
-    }//GEN-LAST:event_table_clientesMouseClicked
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-    private void table_consultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_consultasMouseClicked
-       int index = table_consultas.getSelectedRow();
-       cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
-       btn_excluirC.setEnabled(true);
-       btn_editarC.setEnabled(true);
-    }//GEN-LAST:event_table_consultasMouseClicked
-
-    private void btn_excluirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirCActionPerformed
-       if(JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION) == 0){
-            agendamentos.deletarAgentademento(cod);
-            carregarTabelaConsulta();
-        }
-    }//GEN-LAST:event_btn_excluirCActionPerformed
-
-    private void btn_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaconsultaActionPerformed
-        int index = table_clientes.getSelectedRow();
-        String nome = table_clientes.getModel().getValueAt(index, 1).toString();
-        Agendar_Consulta consultaNova = new Agendar_Consulta(this, nome);
-        consultaNova.setVisible(true);
-        carregarTabelaConsulta();
-        table_consultas.requestFocus();
-    }//GEN-LAST:event_btn_novaconsultaActionPerformed
+    }//GEN-LAST:event_formWindowOpened
 
     private void btn_editarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCActionPerformed
         int index = table_consultas.getSelectedRow();
@@ -310,24 +256,38 @@ public class Principal extends javax.swing.JFrame {
         editarConsulta.setVisible(true);
         carregarTabelaConsulta();
         pn_guia_consultas.requestFocus();
-        table_consultas.requestFocus();
-        
     }//GEN-LAST:event_btn_editarCActionPerformed
 
-    private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
+    private void btn_excluirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirCActionPerformed
         if(JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION) == 0){
-            clientes.deletarCliente(cod);
-            carregarTabelaCliente();
+            agendamentos.deletarAgentademento(cod);
+            carregarTabelaConsulta();
         }
-    }//GEN-LAST:event_btn_excluirActionPerformed
+    }//GEN-LAST:event_btn_excluirCActionPerformed
 
-    private void btn_novocadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novocadastroActionPerformed
-        new Cadastrar_Cliente().setVisible(true);
-    }//GEN-LAST:event_btn_novocadastroActionPerformed
+    private void table_consultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_consultasMouseClicked
+        int index = table_consultas.getSelectedRow();
+        cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
+        btn_excluirC.setEnabled(true);
+        btn_editarC.setEnabled(true);
+    }//GEN-LAST:event_table_consultasMouseClicked
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    private void table_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_clientesMouseClicked
+        int index = table_clientes.getSelectedRow();
+        cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
+        btn_excluir.setEnabled(true);
+        btn_editarlinha.setEnabled(true);
+        btn_novaconsulta.setEnabled(true);
+    }//GEN-LAST:event_table_clientesMouseClicked
 
-    }//GEN-LAST:event_formWindowOpened
+    private void btn_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaconsultaActionPerformed
+        int index = table_clientes.getSelectedRow();
+        String nome = table_clientes.getModel().getValueAt(index, 1).toString();
+        Agendar_Consulta consultaNova = new Agendar_Consulta(this, nome);
+        consultaNova.setVisible(true);
+        carregarTabelaConsulta();
+        pn_guia_consultas.requestFocus();
+    }//GEN-LAST:event_btn_novaconsultaActionPerformed
 
     private void btn_editarlinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarlinhaActionPerformed
         int index = table_clientes.getSelectedRow();
@@ -338,6 +298,17 @@ public class Principal extends javax.swing.JFrame {
         new Editar_Linha_Cliente(nome, endereco, telefone, CPF, cod, this).setVisible(true);
         carregarTabelaCliente();
     }//GEN-LAST:event_btn_editarlinhaActionPerformed
+
+    private void btn_novocadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novocadastroActionPerformed
+        new Cadastrar_Cliente().setVisible(true);
+    }//GEN-LAST:event_btn_novocadastroActionPerformed
+
+    private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION) == 0){
+            clientes.deletarCliente(cod);
+            carregarTabelaCliente();
+        }
+    }//GEN-LAST:event_btn_excluirActionPerformed
 
       private void carregarTabelaCliente(){
         DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
@@ -373,8 +344,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_fundo2;
     private javax.swing.JPanel pn_guia_clientes;
     private javax.swing.JPanel pn_guia_consultas;
-    private javax.swing.JPanel pn_guia_funcionarios;
-    private javax.swing.JPanel pn_guia_tiposDeConsulta;
     private javax.swing.JTable table_clientes;
     private javax.swing.JTable table_consultas;
     // End of variables declaration//GEN-END:variables

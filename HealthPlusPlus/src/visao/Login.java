@@ -37,7 +37,6 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         Pn_telaLogin.setBackground(new java.awt.Color(204, 204, 255));
-        Pn_telaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Pn_telaLogin.setMaximumSize(new java.awt.Dimension(600, 800));
         Pn_telaLogin.setName(""); // NOI18N
         Pn_telaLogin.setLayout(null);
@@ -90,7 +89,8 @@ public class Login extends javax.swing.JFrame {
         String nome = txtUsuario.getText();
         String senha = String.copyValueOf(txtSenha.getPassword());
         if(checadorDeUsuario.existeUsuario(nome,senha)){
-            Principal p = new Principal();
+            
+            Principal p = new Principal(usuario.getNivelDeAcesso());
             p.setVisible(true);
             dispose();
         }else{
