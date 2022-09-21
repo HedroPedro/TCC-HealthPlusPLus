@@ -18,6 +18,13 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         carregarTabelaCliente();
         carregarTabelaConsulta();
+        if(nivelAcesso == 0){
+            jTabbedPane1.remove(2);
+            jTabbedPane1.remove(2);
+        }else{
+            carregarTabelaFuncionarios();
+            carregarTabelaTipoDeConsulta();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -40,6 +47,14 @@ public class Principal extends javax.swing.JFrame {
         btn_excluirC = new javax.swing.JButton();
         btn_editarC = new javax.swing.JButton();
         lbl_fundo2 = new javax.swing.JLabel();
+        pn_guia_funcionarios = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table_funcionários = new javax.swing.JTable();
+        lbl_fundo3 = new javax.swing.JLabel();
+        pn_guia_funcionarios1 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        table_funcionários1 = new javax.swing.JTable();
+        lbl_fundo4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
@@ -186,9 +201,13 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(table_consultas);
         if (table_consultas.getColumnModel().getColumnCount() > 0) {
             table_consultas.getColumnModel().getColumn(0).setResizable(false);
+            table_consultas.getColumnModel().getColumn(0).setHeaderValue("Código");
             table_consultas.getColumnModel().getColumn(1).setResizable(false);
+            table_consultas.getColumnModel().getColumn(1).setHeaderValue("Data & Hora");
             table_consultas.getColumnModel().getColumn(2).setResizable(false);
+            table_consultas.getColumnModel().getColumn(2).setHeaderValue("Preço");
             table_consultas.getColumnModel().getColumn(3).setResizable(false);
+            table_consultas.getColumnModel().getColumn(3).setHeaderValue("Nome do Cliente");
         }
 
         pn_guia_consultas.add(jScrollPane2);
@@ -221,6 +240,116 @@ public class Principal extends javax.swing.JFrame {
         lbl_fundo2.setBounds(0, 0, 1600, 805);
 
         jTabbedPane1.addTab("Consultas", pn_guia_consultas);
+
+        pn_guia_funcionarios.setBackground(new java.awt.Color(153, 153, 153));
+        pn_guia_funcionarios.setLayout(null);
+
+        jScrollPane3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+
+        table_funcionários.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        table_funcionários.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Nível de Acesso", "Nome", "Senha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table_funcionários.setGridColor(new java.awt.Color(0, 0, 0));
+        table_funcionários.setShowGrid(true);
+        table_funcionários.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_funcionáriosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(table_funcionários);
+        if (table_funcionários.getColumnModel().getColumnCount() > 0) {
+            table_funcionários.getColumnModel().getColumn(0).setResizable(false);
+            table_funcionários.getColumnModel().getColumn(1).setResizable(false);
+            table_funcionários.getColumnModel().getColumn(2).setResizable(false);
+            table_funcionários.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        pn_guia_funcionarios.add(jScrollPane3);
+        jScrollPane3.setBounds(35, 130, 1242, 600);
+
+        lbl_fundo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
+        pn_guia_funcionarios.add(lbl_fundo3);
+        lbl_fundo3.setBounds(0, 0, 1600, 805);
+
+        jTabbedPane1.addTab("Funcionários", pn_guia_funcionarios);
+
+        pn_guia_funcionarios1.setBackground(new java.awt.Color(153, 153, 153));
+        pn_guia_funcionarios1.setLayout(null);
+
+        jScrollPane4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+
+        table_funcionários1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        table_funcionários1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Data & Hora", "Preço", "Nome do Cliente"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table_funcionários1.setGridColor(new java.awt.Color(0, 0, 0));
+        table_funcionários1.setShowGrid(true);
+        table_funcionários1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_funcionários1MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(table_funcionários1);
+        if (table_funcionários1.getColumnModel().getColumnCount() > 0) {
+            table_funcionários1.getColumnModel().getColumn(0).setResizable(false);
+            table_funcionários1.getColumnModel().getColumn(0).setHeaderValue("Código");
+            table_funcionários1.getColumnModel().getColumn(1).setResizable(false);
+            table_funcionários1.getColumnModel().getColumn(1).setHeaderValue("Data & Hora");
+            table_funcionários1.getColumnModel().getColumn(2).setResizable(false);
+            table_funcionários1.getColumnModel().getColumn(2).setHeaderValue("Preço");
+            table_funcionários1.getColumnModel().getColumn(3).setResizable(false);
+            table_funcionários1.getColumnModel().getColumn(3).setHeaderValue("Nome do Cliente");
+        }
+
+        pn_guia_funcionarios1.add(jScrollPane4);
+        jScrollPane4.setBounds(35, 130, 1242, 600);
+
+        lbl_fundo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
+        pn_guia_funcionarios1.add(lbl_fundo4);
+        lbl_fundo4.setBounds(0, 0, 1600, 805);
+
+        jTabbedPane1.addTab("Tipos de consulta", pn_guia_funcionarios1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -310,6 +439,14 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_excluirActionPerformed
 
+    private void table_funcionáriosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_funcionáriosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table_funcionáriosMouseClicked
+
+    private void table_funcionários1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_funcionários1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table_funcionários1MouseClicked
+
       private void carregarTabelaCliente(){
         DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
         modelo.setRowCount(0);
@@ -328,6 +465,9 @@ public class Principal extends javax.swing.JFrame {
                 model.addRow(objeto);
            }
        }
+       
+       private void carregarTabelaFuncionarios() {}
+       private void carregarTabelaTipoDeConsulta(){}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_editarC;
@@ -339,13 +479,21 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbl_fundo;
     private javax.swing.JLabel lbl_fundo2;
+    private javax.swing.JLabel lbl_fundo3;
+    private javax.swing.JLabel lbl_fundo4;
     private javax.swing.JPanel pn_guia_clientes;
     private javax.swing.JPanel pn_guia_consultas;
+    private javax.swing.JPanel pn_guia_funcionarios;
+    private javax.swing.JPanel pn_guia_funcionarios1;
     private javax.swing.JTable table_clientes;
     private javax.swing.JTable table_consultas;
+    private javax.swing.JTable table_funcionários;
+    private javax.swing.JTable table_funcionários1;
     // End of variables declaration//GEN-END:variables
 
   }
