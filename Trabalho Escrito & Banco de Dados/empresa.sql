@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Set-2022 às 17:01
+-- Tempo de geração: 26-Set-2022 às 14:06
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.1
 
@@ -116,8 +116,7 @@ CREATE TABLE IF NOT EXISTS `tb_usuario` (
 --
 
 INSERT INTO `tb_usuario` (`COD_USUARIO`, `NIVELDEACESSO`, `NOME`, `SENHA`) VALUES
-(1, 1, 'Nero', 'Carl'),
-(2, 0, 'Pedro', 'Carlos');
+(1, 1, 'Nero', 'Carl');
 
 --
 -- Restrições para despejos de tabelas
