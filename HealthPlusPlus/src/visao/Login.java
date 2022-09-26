@@ -1,6 +1,6 @@
 package visao;
 
-import java.util.Arrays;
+import java.sql.*;
 import javax.swing.JOptionPane;
 import modelador.Conectador;
 import modelador.JDBCUsuario;
@@ -8,8 +8,9 @@ import modelos.Usuario;
 
 
 public class Login extends javax.swing.JFrame {
-
-    JDBCUsuario checadorDeUsuario = new JDBCUsuario(new Conectador().abrirConnection());
+    
+    Connection con = new Conectador().abrirConnection();
+    JDBCUsuario checadorDeUsuario = new JDBCUsuario(con);
     public static Usuario usuario = new Usuario();
     
     public Login() {       
@@ -37,7 +38,6 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         Pn_telaLogin.setBackground(new java.awt.Color(204, 204, 255));
-        Pn_telaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Pn_telaLogin.setMaximumSize(new java.awt.Dimension(600, 800));
         Pn_telaLogin.setName(""); // NOI18N
         Pn_telaLogin.setLayout(null);
@@ -91,7 +91,7 @@ public class Login extends javax.swing.JFrame {
         String senha = String.valueOf(txtSenha.getPassword());
         if(checadorDeUsuario.existeUsuario(nome,senha)){
             
-            Principal p = new Principal(usuario.getNivelDeAcesso());
+            Principal p = new Principal(checadorDeUsuario.pegarNivelDeAcesso(nome, senha), con);
             p.setVisible(true);
             dispose();
         }else{
@@ -105,7 +105,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**.

@@ -70,4 +70,34 @@ public class JDBCTiposDeConsulta {
         
         return nomes;
     }
+    
+    public List<TiposDeConsulta> pegarTiposDeConsulta(){
+        List<TiposDeConsulta> tipos = new ArrayList<>();
+        String sql = "SELECT * FROM tb_tiposdeconsulta";
+        
+        try {
+            Statement st = this.con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                TiposDeConsulta consultaTemp = new TiposDeConsulta(rs.getInt(1), rs.getString(2), rs.getFloat(3));
+                tipos.add(consultaTemp);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCTiposDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return tipos;
+    }
+
+    public void excluirTipoDeConsulta(int cod) {
+        String sql = "DELETE from tb_tiposdeconsulta where COD = ?";
+        try {
+            PreparedStatement ps = this.con.prepareStatement(sql);
+            ps.setInt(1, cod);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCTiposDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }

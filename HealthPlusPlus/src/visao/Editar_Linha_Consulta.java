@@ -194,7 +194,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
            }else{
                 if(modelaAgendamento.checarDataNoSistema(data, cod)){
                     modelaAgendamento.atualizarAgendamento(new Agendamento(cod, data, edt_nome.getText(), Float.valueOf(edt_preco.getText().replace(',', '.'))));
-                    p.requestFocus();
+                    p.carregarTabelaConsulta();
                     dispose();
                 }else
                     JOptionPane.showMessageDialog(null, "Data e hora cadastrada em outro cliente");

@@ -10,10 +10,6 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
     JDBCCliente lidaCliente = new JDBCCliente(new Conectador().abrirConnection());
     private Principal p;
     
-    public Cadastrar_Cliente() {
-        initComponents();
-    }
-    
     /**
      * Creates new form Cadastro
      * @param p
@@ -132,7 +128,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         Cliente cliente = new Cliente(Edt_Nome.getText(),edt_Telefone.getText(), Edt_Endereco.getText(), edt_CPF.getText());
         if(cliente.estaCertoCPF()){
             lidaCliente.adicionarCliente(cliente);
-            p.requestFocus();
+            p.carregarTabelaCliente();
             dispose();
         }
         else

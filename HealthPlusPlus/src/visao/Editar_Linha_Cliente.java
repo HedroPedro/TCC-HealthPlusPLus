@@ -17,11 +17,11 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
     public Editar_Linha_Cliente(String nome, String endereco, String telefone, String CPF, int cod, Principal p){
         initComponents();
         this.cod = cod;
+        this.p = p;
         edt_nome.setText(nome);
         edt_endereco.setText(endereco);
         edt_telefone.setText(telefone);
         edt_CPF.setText(CPF);
-        this.p = p;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,7 +133,7 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
             Cliente cliente = new Cliente(edt_nome.getText(), edt_telefone.getText(), edt_endereco.getText(), edt_CPF.getText());
             if(cliente.estaCertoCPF()){
                 modelaCliente.atualizarCliente(cod, cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF());
-                p.requestFocus();
+                p.carregarTabelaCliente();
                 dispose();
             }else
                 JOptionPane.showMessageDialog(null, "CPF inválido, tente outro");

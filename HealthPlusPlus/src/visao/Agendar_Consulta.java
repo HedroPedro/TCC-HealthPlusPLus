@@ -15,12 +15,13 @@ public class Agendar_Consulta extends javax.swing.JFrame {
 
     private JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
     private JDBCTiposDeConsulta nomesConsulta = new JDBCTiposDeConsulta(new Conectador().abrirConnection());
+    private int cod;
     private Principal p;
     
-    
-    public Agendar_Consulta(Principal p, String nome) {
+    public Agendar_Consulta(int cod, String nome, Principal p) {
         initComponents();
         edt_nome.setText(nome);
+        this.cod = cod;
         this.p = p;
     }
 
@@ -28,7 +29,6 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         btn_cancelar = new javax.swing.JButton();
         edt_nome = new javax.swing.JTextField();
@@ -40,8 +40,6 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         lbl_data = new javax.swing.JLabel();
         ComboBox_Consultas = new javax.swing.JComboBox<>();
         lbl_fundo = new javax.swing.JLabel();
-
-        jFormattedTextField1.setText("jFormattedTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -144,8 +142,8 @@ public class Agendar_Consulta extends javax.swing.JFrame {
                if(modelaAgendamento.checarDataNoSistema(parsedDate)){
                    JOptionPane.showMessageDialog(null, "Data e hora já preenchida no sistema");
                }else{
-                   modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, p.cod, ComboBox_Consultas.getSelectedIndex()+1));
-                   p.requestFocus();
+                   modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, cod, ComboBox_Consultas.getSelectedIndex()+1));
+                   p.carregarTabelaConsulta();
                    dispose();
                }
             }
@@ -165,7 +163,6 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField edt_data;
     private javax.swing.JFormattedTextField edt_hora;
     private javax.swing.JTextField edt_nome;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_data;
     private javax.swing.JLabel lbl_fundo;
