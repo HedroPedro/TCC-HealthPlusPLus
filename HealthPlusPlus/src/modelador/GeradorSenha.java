@@ -11,7 +11,8 @@ public class GeradorSenha {
         StringBuilder sb = new StringBuilder();
         
         for(int i = 0; i < len; i++){
-            int randomIndex = sr.nextInt();
+            int randomIndex = sr.nextInt(chars.length());
+            
             sb.append(chars.charAt(randomIndex));
         }
         

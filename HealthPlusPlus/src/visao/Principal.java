@@ -331,8 +331,6 @@ public class Principal extends javax.swing.JFrame {
         btn_excluirTC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_excluirTC.setText("Excluir");
         btn_excluirTC.setEnabled(false);
-        btn_excluirTC.setMaximumSize(new java.awt.Dimension(87, 30));
-        btn_excluirTC.setMinimumSize(new java.awt.Dimension(87, 30));
         btn_excluirTC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_excluirTCActionPerformed(evt);
@@ -406,7 +404,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         pn_guia_funcionarios.add(btn_editarF);
-        btn_editarF.setBounds(1330, 580, 220, 80);
+        btn_editarF.setBounds(1330, 560, 220, 80);
 
         btn_cadastrarF.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_cadastrarF.setLabel("Cadastrar");
@@ -419,21 +417,18 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         pn_guia_funcionarios.add(btn_cadastrarF);
-        btn_cadastrarF.setBounds(1330, 670, 220, 80);
+        btn_cadastrarF.setBounds(1330, 650, 220, 80);
 
         btn_excluirF.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_excluirF.setText("Excluir");
         btn_excluirF.setEnabled(false);
-        btn_excluirF.setMaximumSize(new java.awt.Dimension(87, 30));
-        btn_excluirF.setMinimumSize(new java.awt.Dimension(87, 30));
-        btn_excluirF.setPreferredSize(new java.awt.Dimension(87, 30));
         btn_excluirF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_excluirFActionPerformed(evt);
             }
         });
         pn_guia_funcionarios.add(btn_excluirF);
-        btn_excluirF.setBounds(1330, 490, 220, 80);
+        btn_excluirF.setBounds(1330, 470, 220, 80);
 
         lbl_fundo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
         pn_guia_funcionarios.add(lbl_fundo3);
@@ -542,7 +537,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_table_tipos_de_consultaMouseClicked
 
     private void btn_cadastrarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarFActionPerformed
-
+        new Cadastrar_Funcionario(funcionario, this).setVisible(true);
     }//GEN-LAST:event_btn_cadastrarFActionPerformed
 
     private void btn_editarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarFActionPerformed
@@ -567,6 +562,8 @@ public class Principal extends javax.swing.JFrame {
     private void btn_excluirTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirTCActionPerformed
         if(JOptionPane.showConfirmDialog(null, "Deseja excluir este tipo de consulta?", "Aviso", JOptionPane.YES_NO_OPTION) == 0){
             tiposDeConsulta.excluirTipoDeConsulta(cod);
+            carregarTabelaTipoDeConsulta();
+            carregarTabelaConsulta();
         }
     }//GEN-LAST:event_btn_excluirTCActionPerformed
 

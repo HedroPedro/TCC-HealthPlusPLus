@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Set-2022 às 14:06
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.1
+-- Tempo de geração: 27-Set-2022 às 01:51
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,19 +39,17 @@ CREATE TABLE IF NOT EXISTS `tb_agendamento` (
   PRIMARY KEY (`COD`),
   KEY `COD_CLIENTE` (`COD_CLIENTE`),
   KEY `TIPO_CONSULTA` (`TIPO_CONSULTA`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `tb_agendamento`
 --
 
 INSERT INTO `tb_agendamento` (`COD`, `DATAHORA`, `NOME_CLIENTE`, `COD_CLIENTE`, `TIPO_CONSULTA`, `PRECO`) VALUES
-(1, '2022-10-06 12:00:00', 'Carlos', 2, 1, 50.00),
-(2, '2022-09-14 12:00:00', 'Pedro Paulo', 1, 2, 40.00),
-(3, '2022-09-14 13:00:00', 'Pedro Paulo', 1, 2, 40.00),
-(4, '2022-09-13 14:00:00', 'André', 2, 1, 50.00),
-(5, '2022-10-08 12:00:00', 'André', 2, 1, 50.00),
-(6, '2111-12-21 12:32:00', 'Pedro Paulo', 1, 1, 50.00);
+(1, '2022-08-30 12:00:00', 'Carlos', 2, 0, 50.00),
+(2, '2022-09-30 12:00:00', 'Carlos', 2, 0, 50.00),
+(4, '2022-08-30 13:00:00', 'Pedro', 3, 0, 40.00),
+(5, '2022-08-30 09:00:00', 'Carlos', 2, 0, 50.00);
 
 -- --------------------------------------------------------
 
@@ -61,20 +59,20 @@ INSERT INTO `tb_agendamento` (`COD`, `DATAHORA`, `NOME_CLIENTE`, `COD_CLIENTE`, 
 
 CREATE TABLE IF NOT EXISTS `tb_cliente` (
   `COD_CLIENTE` int(11) NOT NULL AUTO_INCREMENT,
-  `NOME` varchar(50) COLLATE utf8_bin NOT NULL,
+  `NOME_CLIENTE` varchar(50) COLLATE utf8_bin NOT NULL,
   `END_CLIENTE` varchar(70) COLLATE utf8_bin NOT NULL,
   `TEL_CLIENTE` varchar(15) COLLATE utf8_bin NOT NULL,
   `CPF_CLIENTE` char(14) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`COD_CLIENTE`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `tb_cliente`
 --
 
-INSERT INTO `tb_cliente` (`COD_CLIENTE`, `NOME`, `END_CLIENTE`, `TEL_CLIENTE`, `CPF_CLIENTE`) VALUES
-(1, 'Pedro Paulo', 'Praça Andrômedra, nº 45', '(14) 9964-8481', '684.558.150-94'),
-(2, 'André', 'Rua Almeida, n° 54', '(14) 9999-9999', '355.725.290-60');
+INSERT INTO `tb_cliente` (`COD_CLIENTE`, `NOME_CLIENTE`, `END_CLIENTE`, `TEL_CLIENTE`, `CPF_CLIENTE`) VALUES
+(2, 'Carlos', 'Rua Almeida', '(14) 9999-9999', '355.725.290-60'),
+(3, 'Pedro', 'Rua 4, n° 66', '(14) 7777-7777', '389.748.611-35');
 
 -- --------------------------------------------------------
 
@@ -87,15 +85,14 @@ CREATE TABLE IF NOT EXISTS `tb_tiposdeconsulta` (
   `NOMECONSULTA` varchar(100) COLLATE utf8_bin NOT NULL,
   `PRECO` decimal(5,2) NOT NULL,
   PRIMARY KEY (`COD`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `tb_tiposdeconsulta`
 --
 
 INSERT INTO `tb_tiposdeconsulta` (`COD`, `NOMECONSULTA`, `PRECO`) VALUES
-(1, 'Consulta única', '50.00'),
-(2, 'Consulta por plano', '40.00');
+(0, 'Genérica', '10.00');
 
 -- --------------------------------------------------------
 
@@ -105,18 +102,22 @@ INSERT INTO `tb_tiposdeconsulta` (`COD`, `NOMECONSULTA`, `PRECO`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tb_usuario` (
   `COD_USUARIO` int(11) NOT NULL AUTO_INCREMENT,
-  `NIVELDEACESSO` int(11) DEFAULT NULL,
+  `NIVELDEACESSO` int(11) NOT NULL DEFAULT 0,
   `NOME` varchar(50) COLLATE utf8_bin NOT NULL,
   `SENHA` varchar(30) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`COD_USUARIO`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `tb_usuario`
 --
 
 INSERT INTO `tb_usuario` (`COD_USUARIO`, `NIVELDEACESSO`, `NOME`, `SENHA`) VALUES
-(1, 1, 'Nero', 'Carl');
+(1, 1, 'Nero', 'HrtA1Skn'),
+(2, 0, 'Pedro', 'JalILjzU'),
+(3, 1, 'Cavalo', 'kx5EXV'),
+(4, 1, 'Antônio Baptista', 'kXZx5EXV'),
+(5, 0, 'André_Almeida', 'd98Y5jk');
 
 --
 -- Restrições para despejos de tabelas

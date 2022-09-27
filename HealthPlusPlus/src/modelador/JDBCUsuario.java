@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelos.Usuario;
-import visao.Login;
 
 public class JDBCUsuario {
     private Connection con;
@@ -85,6 +84,19 @@ public class JDBCUsuario {
         try {
             PreparedStatement ps = this.con.prepareStatement(sql);
             ps.setInt(1, cod);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void cadastrarUsuario(int nivelDeAcesso,String nome, String senha){
+        String sql = "INSERT INTO tb_usuario(NIVELDEACESSO, NOME, SENHA) values(?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, nivelDeAcesso);
+            ps.setString(2, nome);
+            ps.setString(3, senha);
             ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCUsuario.class.getName()).log(Level.SEVERE, null, ex);

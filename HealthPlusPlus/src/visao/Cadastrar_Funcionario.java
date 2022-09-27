@@ -1,20 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
 
-/**
- *
- * @author LAB6-PC11
- */
+import java.util.Random;
+import javax.swing.JOptionPane;
+import modelador.GeradorSenha;
+import modelador.JDBCUsuario;
+
 public class Cadastrar_Funcionario extends javax.swing.JFrame {
 
+    JDBCUsuario usuarioNovo;
+    Principal p;
+    
     /**
      * Creates new form Cadastrar_Funcionario
      */
-    public Cadastrar_Funcionario() {
+    public Cadastrar_Funcionario(JDBCUsuario usuarioNovo, Principal p) {
         initComponents();
+        this.usuarioNovo = usuarioNovo;
+        this.p = p;
     }
 
     /**
@@ -29,13 +31,13 @@ public class Cadastrar_Funcionario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lbl_Name = new javax.swing.JLabel();
         edt_nome = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        combo_tipo = new javax.swing.JComboBox<>();
+        btn_cadastrar = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(550, 400));
         setMinimumSize(new java.awt.Dimension(550, 400));
         setName(""); // NOI18N
         setUndecorated(true);
@@ -50,14 +52,28 @@ public class Cadastrar_Funcionario extends javax.swing.JFrame {
         jPanel1.add(edt_nome);
         edt_nome.setBounds(90, 130, 326, 22);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Administrador" }));
-        jComboBox1.setSelectedIndex(-1);
-        jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(200, 160, 130, 22);
+        combo_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Administrador" }));
+        combo_tipo.setSelectedIndex(-1);
+        jPanel1.add(combo_tipo);
+        combo_tipo.setBounds(200, 160, 130, 22);
 
-        jButton1.setText("Cadastrar");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(90, 270, 80, 22);
+        btn_cadastrar.setText("Cadastrar");
+        btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_cadastrar);
+        btn_cadastrar.setBounds(110, 280, 130, 40);
+
+        btn_cancelar.setText("Cancelar");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_cancelar);
+        btn_cancelar.setBounds(290, 280, 130, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Agendar Consulta.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -77,45 +93,25 @@ public class Cadastrar_Funcionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btn_cancelarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Cadastrar_Funcionario().setVisible(true);
-            }
-        });
-    }
+    private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
+        if(edt_nome.getText().equals("") || combo_tipo.getSelectedIndex() == -1)
+            JOptionPane.showMessageDialog(null, "Campo(s) vazio(s)");
+        else{
+            usuarioNovo.cadastrarUsuario(combo_tipo.getSelectedIndex(), edt_nome.getText(), GeradorSenha.gerarSenha(new Random().nextInt(8)));
+            p.carregarTabelaFuncionarios();
+            dispose();
+        }
+    }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cadastrar;
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JComboBox<String> combo_tipo;
     private javax.swing.JTextField edt_nome;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_Name;

@@ -7,14 +7,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelador.JDBCAgendamento;
-import modelador.Conectador;
 import modelador.JDBCTiposDeConsulta;
 import modelos.Agendamento;
 
 public class Agendar_Consulta extends javax.swing.JFrame {
 
-    private JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
-    private JDBCTiposDeConsulta nomesConsulta = new JDBCTiposDeConsulta(new Conectador().abrirConnection());
+    private JDBCAgendamento modelaAgendamento;
+    private JDBCTiposDeConsulta nomesConsulta;
     private int cod;
     private Principal p;
     
@@ -23,6 +22,8 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         edt_nome.setText(nome);
         this.cod = cod;
         this.p = p;
+        nomesConsulta = p.tiposDeConsulta;
+        modelaAgendamento = p.agendamentos;
     }
 
     @SuppressWarnings("unchecked")

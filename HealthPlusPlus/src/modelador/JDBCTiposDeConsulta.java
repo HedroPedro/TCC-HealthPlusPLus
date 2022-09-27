@@ -55,7 +55,7 @@ public class JDBCTiposDeConsulta {
     }
     
     public List<String> pegarNome(){
-        String sql = "Select NOMECONSULTA from Tb_tiposdeconsulta";
+        String sql = "Select NOMECONSULTA from Tb_tiposdeconsulta where COD > 0";
         List<String> nomes = new ArrayList<>();
         
         try {
@@ -73,7 +73,7 @@ public class JDBCTiposDeConsulta {
     
     public List<TiposDeConsulta> pegarTiposDeConsulta(){
         List<TiposDeConsulta> tipos = new ArrayList<>();
-        String sql = "SELECT * FROM tb_tiposdeconsulta";
+        String sql = "SELECT * FROM tb_tiposdeconsulta where COD > 0";
         
         try {
             Statement st = this.con.createStatement();
@@ -90,9 +90,20 @@ public class JDBCTiposDeConsulta {
     }
 
     public void excluirTipoDeConsulta(int cod) {
-        String sql = "DELETE from tb_tiposdeconsulta where COD = ?";
+        String sql = "Update tb_agendamento SET TIPO_CONSULTA = 0 where TIPO_CONSULTA = ?";
+        PreparedStatement ps;
+        
         try {
-            PreparedStatement ps = this.con.prepareStatement(sql);
+            ps = this.con.prepareStatement(sql);
+            ps.setInt(1, cod);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCTiposDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        sql = "DELETE from tb_tiposdeconsulta where COD = ?";
+        try {
+            ps = this.con.prepareStatement(sql);
             ps.setInt(1, cod);
             ps.execute();
         } catch (SQLException ex) {
