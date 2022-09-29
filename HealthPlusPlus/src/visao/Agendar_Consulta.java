@@ -131,7 +131,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
 
     private void btn_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agendarActionPerformed
         SimpleDateFormat formartador = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        if(!edt_data.getText().equals("") && !edt_hora.getText().equals("") && !edt_nome.getText().equals("")){
+        if(!edt_data.getText().equals("") && !edt_hora.getText().equals("") && !edt_nome.getText().equals("") && ComboBox_Consultas.getSelectedIndex() != -1){
             Date parsedDate = new Date();
             try {
                 parsedDate = formartador.parse(edt_data.getText() + " " + edt_hora.getText());

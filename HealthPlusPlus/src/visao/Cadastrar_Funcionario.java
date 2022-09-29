@@ -12,6 +12,8 @@ public class Cadastrar_Funcionario extends javax.swing.JFrame {
     
     /**
      * Creates new form Cadastrar_Funcionario
+     * @param usuarioNovo
+     * @param p
      */
     public Cadastrar_Funcionario(JDBCUsuario usuarioNovo, Principal p) {
         initComponents();
@@ -101,7 +103,7 @@ public class Cadastrar_Funcionario extends javax.swing.JFrame {
         if(edt_nome.getText().equals("") || combo_tipo.getSelectedIndex() == -1)
             JOptionPane.showMessageDialog(null, "Campo(s) vazio(s)");
         else{
-            usuarioNovo.cadastrarUsuario(combo_tipo.getSelectedIndex(), edt_nome.getText(), GeradorSenha.gerarSenha(new Random().nextInt(8)));
+            usuarioNovo.cadastrarUsuario(combo_tipo.getSelectedIndex(), edt_nome.getText(), GeradorSenha.gerarSenha(new Random().nextInt(5, 8)));
             p.carregarTabelaFuncionarios();
             dispose();
         }

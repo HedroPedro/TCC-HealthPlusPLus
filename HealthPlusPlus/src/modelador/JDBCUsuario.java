@@ -102,4 +102,18 @@ public class JDBCUsuario {
             Logger.getLogger(JDBCUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void editarUsuario(int cod, String nome, String senha, int nivelDeAcesso) {
+        String sql = "UPDATE tb_usuario SET NOME = ?, SENHA = ?, NIVELDEACESSO = ? where COD_USUARIO = ?";
+        try {
+            PreparedStatement ps = this.con.prepareStatement(sql);
+            ps.setString(1, nome);
+            ps.setString(2, senha);
+            ps.setInt(3, nivelDeAcesso);
+            ps.setInt(4, cod);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

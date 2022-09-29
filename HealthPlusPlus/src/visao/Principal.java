@@ -541,7 +541,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cadastrarFActionPerformed
 
     private void btn_editarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarFActionPerformed
-        // TODO add your handling code here:
+        new Editar_Linha_Funcionário(cod, this, funcionario).setVisible(true);
     }//GEN-LAST:event_btn_editarFActionPerformed
 
     private void btn_excluirFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirFActionPerformed

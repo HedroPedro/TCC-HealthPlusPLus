@@ -50,6 +50,8 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         lbl_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(750, 300));
+        setMinimumSize(new java.awt.Dimension(750, 300));
         setUndecorated(true);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(750, 300));
