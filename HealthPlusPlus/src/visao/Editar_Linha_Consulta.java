@@ -19,6 +19,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
      * Creates new form Editar_Campo
      * @param cod
      * @param nome
+     * @param p
      */
     public Editar_Linha_Consulta(int cod, String nome, Principal p) {
         initComponents();
@@ -50,7 +51,6 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         lbl_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(750, 300));
         setMinimumSize(new java.awt.Dimension(750, 300));
         setUndecorated(true);
 
@@ -109,11 +109,12 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         jPanel1.add(btn_cancelar);
         btn_cancelar.setBounds(450, 230, 120, 40);
 
-        try {
-            edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##,##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###.0#"))));
+        edt_preco.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                edt_precoFocusLost(evt);
+            }
+        });
         jPanel1.add(edt_preco);
         edt_preco.setBounds(460, 90, 210, 40);
 
@@ -204,6 +205,13 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
                }                  
         }
     }//GEN-LAST:event_btn_confirmarActionPerformed
+
+    private void edt_precoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_edt_precoFocusLost
+        if(!edt_preco.getText().contains("."))
+            edt_preco.setText(edt_preco.getText().replace('.',','));
+        else if(!edt_preco.getText().contains(","))
+            edt_preco.setText(edt_preco.getText().concat(",00"));
+    }//GEN-LAST:event_edt_precoFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancelar;

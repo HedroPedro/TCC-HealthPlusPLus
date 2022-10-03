@@ -109,6 +109,7 @@ public class JDBCTiposDeConsulta {
         } catch (SQLException ex) {
             Logger.getLogger(JDBCTiposDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
+    
+    public void editarTipoDeConsulta(int cod, String nome, float preco){}
 }

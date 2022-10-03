@@ -4,16 +4,13 @@
  */
 package visao;
 
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.MaskFormatter;
-
+import javax.swing.JOptionPane;
+import modelador.JDBCTiposDeConsulta;
 
 public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
+
+    int cod;
+    JDBCTiposDeConsulta tiposDeConsulta;
     
     /**
      * Creates new form Editar_Linha_TipoDeConsulta
@@ -41,7 +38,6 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(750, 300));
         setMinimumSize(new java.awt.Dimension(750, 300));
         setName(""); // NOI18N
         setUndecorated(true);
@@ -60,21 +56,21 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
 
         lbl_preco.setText("Preço:");
         jPanel1.add(lbl_preco);
-        lbl_preco.setBounds(390, 80, 90, 30);
+        lbl_preco.setBounds(460, 80, 90, 30);
 
-        edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        edt_preco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edt_precoActionPerformed(evt);
+        edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0.00"))));
+        edt_preco.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                edt_precoFocusLost(evt);
             }
         });
-        edt_preco.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                edt_precoKeyPressed(evt);
+        edt_preco.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                edt_precoPropertyChange(evt);
             }
         });
         jPanel1.add(edt_preco);
-        edt_preco.setBounds(390, 110, 140, 30);
+        edt_preco.setBounds(460, 110, 120, 30);
 
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -127,43 +123,26 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
-        
+        if( edt_nome.getText().isBlank() || (edt_preco.getText().isBlank()))
+            JOptionPane.showMessageDialog(null, "Algum dos campos está vazio");
+        else{
+            float preco = Float.valueOf(edt_preco.getText().replace(',', '.'));
+            tiposDeConsulta.editarTipoDeConsulta(cod, edt_nome.getText(), preco);
+        }
     }//GEN-LAST:event_btn_editarActionPerformed
 
-    private void edt_precoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edt_precoActionPerformed
+    private void edt_precoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_edt_precoPropertyChange
 
-    }//GEN-LAST:event_edt_precoActionPerformed
+    }//GEN-LAST:event_edt_precoPropertyChange
 
-    private void edt_precoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edt_precoKeyPressed
-        String texto = edt_preco.getText();
-        String temTexto = null;
-        MaskFormatter mf = null;
-        
-        if(texto.length() == 2){
-            try {
-                temTexto =  edt_preco.getText();
-                mf = new MaskFormatter(",##");
-                edt_preco.setFormatterFactory(new DefaultFormatterFactory(mf));
-                edt_preco.setText(temTexto);
-            } catch (ParseException ex) {
-                Logger.getLogger(Editar_Linha_TipoDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }else{
-            if(texto.contains(",")){
-                String[] textoFormato = texto.replace(",", "").split("");
-                texto = textoFormato[0] + textoFormato[1];
-                String tempText = edt_preco.getText();
-                try {
-                    mf = new MaskFormatter(",##" + "#".repeat(texto.length()));
-                } catch (ParseException ex) {
-                    Logger.getLogger(Editar_Linha_TipoDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                edt_preco.setFormatterFactory(new DefaultFormatterFactory(mf));
-                edt_preco.setText(tempText);
-            }
-        }
-    }//GEN-LAST:event_edt_precoKeyPressed
-
+    private void edt_precoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_edt_precoFocusLost
+        if(!edt_preco.getText().contains("."))
+            edt_preco.setText(edt_preco.getText().replace('.',','));
+        else if(!edt_preco.getText().contains(","))
+            edt_preco.setText(edt_preco.getText().concat(",00"));
+            
+    }//GEN-LAST:event_edt_precoFocusLost
+ 
     /**
      * @param args the command line arguments
      */

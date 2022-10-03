@@ -1,5 +1,6 @@
 package visao;
 
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -37,8 +38,9 @@ public class Principal extends javax.swing.JFrame {
             carregarTabelaTipoDeConsulta();
             carregarTabelaFuncionarios();
         }
+    
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
