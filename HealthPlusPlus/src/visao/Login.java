@@ -1,8 +1,10 @@
 package visao;
 
+import java.awt.Toolkit;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import modelador.Conectador;
+import modelador.InserirIcone;
 import modelador.JDBCUsuario;
 import modelos.Usuario;
 
@@ -15,6 +17,7 @@ public class Login extends javax.swing.JFrame {
     
     public Login() {       
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("modelador/icone/ICON JAR ARCHIVE.png"));
     }
 
     @SuppressWarnings("unchecked")

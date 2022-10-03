@@ -1,9 +1,11 @@
 package visao;
 
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelador.InserirIcone;
 import modelador.JDBCAgendamento;
 import modelador.JDBCCliente;
 import modelador.JDBCTiposDeConsulta;
@@ -37,8 +39,10 @@ public class Principal extends javax.swing.JFrame {
             carregarTabelaTipoDeConsulta();
             carregarTabelaFuncionarios();
         }
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("modelador/icone/ICON JAR ARCHIVE.png"));
+    
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
