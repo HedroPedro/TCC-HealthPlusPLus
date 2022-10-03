@@ -5,12 +5,15 @@
 package visao;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 
 public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
-
-    DecimalFormat decimalFormatado;
     
     /**
      * Creates new form Editar_Linha_TipoDeConsulta
@@ -59,6 +62,7 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
         jPanel1.add(lbl_preco);
         lbl_preco.setBounds(390, 80, 90, 30);
 
+        edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         edt_preco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edt_precoActionPerformed(evt);
@@ -132,16 +136,31 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
 
     private void edt_precoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edt_precoKeyPressed
         String texto = edt_preco.getText();
+        String temTexto = null;
+        MaskFormatter mf = null;
         
         if(texto.length() == 2){
-            decimalFormatado = new DecimalFormat(",##");
-          
-        }
-        
-        if(texto.contains(",")){
-            String[] textoFormato = texto.replace(",", "").split("");
-            texto = textoFormato[0] + textoFormato[1];
-            System.out.println(texto);
+            try {
+                temTexto =  edt_preco.getText();
+                mf = new MaskFormatter(",##");
+                edt_preco.setFormatterFactory(new DefaultFormatterFactory(mf));
+                edt_preco.setText(temTexto);
+            } catch (ParseException ex) {
+                Logger.getLogger(Editar_Linha_TipoDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            if(texto.contains(",")){
+                String[] textoFormato = texto.replace(",", "").split("");
+                texto = textoFormato[0] + textoFormato[1];
+                String tempText = edt_preco.getText();
+                try {
+                    mf = new MaskFormatter(",##" + "#".repeat(texto.length()));
+                } catch (ParseException ex) {
+                    Logger.getLogger(Editar_Linha_TipoDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                edt_preco.setFormatterFactory(new DefaultFormatterFactory(mf));
+                edt_preco.setText(tempText);
+            }
         }
     }//GEN-LAST:event_edt_precoKeyPressed
 
