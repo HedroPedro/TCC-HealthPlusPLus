@@ -17,13 +17,13 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     private int cod;
     private Principal p;
     
-    public Agendar_Consulta(int cod, String nome, Principal p) {
+    public Agendar_Consulta(int cod, String nome, Principal p, JDBCTiposDeConsulta nomesConsulta, JDBCAgendamento modelaAgendamento) {
         initComponents();
         edt_nome.setText(nome);
         this.cod = cod;
         this.p = p;
-        nomesConsulta = p.tiposDeConsulta;
-        modelaAgendamento = p.agendamentos;
+        this.nomesConsulta = nomesConsulta;
+        this.modelaAgendamento = modelaAgendamento;
     }
 
     @SuppressWarnings("unchecked")

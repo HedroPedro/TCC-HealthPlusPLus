@@ -495,7 +495,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaconsultaActionPerformed
         int index = table_clientes.getSelectedRow();
         String nome = table_clientes.getModel().getValueAt(index, 1).toString();
-        Agendar_Consulta consultaNova = new Agendar_Consulta(cod, nome, this);
+        Agendar_Consulta consultaNova = new Agendar_Consulta(cod, nome, this, tiposDeConsulta, agendamentos);
         consultaNova.setVisible(true);
         pn_guia_consultas.requestFocus();
         carregarTabelaConsulta();

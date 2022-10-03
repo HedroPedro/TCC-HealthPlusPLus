@@ -4,12 +4,14 @@
  */
 package visao;
 
-/**
- *
- * @author LAB6-PC2
- */
+import java.text.DecimalFormat;
+import java.util.Arrays;
+
+
 public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
 
+    DecimalFormat decimalFormatado;
+    
     /**
      * Creates new form Editar_Linha_TipoDeConsulta
      */
@@ -30,7 +32,7 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
         lbl_nome = new javax.swing.JLabel();
         edt_nome = new javax.swing.JTextField();
         lbl_preco = new javax.swing.JLabel();
-        edt_preco = new javax.swing.JTextField();
+        edt_preco = new javax.swing.JFormattedTextField();
         btn_cancelar = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -56,8 +58,19 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
         lbl_preco.setText("Preço:");
         jPanel1.add(lbl_preco);
         lbl_preco.setBounds(390, 80, 90, 30);
+
+        edt_preco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edt_precoActionPerformed(evt);
+            }
+        });
+        edt_preco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                edt_precoKeyPressed(evt);
+            }
+        });
         jPanel1.add(edt_preco);
-        edt_preco.setBounds(390, 110, 320, 30);
+        edt_preco.setBounds(390, 110, 140, 30);
 
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +126,25 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_editarActionPerformed
 
+    private void edt_precoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edt_precoActionPerformed
+
+    }//GEN-LAST:event_edt_precoActionPerformed
+
+    private void edt_precoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edt_precoKeyPressed
+        String texto = edt_preco.getText();
+        
+        if(texto.length() == 2){
+            decimalFormatado = new DecimalFormat(",##");
+          
+        }
+        
+        if(texto.contains(",")){
+            String[] textoFormato = texto.replace(",", "").split("");
+            texto = textoFormato[0] + textoFormato[1];
+            System.out.println(texto);
+        }
+    }//GEN-LAST:event_edt_precoKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -152,7 +184,7 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_editar;
     private javax.swing.JTextField edt_nome;
-    private javax.swing.JTextField edt_preco;
+    private javax.swing.JFormattedTextField edt_preco;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_nome;
