@@ -1,6 +1,5 @@
 package visao;
 
-import java.awt.Toolkit;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -21,7 +20,8 @@ public class Principal extends javax.swing.JFrame {
     JDBCTiposDeConsulta tiposDeConsulta;
     
     int cod = 0;
-            
+    int index = 0;
+    
     public Principal(int nivelAcesso, Connection con) {
         clientes = new JDBCCliente(con);
         agendamentos = new JDBCAgendamento(con);
@@ -38,7 +38,7 @@ public class Principal extends javax.swing.JFrame {
             carregarTabelaTipoDeConsulta();
             carregarTabelaFuncionarios();
         }
-    
+        setImageIcon();
     }
     
     @SuppressWarnings("unchecked")
@@ -78,6 +78,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
+        setName("Menu Principal"); // NOI18N
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
 
@@ -466,7 +467,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_editarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCActionPerformed
-        int index = table_consultas.getSelectedRow();
+        index = table_consultas.getSelectedRow();
         String nome = table_consultas.getModel().getValueAt(index, 3).toString();
         new Editar_Linha_Consulta(cod, nome, this).setVisible(true);
         pn_guia_consultas.requestFocus();
@@ -480,14 +481,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_excluirCActionPerformed
 
     private void table_consultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_consultasMouseClicked
-        int index = table_consultas.getSelectedRow();
+        index = table_consultas.getSelectedRow();
         cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
         btn_excluirC.setEnabled(true);
         btn_editarC.setEnabled(true);
     }//GEN-LAST:event_table_consultasMouseClicked
 
     private void table_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_clientesMouseClicked
-        int index = table_clientes.getSelectedRow();
+        index = table_clientes.getSelectedRow();
         cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
         btn_excluir.setEnabled(true);
         btn_editarlinha.setEnabled(true);
@@ -504,7 +505,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_novaconsultaActionPerformed
 
     private void btn_editarlinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarlinhaActionPerformed
-        int index = table_clientes.getSelectedRow();
+        index = table_clientes.getSelectedRow();
         String nome = table_clientes.getModel().getValueAt(index, 1).toString();
         String endereco = table_clientes.getModel().getValueAt(index, 2).toString();
         String telefone = table_clientes.getModel().getValueAt(index, 3).toString();
@@ -526,7 +527,7 @@ public class Principal extends javax.swing.JFrame {
     private void table_funcionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_funcionariosMouseClicked
         btn_editarF.setEnabled(true);
         btn_excluirF.setEnabled(true);
-        int index = table_funcionarios.getSelectedRow();
+        index = table_funcionarios.getSelectedRow();
         cod = (int) table_funcionarios.getModel().getValueAt(index, 0);
         
     }//GEN-LAST:event_table_funcionariosMouseClicked
@@ -534,7 +535,7 @@ public class Principal extends javax.swing.JFrame {
     private void table_tipos_de_consultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_tipos_de_consultaMouseClicked
         btn_excluirTC.setEnabled(true);
         btn_editarTC.setEnabled(true);
-        int index = table_tipos_de_consulta.getSelectedRow();
+        index = table_tipos_de_consulta.getSelectedRow();
         cod = (int) table_tipos_de_consulta.getModel().getValueAt(index, 0);
     }//GEN-LAST:event_table_tipos_de_consultaMouseClicked
 
@@ -554,11 +555,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_excluirFActionPerformed
 
     private void btn_editarTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarTCActionPerformed
-        // TODO add your handling code here:
+        String nome = table_tipos_de_consulta.getModel().getValueAt(index, 1).toString();
+        String preco = table_tipos_de_consulta.getModel().getValueAt(index, 2).toString();
+        new EditarECadastrar_Linha_TipoDeConsulta(cod, tiposDeConsulta, this, nome, preco).setVisible(true);
     }//GEN-LAST:event_btn_editarTCActionPerformed
 
     private void btn_adicionarTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adicionarTCActionPerformed
-        // TODO add your handling code here:
+       new EditarECadastrar_Linha_TipoDeConsulta(tiposDeConsulta, this).setVisible(true);
     }//GEN-LAST:event_btn_adicionarTCActionPerformed
 
     private void btn_excluirTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirTCActionPerformed
@@ -604,7 +607,12 @@ public class Principal extends javax.swing.JFrame {
                model.addRow(objeto);
            }
        }
-
+       
+    private void setImageIcon(){
+        javax.swing.ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/ICON JAR ARCHIVE.png"));
+        this.setIconImage(imageIcon.getImage());
+       }
+       
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionarTC;
     private javax.swing.JButton btn_cadastrarF;

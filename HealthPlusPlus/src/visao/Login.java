@@ -1,6 +1,5 @@
 package visao;
 
-import java.awt.Toolkit;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import modelador.Conectador;
@@ -16,7 +15,8 @@ public class Login extends javax.swing.JFrame {
     
     public Login() {       
         initComponents();
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage("modelador/icone/ICON JAR ARCHIVE.png"));
+        
+        setImageIcon();
     }
 
     @SuppressWarnings("unchecked")
@@ -35,14 +35,13 @@ public class Login extends javax.swing.JFrame {
         setTitle("Login");
         setBackground(new java.awt.Color(0, 0, 255));
         setLocation(new java.awt.Point(1600, 900));
-        setMaximumSize(new java.awt.Dimension(600, 800));
         setMinimumSize(new java.awt.Dimension(600, 800));
         setName("LOGIN"); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(600, 800));
         getContentPane().setLayout(null);
 
         Pn_telaLogin.setBackground(new java.awt.Color(204, 204, 255));
+        Pn_telaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Pn_telaLogin.setMaximumSize(new java.awt.Dimension(600, 800));
         Pn_telaLogin.setName(""); // NOI18N
         Pn_telaLogin.setLayout(null);
@@ -113,6 +112,10 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtSenhaActionPerformed
 
+    private void setImageIcon(){
+        javax.swing.ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/ICON JAR ARCHIVE.png"));
+        this.setIconImage(imageIcon.getImage());
+    }
     /**.
      * @param args the command line arguments
      */

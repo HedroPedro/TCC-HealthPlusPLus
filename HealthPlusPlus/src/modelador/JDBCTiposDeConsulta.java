@@ -111,5 +111,29 @@ public class JDBCTiposDeConsulta {
         }
     }
     
-    public void editarTipoDeConsulta(int cod, String nome, float preco){}
+    public void editarTipoDeConsulta(int cod, String nome, float preco){
+        String sql = "Update tb_tiposdeconsulta SET NOMECONSULTA = ?, PRECO = ? where COD = ?";
+        
+        try {
+            PreparedStatement ps = this.con.prepareStatement(sql);
+            ps.setString(1, nome);
+            ps.setFloat(2, preco);
+            ps.setInt(3, cod);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCTiposDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void adicionarTipoDeConsulta(String nome, float preco) {
+        String sql = "Insert into tb_tiposdeconsulta (NOMECONSULTA, PRECO) value (?,?)";
+        try {
+            PreparedStatement ps = this.con.prepareStatement(sql);
+            ps.setString(1, nome);
+            ps.setFloat(2, preco);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCTiposDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

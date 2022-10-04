@@ -7,7 +7,7 @@ public class GeradorSenha {
     
     public static String gerarSenha(int len){
         final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        SecureRandom sr = new SecureRandom(chars.getBytes());
+        SecureRandom sr = new SecureRandom();
         StringBuilder sb = new StringBuilder();
         
         for(int i = 0; i < len; i++){

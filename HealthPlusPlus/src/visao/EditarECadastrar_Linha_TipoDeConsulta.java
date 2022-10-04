@@ -1,24 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
 
 import javax.swing.JOptionPane;
 import modelador.JDBCTiposDeConsulta;
 
-public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
+public class EditarECadastrar_Linha_TipoDeConsulta extends javax.swing.JFrame {
 
     int cod;
     JDBCTiposDeConsulta tiposDeConsulta;
+    Principal p;
     
     /**
      * Creates new form Editar_Linha_TipoDeConsulta
      */
-    public Editar_Linha_TipoDeConsulta() {
+    public EditarECadastrar_Linha_TipoDeConsulta(int cod, JDBCTiposDeConsulta tiposDeConsulta, Principal p, String nome, String preco) {
         initComponents();
+        this.cod = cod;
+        this.tiposDeConsulta = tiposDeConsulta;
+        this.p = p;
+        edt_nome.setText(nome);
+        edt_preco.setText(preco);
     }
 
+    public EditarECadastrar_Linha_TipoDeConsulta(JDBCTiposDeConsulta tiposDeConsulta, Principal p){
+        initComponents();
+        this.tiposDeConsulta = tiposDeConsulta;
+        this.p = p;
+        btn_editar.setText("Cadastrar");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,7 +136,13 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Algum dos campos está vazio");
         else{
             float preco = Float.valueOf(edt_preco.getText().replace(',', '.'));
-            tiposDeConsulta.editarTipoDeConsulta(cod, edt_nome.getText(), preco);
+            if(cod == 0){
+                tiposDeConsulta.adicionarTipoDeConsulta(edt_nome.getText(), preco);
+            }else{
+                tiposDeConsulta.editarTipoDeConsulta(cod, edt_nome.getText(), preco);
+            }
+            p.carregarTabelaTipoDeConsulta();
+            dispose();
         }
     }//GEN-LAST:event_btn_editarActionPerformed
 
@@ -143,41 +158,6 @@ public class Editar_Linha_TipoDeConsulta extends javax.swing.JFrame {
             
     }//GEN-LAST:event_edt_precoFocusLost
  
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_TipoDeConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_TipoDeConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_TipoDeConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Editar_Linha_TipoDeConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Editar_Linha_TipoDeConsulta().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_editar;
