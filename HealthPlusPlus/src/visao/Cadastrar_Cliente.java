@@ -1,22 +1,22 @@
 package visao;
 
 import javax.swing.JOptionPane;
-import modelador.Conectador;
 import modelador.JDBCCliente;
 import modelos.Cliente;
 
 public class Cadastrar_Cliente extends javax.swing.JFrame {
 
-    JDBCCliente lidaCliente = new JDBCCliente(new Conectador().abrirConnection());
+    JDBCCliente lidaCliente;
     private Principal p;
     
     /**
      * Creates new form Cadastro
      * @param p
      */
-    public Cadastrar_Cliente(Principal p) {
+    public Cadastrar_Cliente(Principal p, JDBCCliente lidaCliente) {
         initComponents();
         this.p = p;
+        this.lidaCliente = lidaCliente;
     }
 
     @SuppressWarnings("unchecked")

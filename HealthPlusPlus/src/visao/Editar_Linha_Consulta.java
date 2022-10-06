@@ -11,7 +11,7 @@ import modelador.JDBCAgendamento;
 import modelos.Agendamento;
 
 public class Editar_Linha_Consulta extends javax.swing.JFrame {
-    JDBCAgendamento modelaAgendamento = new JDBCAgendamento(new Conectador().abrirConnection());
+    JDBCAgendamento modelaAgendamento;
     int cod;
     Principal p;
     
@@ -21,8 +21,9 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
      * @param nome
      * @param p
      */
-    public Editar_Linha_Consulta(int cod, String nome, Principal p) {
+    public Editar_Linha_Consulta(int cod, String nome, Principal p){
         initComponents();
+        modelaAgendamento = p.agendamentos;
         this.cod = cod;
         edt_nome.setText(nome);
         this.p = p;

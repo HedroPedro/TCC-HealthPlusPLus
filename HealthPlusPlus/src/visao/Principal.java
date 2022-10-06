@@ -61,13 +61,6 @@ public class Principal extends javax.swing.JFrame {
         btn_excluirC = new javax.swing.JButton();
         btn_editarC = new javax.swing.JButton();
         lbl_fundo2 = new javax.swing.JLabel();
-        pn_guia_tipos_de_consulta = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        table_tipos_de_consulta = new javax.swing.JTable();
-        btn_editarTC = new javax.swing.JButton();
-        btn_adicionarTC = new javax.swing.JButton();
-        btn_excluirTC = new javax.swing.JButton();
-        lbl_fundo4 = new javax.swing.JLabel();
         pn_guia_funcionarios = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         table_funcionarios = new javax.swing.JTable();
@@ -75,6 +68,13 @@ public class Principal extends javax.swing.JFrame {
         btn_cadastrarF = new javax.swing.JButton();
         btn_excluirF = new javax.swing.JButton();
         lbl_fundo3 = new javax.swing.JLabel();
+        pn_guia_tipos_de_consulta = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        table_tipos_de_consulta = new javax.swing.JTable();
+        btn_editarTC = new javax.swing.JButton();
+        btn_adicionarTC = new javax.swing.JButton();
+        btn_excluirTC = new javax.swing.JButton();
+        lbl_fundo4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
@@ -178,6 +178,11 @@ public class Principal extends javax.swing.JFrame {
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
         lbl_fundo.setMaximumSize(new java.awt.Dimension(1600, 805));
         lbl_fundo.setPreferredSize(new java.awt.Dimension(1600, 805));
+        lbl_fundo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_fundoMouseClicked(evt);
+            }
+        });
         pn_guia_clientes.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 1600, 805);
 
@@ -255,98 +260,15 @@ public class Principal extends javax.swing.JFrame {
         btn_editarC.setBounds(1350, 650, 220, 80);
 
         lbl_fundo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
+        lbl_fundo2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_fundo2MouseClicked(evt);
+            }
+        });
         pn_guia_consultas.add(lbl_fundo2);
         lbl_fundo2.setBounds(0, 0, 1600, 805);
 
         jTabbedPane1.addTab("Consultas", pn_guia_consultas);
-
-        pn_guia_tipos_de_consulta.setBackground(new java.awt.Color(153, 153, 153));
-        pn_guia_tipos_de_consulta.setLayout(null);
-
-        jScrollPane4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-
-        table_tipos_de_consulta.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        table_tipos_de_consulta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Nome", "Preço"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        table_tipos_de_consulta.setGridColor(new java.awt.Color(0, 0, 0));
-        table_tipos_de_consulta.setShowGrid(true);
-        table_tipos_de_consulta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table_tipos_de_consultaMouseClicked(evt);
-            }
-        });
-        jScrollPane4.setViewportView(table_tipos_de_consulta);
-        if (table_tipos_de_consulta.getColumnModel().getColumnCount() > 0) {
-            table_tipos_de_consulta.getColumnModel().getColumn(0).setResizable(false);
-            table_tipos_de_consulta.getColumnModel().getColumn(1).setResizable(false);
-            table_tipos_de_consulta.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        pn_guia_tipos_de_consulta.add(jScrollPane4);
-        jScrollPane4.setBounds(35, 130, 1242, 600);
-
-        btn_editarTC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        btn_editarTC.setText("Editar");
-        btn_editarTC.setEnabled(false);
-        btn_editarTC.setMaximumSize(new java.awt.Dimension(87, 30));
-        btn_editarTC.setMinimumSize(new java.awt.Dimension(87, 30));
-        btn_editarTC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_editarTCActionPerformed(evt);
-            }
-        });
-        pn_guia_tipos_de_consulta.add(btn_editarTC);
-        btn_editarTC.setBounds(1350, 550, 220, 80);
-
-        btn_adicionarTC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        btn_adicionarTC.setText("Adicionar");
-        btn_adicionarTC.setMaximumSize(new java.awt.Dimension(87, 30));
-        btn_adicionarTC.setMinimumSize(new java.awt.Dimension(87, 30));
-        btn_adicionarTC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_adicionarTCActionPerformed(evt);
-            }
-        });
-        pn_guia_tipos_de_consulta.add(btn_adicionarTC);
-        btn_adicionarTC.setBounds(1350, 650, 220, 80);
-
-        btn_excluirTC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        btn_excluirTC.setText("Excluir");
-        btn_excluirTC.setEnabled(false);
-        btn_excluirTC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_excluirTCActionPerformed(evt);
-            }
-        });
-        pn_guia_tipos_de_consulta.add(btn_excluirTC);
-        btn_excluirTC.setBounds(1350, 450, 220, 80);
-
-        lbl_fundo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
-        pn_guia_tipos_de_consulta.add(lbl_fundo4);
-        lbl_fundo4.setBounds(0, 0, 1600, 805);
-
-        jTabbedPane1.addTab("Tipos de Consulta", pn_guia_tipos_de_consulta);
 
         pn_guia_funcionarios.setBackground(new java.awt.Color(153, 153, 153));
         pn_guia_funcionarios.setLayout(null);
@@ -434,10 +356,108 @@ public class Principal extends javax.swing.JFrame {
         btn_excluirF.setBounds(1330, 470, 220, 80);
 
         lbl_fundo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
+        lbl_fundo3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_fundo3MouseClicked(evt);
+            }
+        });
         pn_guia_funcionarios.add(lbl_fundo3);
         lbl_fundo3.setBounds(0, 0, 1600, 805);
 
         jTabbedPane1.addTab("Funcionários", pn_guia_funcionarios);
+
+        pn_guia_tipos_de_consulta.setBackground(new java.awt.Color(153, 153, 153));
+        pn_guia_tipos_de_consulta.setLayout(null);
+
+        jScrollPane4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+
+        table_tipos_de_consulta.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        table_tipos_de_consulta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Nome", "Preço"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table_tipos_de_consulta.setGridColor(new java.awt.Color(0, 0, 0));
+        table_tipos_de_consulta.setShowGrid(true);
+        table_tipos_de_consulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_tipos_de_consultaMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(table_tipos_de_consulta);
+        if (table_tipos_de_consulta.getColumnModel().getColumnCount() > 0) {
+            table_tipos_de_consulta.getColumnModel().getColumn(0).setResizable(false);
+            table_tipos_de_consulta.getColumnModel().getColumn(1).setResizable(false);
+            table_tipos_de_consulta.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        pn_guia_tipos_de_consulta.add(jScrollPane4);
+        jScrollPane4.setBounds(35, 130, 1242, 600);
+
+        btn_editarTC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        btn_editarTC.setText("Editar");
+        btn_editarTC.setEnabled(false);
+        btn_editarTC.setMaximumSize(new java.awt.Dimension(87, 30));
+        btn_editarTC.setMinimumSize(new java.awt.Dimension(87, 30));
+        btn_editarTC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarTCActionPerformed(evt);
+            }
+        });
+        pn_guia_tipos_de_consulta.add(btn_editarTC);
+        btn_editarTC.setBounds(1350, 550, 220, 80);
+
+        btn_adicionarTC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        btn_adicionarTC.setText("Adicionar");
+        btn_adicionarTC.setMaximumSize(new java.awt.Dimension(87, 30));
+        btn_adicionarTC.setMinimumSize(new java.awt.Dimension(87, 30));
+        btn_adicionarTC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adicionarTCActionPerformed(evt);
+            }
+        });
+        pn_guia_tipos_de_consulta.add(btn_adicionarTC);
+        btn_adicionarTC.setBounds(1350, 650, 220, 80);
+
+        btn_excluirTC.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        btn_excluirTC.setText("Excluir");
+        btn_excluirTC.setEnabled(false);
+        btn_excluirTC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluirTCActionPerformed(evt);
+            }
+        });
+        pn_guia_tipos_de_consulta.add(btn_excluirTC);
+        btn_excluirTC.setBounds(1350, 450, 220, 80);
+
+        lbl_fundo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
+        lbl_fundo4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_fundo4MouseClicked(evt);
+            }
+        });
+        pn_guia_tipos_de_consulta.add(lbl_fundo4);
+        lbl_fundo4.setBounds(0, 0, 1600, 805);
+
+        jTabbedPane1.addTab("Tipos de Consulta", pn_guia_tipos_de_consulta);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -498,7 +518,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaconsultaActionPerformed
         int index = table_clientes.getSelectedRow();
         String nome = table_clientes.getModel().getValueAt(index, 1).toString();
-        Agendar_Consulta consultaNova = new Agendar_Consulta(cod, nome, this, tiposDeConsulta, agendamentos);
+        Agendar_Consulta consultaNova = new Agendar_Consulta(cod, nome, this);
         consultaNova.setVisible(true);
         pn_guia_consultas.requestFocus();
         carregarTabelaConsulta();
@@ -514,7 +534,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_editarlinhaActionPerformed
 
     private void btn_novocadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novocadastroActionPerformed
-        new Cadastrar_Cliente(this).setVisible(true);
+        new Cadastrar_Cliente(this, clientes).setVisible(true);
     }//GEN-LAST:event_btn_novocadastroActionPerformed
 
     private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
@@ -571,6 +591,31 @@ public class Principal extends javax.swing.JFrame {
             carregarTabelaConsulta();
         }
     }//GEN-LAST:event_btn_excluirTCActionPerformed
+
+    private void lbl_fundoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_fundoMouseClicked
+        btn_novaconsulta.setEnabled(false);
+        btn_editarlinha.setEnabled(false);
+        btn_excluir.setEnabled(false);
+        table_clientes.getSelectionModel().clearSelection();
+    }//GEN-LAST:event_lbl_fundoMouseClicked
+
+    private void lbl_fundo2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_fundo2MouseClicked
+        btn_editarC.setEnabled(false);
+        btn_excluirC.setEnabled(false);
+        table_consultas.getSelectionModel().clearSelection();
+    }//GEN-LAST:event_lbl_fundo2MouseClicked
+
+    private void lbl_fundo4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_fundo4MouseClicked
+        btn_editarTC.setEnabled(false);
+        btn_excluirTC.setEnabled(false);
+        table_tipos_de_consulta.getSelectionModel().clearSelection();
+    }//GEN-LAST:event_lbl_fundo4MouseClicked
+
+    private void lbl_fundo3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_fundo3MouseClicked
+        btn_editarF.setEnabled(false);
+        btn_excluirF.setEnabled(false);
+        table_funcionarios.getSelectionModel().clearSelection();
+    }//GEN-LAST:event_lbl_fundo3MouseClicked
 
       final void carregarTabelaCliente(){
         DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();

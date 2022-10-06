@@ -55,7 +55,7 @@ public class JDBCTiposDeConsulta {
     }
     
     public List<String> pegarNome(){
-        String sql = "Select NOMECONSULTA from Tb_tiposdeconsulta where COD > 0";
+        String sql = "Select NOMECONSULTA from Tb_tiposdeconsulta";
         List<String> nomes = new ArrayList<>();
         
         try {
