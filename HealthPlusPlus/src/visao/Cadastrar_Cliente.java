@@ -105,7 +105,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         jPanel1.add(edt_Telefone);
         edt_Telefone.setBounds(470, 241, 252, 22);
 
-        lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Cadastrar Cliente.jpeg.jpg"))); // NOI18N
+        lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Cadastrar.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
         lbl_fundo.setBounds(0, 0, 800, 500);
 
