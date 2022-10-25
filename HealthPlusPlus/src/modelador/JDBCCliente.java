@@ -24,7 +24,7 @@ public class JDBCCliente {
     * @param cliente cliente a ser adicionado
     */
     public void adicionarCliente(Cliente cliente){
-        String sql = "insert into Tb_CLiente(NOME, END_CLIENTE, TEL_CLIENTE, CPF_CLIENTE) values(?,?,?,?)";
+        String sql = "insert into Tb_CLiente(NOME_CLIENTE, END_CLIENTE, TEL_CLIENTE, CPF_CLIENTE) values(?,?,?,?)";
         PreparedStatement ps;
         try {
             ps = this.con.prepareStatement(sql);
@@ -76,7 +76,7 @@ public class JDBCCliente {
     }
     
     public void atualizarCliente(int codigo, String nome, String endereco, String telefone, String CPF){
-        String sql = "UPDATE tb_cliente SET nome = ?, END_CLIENTE = ?, TEL_CLIENTE = ?, CPF_CLIENTE = ? WHERE COD_CLIENTE = ?";
+        String sql = "UPDATE tb_cliente SET NOME_CLIENTE = ?, END_CLIENTE = ?, TEL_CLIENTE = ?, CPF_CLIENTE = ? WHERE COD_CLIENTE = ?";
         PreparedStatement ps;
         try {
             ps = this.con.prepareStatement(sql);

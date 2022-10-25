@@ -77,6 +77,7 @@ public class Principal extends javax.swing.JFrame {
         lbl_fundo4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Health++");
         setExtendedState(MAXIMIZED_BOTH);
         setName("Menu Principal"); // NOI18N
 
