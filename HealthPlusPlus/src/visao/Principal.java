@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelador.JDBCAgendamento;
@@ -90,15 +91,19 @@ public class Principal extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         setName("Menu Principal"); // NOI18N
 
+        jPanel1.setMinimumSize(getPreferredSize());
         jPanel1.setPreferredSize(new java.awt.Dimension(1600, 900));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        jTabbedPane1.setMinimumSize(new java.awt.Dimension(110, 129));
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1000, 1000));
+        jTabbedPane1.setMaximumSize(getSize());
+        jTabbedPane1.setMinimumSize(getSize());
+        jTabbedPane1.setPreferredSize(null);
+        jTabbedPane1.setSize(getSize());
 
         pn_guia_clientes.setBackground(new java.awt.Color(153, 153, 153));
         pn_guia_clientes.setPreferredSize(new java.awt.Dimension(1000, 1000));
+        pn_guia_clientes.setSize(getSize());
         pn_guia_clientes.setLayout(null);
 
         btn_excluir.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
@@ -185,6 +190,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setBounds(35, 130, 1242, 600);
 
         lbl_fundo.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        lbl_fundo.setIcon(SetBackground());
         lbl_fundo.setMaximumSize(new java.awt.Dimension(1600, 805));
         lbl_fundo.setPreferredSize(new java.awt.Dimension(1600, 805));
         lbl_fundo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,7 +199,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         pn_guia_clientes.add(lbl_fundo);
-        lbl_fundo.setBounds(0, 0, 1600, 805);
+        lbl_fundo.setBounds(0, 0, 1600, 970);
 
         jTabbedPane1.addTab("Clientes", pn_guia_clientes);
 
@@ -268,7 +274,6 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_consultas.add(btn_editarC);
         btn_editarC.setBounds(1350, 650, 220, 80);
 
-        lbl_fundo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
         lbl_fundo2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_fundo2MouseClicked(evt);
@@ -280,6 +285,9 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane1.addTab("Consultas", pn_guia_consultas);
 
         pn_guia_funcionarios.setBackground(new java.awt.Color(153, 153, 153));
+        pn_guia_funcionarios.setAlignmentX(0.0F);
+        pn_guia_funcionarios.setAlignmentY(0.0F);
+        pn_guia_funcionarios.setPreferredSize(pn_guia_clientes.getPreferredSize());
         pn_guia_funcionarios.setLayout(null);
 
         jScrollPane3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
@@ -364,7 +372,6 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_funcionarios.add(btn_excluirF);
         btn_excluirF.setBounds(1330, 470, 220, 80);
 
-        lbl_fundo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
         lbl_fundo3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_fundo3MouseClicked(evt);
@@ -376,6 +383,8 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane1.addTab("Funcionários", pn_guia_funcionarios);
 
         pn_guia_tipos_de_consulta.setBackground(new java.awt.Color(153, 153, 153));
+        pn_guia_tipos_de_consulta.setAlignmentX(0.0F);
+        pn_guia_tipos_de_consulta.setAlignmentY(0.0F);
         pn_guia_tipos_de_consulta.setLayout(null);
 
         jScrollPane4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
@@ -457,7 +466,7 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_tipos_de_consulta.add(btn_excluirTC);
         btn_excluirTC.setBounds(1350, 450, 220, 80);
 
-        lbl_fundo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
+        lbl_fundo4.setAlignmentY(0.0F);
         lbl_fundo4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_fundo4MouseClicked(evt);
@@ -472,22 +481,26 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1600, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1033, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -665,15 +678,14 @@ public class Principal extends javax.swing.JFrame {
     private void setImageIcon(){
         javax.swing.ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/ICON JAR ARCHIVE.png"));
         this.setIconImage(imageIcon.getImage());
-        
-        imageIcon = new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"));
-        Image img = imageIcon.getImage().getScaledInstance(X, Y, java.awt.Image.SCALE_SMOOTH);
-        imageIcon = new ImageIcon(img);
-        lbl_fundo.setIcon(imageIcon);
-        lbl_fundo2.setIcon(imageIcon);
-        lbl_fundo3.setIcon(imageIcon);
-        lbl_fundo4.setIcon(imageIcon);
        }
+    
+    private javax.swing.ImageIcon SetBackground(){
+        javax.swing.ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro - X.jpg"));
+        System.out.println(getToolkit().getScreenSize());
+        Image img = imageIcon.getImage().getScaledInstance(pn_guia_clientes.getDebugGraphicsOptions(), lbl_fundo.getHeight(), java.awt.Image.SCALE_DEFAULT);
+        return new ImageIcon(img);
+    }
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionarTC;
