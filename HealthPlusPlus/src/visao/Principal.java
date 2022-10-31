@@ -1,7 +1,10 @@
 package visao;
 
+import java.awt.Dimension;
+import java.awt.Image;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelador.JDBCAgendamento;
@@ -21,12 +24,18 @@ public class Principal extends javax.swing.JFrame {
     
     int cod = 0;
     int index = 0;
+    final int X, Y;
     
     public Principal(int nivelAcesso, Connection con) {
         clientes = new JDBCCliente(con);
         agendamentos = new JDBCAgendamento(con);
         funcionario = new JDBCUsuario(con);
         tiposDeConsulta = new JDBCTiposDeConsulta(con);
+        
+        Dimension d = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        
+        X = d.width;
+        Y = d.height;
         
         initComponents();
         carregarTabelaCliente();
@@ -176,7 +185,6 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setBounds(35, 130, 1242, 600);
 
         lbl_fundo.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"))); // NOI18N
         lbl_fundo.setMaximumSize(new java.awt.Dimension(1600, 805));
         lbl_fundo.setPreferredSize(new java.awt.Dimension(1600, 805));
         lbl_fundo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -657,6 +665,14 @@ public class Principal extends javax.swing.JFrame {
     private void setImageIcon(){
         javax.swing.ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/ICON JAR ARCHIVE.png"));
         this.setIconImage(imageIcon.getImage());
+        
+        imageIcon = new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"));
+        Image img = imageIcon.getImage().getScaledInstance(X, Y, java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(img);
+        lbl_fundo.setIcon(imageIcon);
+        lbl_fundo2.setIcon(imageIcon);
+        lbl_fundo3.setIcon(imageIcon);
+        lbl_fundo4.setIcon(imageIcon);
        }
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
