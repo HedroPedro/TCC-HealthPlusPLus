@@ -96,7 +96,6 @@ public class Login extends javax.swing.JFrame {
         if(checadorDeUsuario.existeUsuario(nome,senha)){
             
             Principal p = new Principal(checadorDeUsuario.pegarNivelDeAcesso(nome, senha), con);
-            p.setVisible(true);
             dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Login e senha inválido");
