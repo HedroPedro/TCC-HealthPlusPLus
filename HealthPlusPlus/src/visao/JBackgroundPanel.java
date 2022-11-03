@@ -33,7 +33,7 @@ public class JBackgroundPanel extends javax.swing.JPanel {
     protected void formatarImagem(int width, int height){
         Image imagemResultado = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         BufferedImage imagemFormatada = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        imagemFormatada.createGraphics().drawImage(imagemResultado, 0, 0, width, height, this);
+        imagemFormatada.createGraphics().drawImage(imagemResultado, 0, 0, this);
         img = imagemFormatada;
     }
     

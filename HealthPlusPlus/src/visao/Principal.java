@@ -47,11 +47,10 @@ public class Principal extends javax.swing.JFrame {
         carregarTabelaCliente();
         carregarTabelaConsulta();
         
-        int largura = pn_guia_clientes.getWidth();
+        int largura = jTabbedPane1.getWidth();
         int altura = pn_guia_clientes.getHeight();
         
-        pn_guia_clientes.formatarImagem(largura, altura);
-        pn_guia_consultas.formatarImagem(largura, altura);
+         
         if(nivelAcesso == 0){
             jTabbedPane1.remove(pn_guia_funcionarios);
             jTabbedPane1.remove(pn_guia_tipos_de_consulta);
@@ -61,6 +60,9 @@ public class Principal extends javax.swing.JFrame {
             pn_guia_funcionarios.formatarImagem(largura, altura);
             pn_guia_tipos_de_consulta.formatarImagem(largura, altura);
         }
+        
+        pn_guia_clientes.formatarImagem(largura, altura);
+        pn_guia_consultas.formatarImagem(largura, altura);
     
     }
     
@@ -111,6 +113,11 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_clientes.setAlignmentX(0.0F);
         pn_guia_clientes.setAlignmentY(0.0F);
         pn_guia_clientes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        pn_guia_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pn_guia_clientesMouseClicked(evt);
+            }
+        });
 
         btn_excluir.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_excluir.setText("Excluir");
@@ -221,6 +228,11 @@ public class Principal extends javax.swing.JFrame {
 
         pn_guia_consultas.setAlignmentX(0.0F);
         pn_guia_consultas.setAlignmentY(0.0F);
+        pn_guia_consultas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pn_guia_consultasMouseClicked(evt);
+            }
+        });
 
         jScrollPane2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
@@ -303,12 +315,10 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 1027, Short.MAX_VALUE)
             .addGroup(pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pn_guia_consultasLayout.createSequentialGroup()
+                    .addGap(130, 232, Short.MAX_VALUE)
                     .addGroup(pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pn_guia_consultasLayout.createSequentialGroup()
-                            .addGap(130, 232, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pn_guia_consultasLayout.createSequentialGroup()
-                            .addGap(560, 662, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_guia_consultasLayout.createSequentialGroup()
                             .addComponent(btn_excluirC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
                             .addComponent(btn_editarC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -319,6 +329,11 @@ public class Principal extends javax.swing.JFrame {
 
         pn_guia_funcionarios.setAlignmentX(0.0F);
         pn_guia_funcionarios.setAlignmentY(0.0F);
+        pn_guia_funcionarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pn_guia_funcionariosMouseClicked(evt);
+            }
+        });
 
         jScrollPane3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
@@ -431,6 +446,11 @@ public class Principal extends javax.swing.JFrame {
 
         pn_guia_tipos_de_consulta.setAlignmentX(0.0F);
         pn_guia_tipos_de_consulta.setAlignmentY(0.0F);
+        pn_guia_tipos_de_consulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pn_guia_tipos_de_consultaMouseClicked(evt);
+            }
+        });
 
         jScrollPane4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
@@ -506,33 +526,33 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_tipos_de_consulta.setLayout(pn_guia_tipos_de_consultaLayout);
         pn_guia_tipos_de_consultaLayout.setHorizontalGroup(
             pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1600, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_guia_tipos_de_consultaLayout.createSequentialGroup()
+                .addContainerGap(1348, Short.MAX_VALUE)
+                .addGroup(pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_excluirTC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_editarTC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_adicionarTC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
             .addGroup(pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pn_guia_tipos_de_consultaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 16, Short.MAX_VALUE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(73, 73, 73)
-                    .addGroup(pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btn_excluirTC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_editarTC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_adicionarTC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 342, Short.MAX_VALUE)))
         );
         pn_guia_tipos_de_consultaLayout.setVerticalGroup(
             pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1027, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_guia_tipos_de_consultaLayout.createSequentialGroup()
+                .addContainerGap(540, Short.MAX_VALUE)
+                .addComponent(btn_excluirTC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_editarTC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_adicionarTC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(211, 211, 211))
             .addGroup(pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pn_guia_tipos_de_consultaLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(pn_guia_tipos_de_consultaLayout.createSequentialGroup()
-                            .addGap(320, 320, 320)
-                            .addComponent(btn_excluirTC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(btn_editarTC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(btn_adicionarTC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -653,6 +673,22 @@ public class Principal extends javax.swing.JFrame {
             carregarTabelaConsulta();
         }
     }//GEN-LAST:event_btn_excluirTCActionPerformed
+
+    private void pn_guia_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_guia_clientesMouseClicked
+        table_clientes.clearSelection();
+    }//GEN-LAST:event_pn_guia_clientesMouseClicked
+
+    private void pn_guia_consultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_guia_consultasMouseClicked
+        table_consultas.clearSelection();
+    }//GEN-LAST:event_pn_guia_consultasMouseClicked
+
+    private void pn_guia_funcionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_guia_funcionariosMouseClicked
+        table_funcionarios.clearSelection();
+    }//GEN-LAST:event_pn_guia_funcionariosMouseClicked
+
+    private void pn_guia_tipos_de_consultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_guia_tipos_de_consultaMouseClicked
+        table_tipos_de_consulta.clearSelection();
+    }//GEN-LAST:event_pn_guia_tipos_de_consultaMouseClicked
 
       final void carregarTabelaCliente(){
         DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
