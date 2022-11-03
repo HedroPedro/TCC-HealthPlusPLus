@@ -114,8 +114,8 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_clientes.setAlignmentY(0.0F);
         pn_guia_clientes.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         pn_guia_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pn_guia_clientesMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pn_guia_clientesMousePressed(evt);
             }
         });
 
@@ -156,9 +156,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jScrollPane1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        table_clientes.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        table_clientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         table_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -197,31 +197,31 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_clientesLayout.setHorizontalGroup(
             pn_guia_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_guia_clientesLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(92, 92, 92)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pn_guia_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_novocadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_novaconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_editarlinha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                    .addComponent(btn_editarlinha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         pn_guia_clientesLayout.setVerticalGroup(
             pn_guia_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_guia_clientesLayout.createSequentialGroup()
-                .addGap(257, 257, 257)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_guia_clientesLayout.createSequentialGroup()
+                .addGap(200, 200, 200)
                 .addGroup(pn_guia_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pn_guia_clientesLayout.createSequentialGroup()
                         .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_editarlinha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_novaconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_novocadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btn_novocadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(942, 942, 942))
         );
 
         jTabbedPane1.addTab("Clientes", null, pn_guia_clientes, "");
@@ -674,21 +674,29 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_excluirTCActionPerformed
 
-    private void pn_guia_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_guia_clientesMouseClicked
-        table_clientes.clearSelection();
-    }//GEN-LAST:event_pn_guia_clientesMouseClicked
-
     private void pn_guia_consultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_guia_consultasMouseClicked
         table_consultas.clearSelection();
+        btn_editarC.setEnabled(false);
+        btn_excluirC.setEnabled(false);
     }//GEN-LAST:event_pn_guia_consultasMouseClicked
 
     private void pn_guia_funcionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_guia_funcionariosMouseClicked
         table_funcionarios.clearSelection();
+        btn_editarF.setEnabled(false);
+        btn_excluirF.setEnabled(false);
     }//GEN-LAST:event_pn_guia_funcionariosMouseClicked
 
     private void pn_guia_tipos_de_consultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_guia_tipos_de_consultaMouseClicked
         table_tipos_de_consulta.clearSelection();
+        btn_excluirTC.setEnabled(false);
+        btn_editarTC.setEnabled(false);
     }//GEN-LAST:event_pn_guia_tipos_de_consultaMouseClicked
+
+    private void pn_guia_clientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_guia_clientesMousePressed
+        table_clientes.clearSelection();
+        btn_excluir.setEnabled(false);
+        btn_editarC.setEnabled(false);
+    }//GEN-LAST:event_pn_guia_clientesMousePressed
 
       final void carregarTabelaCliente(){
         DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();
