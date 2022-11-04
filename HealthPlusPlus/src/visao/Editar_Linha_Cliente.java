@@ -46,12 +46,14 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         lbl_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
         setMaximumSize(new java.awt.Dimension(750, 300));
         setMinimumSize(new java.awt.Dimension(750, 300));
         setUndecorated(true);
 
         jPanel1.setLayout(null);
 
+        btn_confirmar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_confirmar.setText("Confirmar");
         btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +63,7 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         jPanel1.add(btn_confirmar);
         btn_confirmar.setBounds(590, 230, 120, 40);
 
+        btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,20 +75,24 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         jPanel1.add(edt_nome);
         edt_nome.setBounds(30, 110, 340, 30);
 
+        lbl_telefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_telefone.setText("Telefone:");
         jPanel1.add(lbl_telefone);
         lbl_telefone.setBounds(30, 150, 80, 30);
 
+        lbl_CPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_CPF.setText("CPF:");
         jPanel1.add(lbl_CPF);
         lbl_CPF.setBounds(440, 150, 50, 30);
 
+        lbl_endereco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_endereco.setText("Endereço:");
         jPanel1.add(lbl_endereco);
         lbl_endereco.setBounds(390, 80, 90, 30);
         jPanel1.add(edt_endereco);
         edt_endereco.setBounds(390, 110, 320, 30);
 
+        lbl_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_nome.setText("Nome:");
         jPanel1.add(lbl_nome);
         lbl_nome.setBounds(30, 80, 50, 30);
@@ -130,7 +137,7 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
 
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
         if(edt_nome.getText().equals("") || edt_endereco.getText().equals("") || edt_telefone.getText().equals("") || edt_CPF.getText().equals(""))
-            JOptionPane.showMessageDialog(null, "Algumas dos campos está vazio");
+            JOptionPane.showMessageDialog(null, "Algum dos campos está vazio");
         else{
             Cliente cliente = new Cliente(edt_nome.getText(), edt_telefone.getText(), edt_endereco.getText(), edt_CPF.getText());
             if(cliente.estaCertoCPF()){

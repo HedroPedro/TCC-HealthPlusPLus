@@ -185,7 +185,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         if(edt_nome.getText().equals("") || edt_hora.getText().equals("  :  ") || edt_data.getText().equals("  /  /    ") || edt_preco.getText().equals("  ,  ")){
-            JOptionPane.showMessageDialog(null, "Alguns dos campos está vazio");
+            JOptionPane.showMessageDialog(null, "Algum dos campos está vazio");
         }else{
             Date data = new Date();
             try {

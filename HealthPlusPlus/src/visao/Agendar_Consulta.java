@@ -44,7 +44,6 @@ public class Agendar_Consulta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(550, 400));
         setMinimumSize(new java.awt.Dimension(550, 400));
         setUndecorated(true);
         setResizable(false);
@@ -58,11 +57,11 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(340, 280, 130, 40);
+        btn_cancelar.setBounds(380, 320, 130, 40);
 
         edt_nome.setEditable(false);
         jPanel1.add(edt_nome);
-        edt_nome.setBounds(121, 112, 326, 22);
+        edt_nome.setBounds(140, 102, 350, 30);
 
         try {
             edt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -70,7 +69,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jPanel1.add(edt_data);
-        edt_data.setBounds(144, 146, 100, 22);
+        edt_data.setBounds(140, 140, 110, 30);
 
         try {
             edt_hora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
@@ -78,12 +77,18 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         edt_hora.setPreferredSize(new java.awt.Dimension(100, 22));
+        edt_hora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edt_horaActionPerformed(evt);
+            }
+        });
         jPanel1.add(edt_hora);
-        edt_hora.setBounds(305, 146, 100, 22);
+        edt_hora.setBounds(320, 142, 120, 30);
 
+        lbl_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_nome.setText("Nome:");
         jPanel1.add(lbl_nome);
-        lbl_nome.setBounds(79, 115, 36, 16);
+        lbl_nome.setBounds(90, 100, 40, 30);
 
         btn_agendar.setText("Agendar");
         btn_agendar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,23 +97,30 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_agendar);
-        btn_agendar.setBounds(204, 280, 130, 40);
+        btn_agendar.setBounds(240, 320, 130, 40);
 
+        lbl_hora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_hora.setText("Horário:");
         jPanel1.add(lbl_hora);
-        lbl_hora.setBounds(256, 149, 43, 16);
+        lbl_hora.setBounds(260, 140, 49, 30);
 
+        lbl_data.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_data.setText("Data:");
         jPanel1.add(lbl_data);
-        lbl_data.setBounds(111, 149, 27, 16);
+        lbl_data.setBounds(90, 140, 40, 30);
 
         int i = 1;
         for(String tipo : nomesConsulta.pegarNome()){
             ComboBox_Consultas.addItem(i+"- "+tipo);
             i++;
         }
+        ComboBox_Consultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBox_ConsultasActionPerformed(evt);
+            }
+        });
         jPanel1.add(ComboBox_Consultas);
-        ComboBox_Consultas.setBounds(300, 220, 110, 22);
+        ComboBox_Consultas.setBounds(320, 190, 110, 22);
 
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Agendar Consulta.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
@@ -157,6 +169,14 @@ public class Agendar_Consulta extends javax.swing.JFrame {
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void ComboBox_ConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_ConsultasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBox_ConsultasActionPerformed
+
+    private void edt_horaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edt_horaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edt_horaActionPerformed
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBox_Consultas;

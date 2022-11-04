@@ -100,7 +100,7 @@ public class Principal extends javax.swing.JFrame {
         setTitle("Health++");
         setExtendedState(MAXIMIZED_BOTH);
         setName("Menu Principal"); // NOI18N
-        setResizable(false);
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setAlignmentX(0.0F);

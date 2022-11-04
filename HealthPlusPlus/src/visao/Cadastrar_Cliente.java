@@ -47,29 +47,29 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
         jPanel1.add(Edt_Nome);
-        Edt_Nome.setBounds(181, 176, 508, 24);
+        Edt_Nome.setBounds(190, 180, 510, 24);
 
-        lbl_nome.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lbl_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_nome.setText("Nome:");
         jPanel1.add(lbl_nome);
-        lbl_nome.setBounds(121, 174, 48, 21);
+        lbl_nome.setBounds(140, 180, 40, 20);
 
-        lbl_end.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        lbl_end.setText("Endereço");
+        lbl_end.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_end.setText("Endereço:");
         jPanel1.add(lbl_end);
-        lbl_end.setBounds(110, 206, 68, 24);
+        lbl_end.setBounds(120, 210, 59, 20);
         jPanel1.add(Edt_Endereco);
-        Edt_Endereco.setBounds(190, 208, 499, 24);
+        Edt_Endereco.setBounds(190, 210, 510, 24);
 
-        lbl_telefone.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        lbl_telefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_telefone.setText("Telefone:");
         jPanel1.add(lbl_telefone);
-        lbl_telefone.setBounds(396, 238, 68, 24);
+        lbl_telefone.setBounds(410, 240, 54, 20);
 
-        lbl_CPF.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        lbl_CPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_CPF.setText("CPF:");
         jPanel1.add(lbl_CPF);
-        lbl_CPF.setBounds(95, 238, 37, 24);
+        lbl_CPF.setBounds(100, 240, 27, 20);
 
         try {
             edt_CPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -79,6 +79,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         jPanel1.add(edt_CPF);
         edt_CPF.setBounds(138, 241, 252, 22);
 
+        btn_confirmar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_confirmar.setText("Confirmar");
         btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,8 +87,9 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_confirmar);
-        btn_confirmar.setBounds(640, 390, 130, 52);
+        btn_confirmar.setBounds(620, 390, 130, 52);
 
+        btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +97,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(490, 390, 131, 52);
+        btn_cancelar.setBounds(470, 390, 131, 52);
 
         try {
             edt_Telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));

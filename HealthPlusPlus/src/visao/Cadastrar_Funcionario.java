@@ -32,6 +32,7 @@ public class Cadastrar_Funcionario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbl_Name = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         edt_nome = new javax.swing.JTextField();
         combo_tipo = new javax.swing.JComboBox<>();
         btn_cadastrar = new javax.swing.JButton();
@@ -48,17 +49,25 @@ public class Cadastrar_Funcionario extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(550, 400));
         jPanel1.setLayout(null);
 
+        lbl_Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_Name.setText("Nome:");
         jPanel1.add(lbl_Name);
-        lbl_Name.setBounds(50, 130, 40, 20);
+        lbl_Name.setBounds(70, 130, 40, 20);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Nível de Acesso:");
+        jLabel2.setToolTipText("");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(180, 160, 140, 20);
         jPanel1.add(edt_nome);
-        edt_nome.setBounds(90, 130, 326, 22);
+        edt_nome.setBounds(120, 130, 326, 22);
 
         combo_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Administrador" }));
         combo_tipo.setSelectedIndex(-1);
         jPanel1.add(combo_tipo);
-        combo_tipo.setBounds(200, 160, 130, 22);
+        combo_tipo.setBounds(290, 160, 130, 22);
 
+        btn_cadastrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_cadastrar.setText("Cadastrar");
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,8 +75,9 @@ public class Cadastrar_Funcionario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cadastrar);
-        btn_cadastrar.setBounds(110, 280, 130, 40);
+        btn_cadastrar.setBounds(250, 330, 130, 40);
 
+        btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +85,7 @@ public class Cadastrar_Funcionario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(290, 280, 130, 40);
+        btn_cancelar.setBounds(390, 330, 130, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Agendar Consulta.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -115,6 +125,7 @@ public class Cadastrar_Funcionario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combo_tipo;
     private javax.swing.JTextField edt_nome;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_Name;
     // End of variables declaration//GEN-END:variables
