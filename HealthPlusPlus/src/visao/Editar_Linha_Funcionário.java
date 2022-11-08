@@ -2,7 +2,6 @@ package visao;
 
 import java.util.Random;
 import javax.swing.JOptionPane;
-import modelador.Conectador;
 import modelador.GeradorSenha;
 import modelador.JDBCUsuario;
 
@@ -129,6 +128,7 @@ public class Editar_Linha_Funcionário extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed

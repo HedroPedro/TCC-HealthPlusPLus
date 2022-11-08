@@ -28,10 +28,12 @@ public class Principal extends javax.swing.JFrame {
     int index = 0;
     
     BufferedImage backImage;
+    javax.swing.ImageIcon icon;
     
     public Principal(int nivelAcesso, Connection con) {
         try {
             this.backImage = ImageIO.read(getClass().getResource("/visao/imgs/Tela Principal Cadastro.jpg"));
+            this.icon = new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/ICON JAR ARCHIVE.png"));
         } catch (IOException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -39,13 +41,15 @@ public class Principal extends javax.swing.JFrame {
         agendamentos = new JDBCAgendamento(con);
         funcionario = new JDBCUsuario(con);
         tiposDeConsulta = new JDBCTiposDeConsulta(con);
-
-        setVisible(true);
         
+        
+        setVisible(true);
         initComponents();
         
         carregarTabelaCliente();
         carregarTabelaConsulta();
+        
+        pack();
         
         int largura = jTabbedPane1.getWidth();
         int altura = pn_guia_clientes.getHeight();
@@ -99,14 +103,21 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Health++");
         setExtendedState(MAXIMIZED_BOTH);
+        setFocusTraversalPolicyProvider(true);
+        setIconImage(icon.getImage());
         setName("Menu Principal"); // NOI18N
+        setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.BorderLayout());
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setAlignmentX(0.0F);
         jTabbedPane1.setAlignmentY(0.0F);
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTabbedPane1.setMaximumSize(getSize());
         jTabbedPane1.setMinimumSize(getSize());
 
         pn_guia_clientes.setToolTipText("");
@@ -150,6 +161,7 @@ public class Principal extends javax.swing.JFrame {
 
         btn_novaconsulta.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btn_novaconsulta.setText("Nova Consulta");
+        btn_novaconsulta.setEnabled(false);
         btn_novaconsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_novaconsultaActionPerformed(evt);
@@ -210,7 +222,7 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_clientesLayout.setVerticalGroup(
             pn_guia_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_guia_clientesLayout.createSequentialGroup()
-                .addGap(200, 200, 200)
+                .addGap(215, 215, 215)
                 .addGroup(pn_guia_clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pn_guia_clientesLayout.createSequentialGroup()
@@ -299,7 +311,7 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_consultas.setLayout(pn_guia_consultasLayout);
         pn_guia_consultasLayout.setHorizontalGroup(
             pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1600, Short.MAX_VALUE)
+            .addGap(0, 1603, Short.MAX_VALUE)
             .addGroup(pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pn_guia_consultasLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -308,21 +320,21 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btn_excluirC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_editarC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 58, Short.MAX_VALUE)))
+                    .addGap(0, 61, Short.MAX_VALUE)))
         );
         pn_guia_consultasLayout.setVerticalGroup(
             pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1027, Short.MAX_VALUE)
+            .addGap(0, 1757, Short.MAX_VALUE)
             .addGroup(pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pn_guia_consultasLayout.createSequentialGroup()
-                    .addGap(130, 232, Short.MAX_VALUE)
+                    .addGap(130, 596, Short.MAX_VALUE)
                     .addGroup(pn_guia_consultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_guia_consultasLayout.createSequentialGroup()
                             .addComponent(btn_excluirC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
                             .addComponent(btn_editarC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 195, Short.MAX_VALUE)))
+                    .addGap(0, 561, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Consultas", pn_guia_consultas);
@@ -412,7 +424,7 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_funcionarios.setLayout(pn_guia_funcionariosLayout);
         pn_guia_funcionariosLayout.setHorizontalGroup(
             pn_guia_funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1600, Short.MAX_VALUE)
+            .addGap(0, 1603, Short.MAX_VALUE)
             .addGroup(pn_guia_funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pn_guia_funcionariosLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -426,7 +438,7 @@ public class Principal extends javax.swing.JFrame {
         );
         pn_guia_funcionariosLayout.setVerticalGroup(
             pn_guia_funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1027, Short.MAX_VALUE)
+            .addGap(0, 1757, Short.MAX_VALUE)
             .addGroup(pn_guia_funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pn_guia_funcionariosLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -527,7 +539,7 @@ public class Principal extends javax.swing.JFrame {
         pn_guia_tipos_de_consultaLayout.setHorizontalGroup(
             pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_guia_tipos_de_consultaLayout.createSequentialGroup()
-                .addContainerGap(1348, Short.MAX_VALUE)
+                .addContainerGap(1351, Short.MAX_VALUE)
                 .addGroup(pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_excluirTC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_editarTC, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -535,14 +547,14 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
             .addGroup(pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pn_guia_tipos_de_consultaLayout.createSequentialGroup()
-                    .addGap(0, 16, Short.MAX_VALUE)
+                    .addGap(0, 18, Short.MAX_VALUE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 342, Short.MAX_VALUE)))
+                    .addGap(0, 343, Short.MAX_VALUE)))
         );
         pn_guia_tipos_de_consultaLayout.setVerticalGroup(
             pn_guia_tipos_de_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_guia_tipos_de_consultaLayout.createSequentialGroup()
-                .addContainerGap(540, Short.MAX_VALUE)
+                .addContainerGap(1270, Short.MAX_VALUE)
                 .addComponent(btn_excluirTC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_editarTC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -560,8 +572,6 @@ public class Principal extends javax.swing.JFrame {
 
         getContentPane().add(jTabbedPane1, java.awt.BorderLayout.PAGE_START);
         jTabbedPane1.setPreferredSize(getSize());
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -592,6 +602,7 @@ public class Principal extends javax.swing.JFrame {
     private void table_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_clientesMouseClicked
         index = table_clientes.getSelectedRow();
         cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
+        btn_novaconsulta.setEnabled(true);
         btn_excluir.setEnabled(true);
         btn_editarlinha.setEnabled(true);
         btn_novaconsulta.setEnabled(true);
@@ -694,9 +705,14 @@ public class Principal extends javax.swing.JFrame {
 
     private void pn_guia_clientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pn_guia_clientesMousePressed
         table_clientes.clearSelection();
+        btn_novaconsulta.setEnabled(false);
         btn_excluir.setEnabled(false);
-        btn_editarC.setEnabled(false);
+        btn_editarlinha.setEnabled(false);
     }//GEN-LAST:event_pn_guia_clientesMousePressed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+
+    }//GEN-LAST:event_formComponentResized
 
       final void carregarTabelaCliente(){
         DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();

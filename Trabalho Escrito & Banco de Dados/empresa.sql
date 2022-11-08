@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Out-2022 às 03:21
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Tempo de geração: 08-Nov-2022 às 18:39
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
 --
 
 INSERT INTO `tb_cliente` (`COD_CLIENTE`, `NOME_CLIENTE`, `END_CLIENTE`, `TEL_CLIENTE`, `CPF_CLIENTE`) VALUES
+(1, 'Antônio Aladin', 'Rua Dom Carlos, n°80', '(14) 9512-6156', '426.894.837-69'),
 (2, 'Carlos', 'Rua Almeida', '(14) 9999-9999', '355.725.290-60'),
 (3, 'Pedro', 'Rua 4, n° 66', '(14) 7777-7777', '389.748.611-35');
 

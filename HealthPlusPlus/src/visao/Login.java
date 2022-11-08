@@ -1,6 +1,11 @@
 package visao;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import modelador.Conectador;
 import modelador.JDBCUsuario;
@@ -16,7 +21,16 @@ public class Login extends javax.swing.JFrame {
     public Login() {       
         initComponents();
         
-        setImageIcon();
+        
+        try{
+            BufferedImage img = ImageIO.read(getClass().getResource("/visao/imgs/Tela Login - X.jpg"));
+            jBackgroundPanel1.setImg(img);
+            jBackgroundPanel1.formatarImagem(getWidth(), getHeight());
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        setImages();
     }
 
     @SuppressWarnings("unchecked")
@@ -24,12 +38,11 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         lbl_imagem = new javax.swing.JLabel();
-        Pn_telaLogin = new javax.swing.JPanel();
+        jBackgroundPanel1 = new visao.JBackgroundPanel();
         btn_login = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
         btn_cancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -38,13 +51,6 @@ public class Login extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(600, 800));
         setName("LOGIN"); // NOI18N
         setUndecorated(true);
-        getContentPane().setLayout(null);
-
-        Pn_telaLogin.setBackground(new java.awt.Color(204, 204, 255));
-        Pn_telaLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Pn_telaLogin.setMaximumSize(new java.awt.Dimension(600, 800));
-        Pn_telaLogin.setName(""); // NOI18N
-        Pn_telaLogin.setLayout(null);
 
         btn_login.setBackground(new java.awt.Color(204, 204, 204));
         btn_login.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -56,18 +62,12 @@ public class Login extends javax.swing.JFrame {
                 btn_loginActionPerformed(evt);
             }
         });
-        Pn_telaLogin.add(btn_login);
-        btn_login.setBounds(170, 630, 280, 90);
-        Pn_telaLogin.add(txtUsuario);
-        txtUsuario.setBounds(140, 480, 330, 38);
 
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
             }
         });
-        Pn_telaLogin.add(txtSenha);
-        txtSenha.setBounds(140, 570, 330, 41);
 
         btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
@@ -76,32 +76,43 @@ public class Login extends javax.swing.JFrame {
                 btn_cancelarActionPerformed(evt);
             }
         });
-        Pn_telaLogin.add(btn_cancelar);
-        btn_cancelar.setBounds(260, 730, 110, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Login - X.jpg"))); // NOI18N
-        Pn_telaLogin.add(jLabel1);
-        jLabel1.setBounds(0, 0, 600, 800);
+        javax.swing.GroupLayout jBackgroundPanel1Layout = new javax.swing.GroupLayout(jBackgroundPanel1);
+        jBackgroundPanel1.setLayout(jBackgroundPanel1Layout);
+        jBackgroundPanel1Layout.setHorizontalGroup(
+            jBackgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBackgroundPanel1Layout.createSequentialGroup()
+                .addContainerGap(138, Short.MAX_VALUE)
+                .addGroup(jBackgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jBackgroundPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jBackgroundPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(132, 132, 132))
+        );
+        jBackgroundPanel1Layout.setVerticalGroup(
+            jBackgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBackgroundPanel1Layout.createSequentialGroup()
+                .addContainerGap(480, Short.MAX_VALUE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+        );
 
-        getContentPane().add(Pn_telaLogin);
-        Pn_telaLogin.setBounds(0, 0, 600, 800);
+        getContentPane().add(jBackgroundPanel1, java.awt.BorderLayout.PAGE_START);
 
-        pack();
+        setSize(new java.awt.Dimension(600, 800));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        String nome = txtUsuario.getText();
-        String senha = String.valueOf(txtSenha.getPassword());
-        if(checadorDeUsuario.existeUsuario(nome,senha)){
-            
-            Principal p = new Principal(checadorDeUsuario.pegarNivelDeAcesso(nome, senha), con);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Login e senha inválido");
-        }
-        
-    }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         dispose();
@@ -111,9 +122,23 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtSenhaActionPerformed
 
-    private void setImageIcon(){
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        String nome = txtUsuario.getText();
+        String senha = String.valueOf(txtSenha.getPassword());
+        if(checadorDeUsuario.existeUsuario(nome,senha)){
+
+            dispose();
+            new Principal(checadorDeUsuario.pegarNivelDeAcesso(nome, senha), con);
+        }else{
+            JOptionPane.showMessageDialog(null, "Login e senha inválido");
+        }
+    }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void setImages(){
         javax.swing.ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/ICON JAR ARCHIVE.png"));
         this.setIconImage(imageIcon.getImage());
+        jBackgroundPanel1.formatarImagem(getWidth(), getHeight());
+        
     }
     /**.
      * @param args the command line arguments
@@ -152,10 +177,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Pn_telaLogin;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_login;
-    private javax.swing.JLabel jLabel1;
+    private visao.JBackgroundPanel jBackgroundPanel1;
     private javax.swing.JLabel lbl_imagem;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
