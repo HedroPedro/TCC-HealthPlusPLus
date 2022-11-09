@@ -51,6 +51,7 @@ public class Login extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(600, 800));
         setName("LOGIN"); // NOI18N
         setUndecorated(true);
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         btn_login.setBackground(new java.awt.Color(204, 204, 204));
         btn_login.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -63,6 +64,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -123,7 +127,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        String nome = txtUsuario.getText();
+        String nome = txtUsuario.getText().trim();
         String senha = String.valueOf(txtSenha.getPassword());
         if(checadorDeUsuario.existeUsuario(nome,senha)){
 
