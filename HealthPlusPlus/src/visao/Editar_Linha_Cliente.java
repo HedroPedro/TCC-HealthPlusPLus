@@ -53,7 +53,7 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        btn_confirmar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_confirmar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_confirmar.setText("Confirmar");
         btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,9 +61,9 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_confirmar);
-        btn_confirmar.setBounds(590, 230, 120, 40);
+        btn_confirmar.setBounds(590, 210, 120, 50);
 
-        btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_cancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,47 +71,53 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(450, 230, 120, 40);
-        jPanel1.add(edt_nome);
-        edt_nome.setBounds(30, 110, 340, 30);
+        btn_cancelar.setBounds(450, 210, 120, 50);
 
-        lbl_telefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        edt_nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jPanel1.add(edt_nome);
+        edt_nome.setBounds(30, 80, 340, 30);
+
+        lbl_telefone.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_telefone.setText("Telefone:");
         jPanel1.add(lbl_telefone);
-        lbl_telefone.setBounds(30, 150, 80, 30);
+        lbl_telefone.setBounds(30, 120, 80, 30);
 
-        lbl_CPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_CPF.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_CPF.setText("CPF:");
         jPanel1.add(lbl_CPF);
-        lbl_CPF.setBounds(440, 150, 50, 30);
+        lbl_CPF.setBounds(390, 120, 50, 30);
 
-        lbl_endereco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_endereco.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_endereco.setText("Endereço:");
         jPanel1.add(lbl_endereco);
-        lbl_endereco.setBounds(390, 80, 90, 30);
-        jPanel1.add(edt_endereco);
-        edt_endereco.setBounds(390, 110, 320, 30);
+        lbl_endereco.setBounds(390, 50, 90, 30);
 
-        lbl_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        edt_endereco.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jPanel1.add(edt_endereco);
+        edt_endereco.setBounds(390, 80, 320, 30);
+
+        lbl_nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_nome.setText("Nome:");
         jPanel1.add(lbl_nome);
-        lbl_nome.setBounds(30, 80, 50, 30);
+        lbl_nome.setBounds(30, 50, 70, 30);
 
         try {
             edt_telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        edt_telefone.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPanel1.add(edt_telefone);
-        edt_telefone.setBounds(30, 180, 340, 30);
+        edt_telefone.setBounds(30, 150, 340, 30);
 
         try {
             edt_CPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        edt_CPF.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPanel1.add(edt_CPF);
-        edt_CPF.setBounds(440, 180, 270, 30);
+        edt_CPF.setBounds(390, 150, 320, 30);
 
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);

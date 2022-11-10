@@ -58,35 +58,36 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(750, 300));
         jPanel1.setLayout(null);
 
-        edt_nome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        edt_nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         edt_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edt_nomeActionPerformed(evt);
             }
         });
         jPanel1.add(edt_nome);
-        edt_nome.setBounds(90, 90, 210, 40);
+        edt_nome.setBounds(40, 80, 650, 30);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Preço da Consulta:");
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setText("Preço:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(460, 60, 200, 30);
+        jLabel2.setBounds(510, 120, 200, 30);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Nome do Cliente:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(90, 50, 170, 30);
+        jLabel1.setBounds(40, 50, 170, 30);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("Data:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(90, 130, 110, 30);
+        jLabel3.setBounds(40, 120, 110, 30);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("Hora:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(460, 130, 80, 30);
+        jLabel4.setBounds(290, 120, 80, 30);
 
+        btn_confirmar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_confirmar.setText("Confirmar");
         btn_confirmar.setBorder(null);
         btn_confirmar.setMaximumSize(new java.awt.Dimension(120, 40));
@@ -96,8 +97,9 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_confirmar);
-        btn_confirmar.setBounds(590, 230, 120, 40);
+        btn_confirmar.setBounds(570, 210, 120, 50);
 
+        btn_cancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.setBorder(null);
         btn_cancelar.setBorderPainted(false);
@@ -108,42 +110,45 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(450, 230, 120, 40);
+        btn_cancelar.setBounds(430, 210, 120, 50);
 
         edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###.0#"))));
+        edt_preco.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         edt_preco.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 edt_precoFocusLost(evt);
             }
         });
         jPanel1.add(edt_preco);
-        edt_preco.setBounds(460, 90, 210, 40);
+        edt_preco.setBounds(290, 150, 180, 30);
 
         try {
             edt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        edt_data.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         edt_data.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edt_dataActionPerformed(evt);
             }
         });
         jPanel1.add(edt_data);
-        edt_data.setBounds(90, 170, 210, 40);
+        edt_data.setBounds(40, 150, 180, 30);
 
         try {
             edt_hora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        edt_hora.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         edt_hora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edt_horaActionPerformed(evt);
             }
         });
         jPanel1.add(edt_hora);
-        edt_hora.setBounds(460, 170, 210, 40);
+        edt_hora.setBounds(510, 150, 180, 30);
 
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);

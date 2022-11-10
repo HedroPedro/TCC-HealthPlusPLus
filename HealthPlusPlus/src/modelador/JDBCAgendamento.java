@@ -40,7 +40,7 @@ public class JDBCAgendamento {
     }
     
     public void inserirAgendamento(Agendamento a){
-        String sql = "Select NOME from tb_cliente where COD_CLIENTE = ?";
+        String sql = "Select NOME_CLIENTE from tb_cliente where COD_CLIENTE = ?";
         PreparedStatement ps;
         String nome = "";
         
