@@ -171,6 +171,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
 
         table_clientes.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
+        table_clientes.getTableHeader().setFont(new java.awt.Font("Arial Black", 0, 16));
         table_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -188,11 +189,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         table_clientes.setToolTipText("");
+        table_clientes.setAlignmentX(0.0F);
+        table_clientes.setAlignmentY(0.0F);
         table_clientes.setGridColor(new java.awt.Color(0, 0, 0));
-        table_clientes.setIntercellSpacing(new java.awt.Dimension(5, 5));
+        table_clientes.setName(""); // NOI18N
+        table_clientes.setRowHeight(40);
         table_clientes.setShowGrid(true);
         table_clientes.getTableHeader().setReorderingAllowed(false);
-        table_clientes.getTableHeader().setFont(new java.awt.Font("Arial Black", 0, 16));
         table_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 table_clientesMouseClicked(evt);
@@ -202,6 +205,7 @@ public class Principal extends javax.swing.JFrame {
         if (table_clientes.getColumnModel().getColumnCount() > 0) {
             table_clientes.getColumnModel().getColumn(0).setPreferredWidth(50);
             table_clientes.getColumnModel().getColumn(1).setPreferredWidth(150);
+            table_clientes.getColumnModel().getColumn(2).setPreferredWidth(250);
         }
 
         javax.swing.GroupLayout pn_guia_clientesLayout = new javax.swing.GroupLayout(pn_guia_clientes);
@@ -248,7 +252,8 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
-        table_consultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        table_consultas.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
+        table_consultas.getTableHeader().setFont(new java.awt.Font("Arial Black", 0, 16));
         table_consultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -272,8 +277,13 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        table_consultas.setAlignmentX(0.0F);
+        table_consultas.setAlignmentY(0.0F);
         table_consultas.setGridColor(new java.awt.Color(0, 0, 0));
+        table_consultas.setRowHeight(40);
+        table_consultas.setRowMargin(10);
         table_consultas.setShowGrid(true);
+        table_consultas.getTableHeader().setReorderingAllowed(false);
         table_consultas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 table_consultasMouseClicked(evt);
@@ -349,7 +359,8 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
-        table_funcionarios.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        table_funcionarios.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
+        table_funcionarios.getTableHeader().setFont(new java.awt.Font("Arial Black", 0, 16));
         table_funcionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -373,8 +384,13 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        table_funcionarios.setAlignmentX(0.0F);
+        table_funcionarios.setAlignmentY(0.0F);
         table_funcionarios.setGridColor(new java.awt.Color(0, 0, 0));
+        table_funcionarios.setRowHeight(40);
+        table_funcionarios.setRowMargin(10);
         table_funcionarios.setShowGrid(true);
+        table_funcionarios.getTableHeader().setReorderingAllowed(false);
         table_funcionarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 table_funcionariosMouseClicked(evt);
@@ -466,7 +482,9 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
-        table_tipos_de_consulta.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        table_tipos_de_consulta.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
+        table_tipos_de_consulta.getTableHeader().setFont(new java.awt.Font("Arial Black", 0, 16) {
+        });
         table_tipos_de_consulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -491,7 +509,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         table_tipos_de_consulta.setGridColor(new java.awt.Color(0, 0, 0));
+        table_tipos_de_consulta.setRowHeight(40);
+        table_tipos_de_consulta.setRowMargin(15);
         table_tipos_de_consulta.setShowGrid(true);
+        table_tipos_de_consulta.getTableHeader().setReorderingAllowed(false);
         table_tipos_de_consulta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 table_tipos_de_consultaMouseClicked(evt);
