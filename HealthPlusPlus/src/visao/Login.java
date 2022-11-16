@@ -132,7 +132,7 @@ public class Login extends javax.swing.JFrame {
         if(checadorDeUsuario.existeUsuario(nome,senha)){
 
             dispose();
-            new Principal(checadorDeUsuario.pegarNivelDeAcesso(nome, senha), con);
+            Principal principal = new Principal(checadorDeUsuario.pegarNivelDeAcesso(nome, senha), this.con);
         }else{
             JOptionPane.showMessageDialog(null, "Login e senha inválido");
         }

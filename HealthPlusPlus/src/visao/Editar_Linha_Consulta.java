@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import modelador.Conectador;
 import modelador.JDBCAgendamento;
 import modelos.Agendamento;
 

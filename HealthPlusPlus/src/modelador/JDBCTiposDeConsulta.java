@@ -34,14 +34,14 @@ public class JDBCTiposDeConsulta {
         return tipos;
     }
     
-    public float pegarPreco(int cod){
-        String sql = "Select preco from Tb_tiposdeconsulta where COD = ?";
+    public float pegarPreco(String nome_Consulta){
+        String sql = "Select preco from Tb_tiposdeconsulta where NOMECONSULTA like ?";
         float preco = 0.0f;
         PreparedStatement ps;
         
         try {
             ps = this.con.prepareStatement(sql);
-            ps.setInt(1, cod);
+            ps.setString(1, nome_Consulta);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
@@ -89,6 +89,29 @@ public class JDBCTiposDeConsulta {
         return tipos;
     }
 
+    public int pegarCodConsulta(String nome_Consulta){
+        int codigo = 0;
+        
+        String sql = "Select COD from tb_tiposdeconsulta where NOMECONSULTA like ?";
+        PreparedStatement ps;
+        
+            try {
+                ps = this.con.prepareStatement(sql);
+                ps.setString(1, nome_Consulta);
+                ResultSet rs = ps.executeQuery();
+                
+                while(rs.next()){
+                    codigo = rs.getInt(1);
+                    return codigo;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(JDBCTiposDeConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        
+        return codigo;
+    }
+    
     public void excluirTipoDeConsulta(int cod) {
         String sql = "Update tb_agendamento SET TIPO_CONSULTA = 0 where TIPO_CONSULTA = ?";
         PreparedStatement ps;

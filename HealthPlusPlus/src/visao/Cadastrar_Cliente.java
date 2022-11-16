@@ -1,7 +1,10 @@
 package visao;
 
 import javax.swing.JOptionPane;
-import modelador.Formatador;
+import bibliotecas.Formatador;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelador.JDBCCliente;
 import modelos.Cliente;
 
@@ -22,6 +25,10 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         this.p = p;
         this.lidaCliente = lidaCliente;
     }
+    
+    public Cadastrar_Cliente(){
+        initComponents();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -37,7 +44,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         edt_CPF = new javax.swing.JFormattedTextField();
         btn_confirmar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
-        Edt_Telefone = new javax.swing.JTextField();
+        edt_Telefone = new javax.swing.JFormattedTextField();
         lbl_fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,7 +88,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jPanel1.add(edt_CPF);
-        edt_CPF.setBounds(138, 241, 252, 22);
+        edt_CPF.setBounds(130, 240, 252, 22);
 
         btn_confirmar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_confirmar.setText("Confirmar");
@@ -103,13 +110,18 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         jPanel1.add(btn_cancelar);
         btn_cancelar.setBounds(470, 390, 131, 52);
 
-        Edt_Telefone.addKeyListener(new java.awt.event.KeyAdapter() {
+        try {
+            edt_Telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        edt_Telefone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Edt_TelefoneKeyPressed(evt);
+                edt_TelefoneKeyPressed(evt);
             }
         });
-        jPanel1.add(Edt_Telefone);
-        Edt_Telefone.setBounds(470, 240, 250, 24);
+        jPanel1.add(edt_Telefone);
+        edt_Telefone.setBounds(470, 240, 230, 22);
 
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Cadastrar.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
@@ -131,31 +143,31 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
-        Cliente cliente = new Cliente(Edt_Nome.getText(),Edt_Telefone.getText(), Edt_Endereco.getText(), edt_CPF.getText());
-        if(cliente.estaCertoCPF()){
+        Cliente cliente = new Cliente(Edt_Nome.getText(),edt_Telefone.getText(), Edt_Endereco.getText(), edt_CPF.getText());
+        if(cliente.estaCertoCPF() && cliente.estaCertoTelefone()){
             lidaCliente.adicionarCliente(cliente);
             p.carregarTabelaCliente();
             dispose();
         }
         else
-            JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido");
+            JOptionPane.showMessageDialog(null, "Digite um CPF válido");
     }//GEN-LAST:event_btn_confirmarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
-    private void Edt_TelefoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edt_TelefoneKeyPressed
-        formatador.formatarTelefone(Edt_Telefone.getText());
-    }//GEN-LAST:event_Edt_TelefoneKeyPressed
+    private void edt_TelefoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edt_TelefoneKeyPressed
 
+    }//GEN-LAST:event_edt_TelefoneKeyPressed
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Edt_Endereco;
     private javax.swing.JTextField Edt_Nome;
-    private javax.swing.JTextField Edt_Telefone;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_confirmar;
     private javax.swing.JFormattedTextField edt_CPF;
+    private javax.swing.JFormattedTextField edt_Telefone;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_CPF;
     private javax.swing.JLabel lbl_end;

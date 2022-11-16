@@ -7,6 +7,7 @@ public class Agendamento {
     private Date datahora;
     private int cod_cliente;
     private int tipo_consulta;
+    private String nome_consulta;
     private String nome_cliente;
 
     public Agendamento(int codigo, Date datahora, String nome_cliente) {
@@ -15,6 +16,12 @@ public class Agendamento {
         this.nome_cliente = nome_cliente;
     }
     private float preco;
+
+    public Agendamento(Date parsedDate, int cod, String nome_consulta) {
+        this.datahora = parsedDate;
+        this.cod_cliente = cod;
+        this.nome_consulta = nome_consulta;
+    }
     
     public String getNome_cliente() {
         return nome_cliente;
@@ -62,6 +69,14 @@ public class Agendamento {
         this.datahora = datahora;
         this.cod_cliente = cod_cliente;
         this.tipo_consulta = tipo_consulta;
+    }
+
+    public String getNome_consulta() {
+        return nome_consulta;
+    }
+
+    public void setNome_consulta(String nome_consulta) {
+        this.nome_consulta = nome_consulta;
     }
 
     public int getCodigo() {

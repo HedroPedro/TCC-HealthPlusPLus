@@ -2,7 +2,7 @@ package visao;
 
 import java.util.Random;
 import javax.swing.JOptionPane;
-import modelador.GeradorSenha;
+import bibliotecas.GeradorSenha;
 import modelador.JDBCUsuario;
 
 public class Cadastrar_Funcionario extends javax.swing.JFrame {

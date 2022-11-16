@@ -40,10 +40,11 @@ public class JDBCAgendamento {
     }
     
     public void inserirAgendamento(Agendamento a){
-        String sql = "Select NOME from tb_cliente where COD_CLIENTE = ?";
+        String sql = "Select NOME_CLIENTE from tb_cliente where COD_CLIENTE = ?";
         PreparedStatement ps;
         String nome = "";
         
+        System.out.println(a.getCod_cliente());
         try {
             ps = c.prepareStatement(sql);
             ps.setInt(1, a.getCod_cliente());
@@ -55,11 +56,12 @@ public class JDBCAgendamento {
         }
         
         sql = "Insert into Tb_Agendamento(DATAHORA, TIPO_CONSULTA, COD_CLIENTE, NOME_CLIENTE, PRECO) values(?,?,?,?,?)";
-        float preco = new JDBCTiposDeConsulta(new Conectador().abrirConnection()).pegarPreco(a.getTipo_consulta());
+        float preco = new JDBCTiposDeConsulta(c).pegarPreco(a.getNome_consulta());
+        int tipoDeConsulta = new JDBCTiposDeConsulta(c).pegarCodConsulta(a.getNome_consulta());
         try {
             ps = c.prepareStatement(sql);
             ps.setTimestamp(1, new Timestamp(a.getDatahora().getTime()));
-            ps.setInt(2, a.getTipo_consulta());
+            ps.setInt(2, tipoDeConsulta);
             ps.setInt(3, a.getCod_cliente());
             ps.setString(4, nome);
             ps.setFloat(5, preco);

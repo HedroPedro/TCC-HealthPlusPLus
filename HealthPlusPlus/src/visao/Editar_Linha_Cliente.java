@@ -98,7 +98,7 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         lbl_nome.setBounds(30, 80, 50, 30);
 
         try {
-            edt_telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+            edt_telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -141,9 +141,14 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         else{
             Cliente cliente = new Cliente(edt_nome.getText(), edt_telefone.getText(), edt_endereco.getText(), edt_CPF.getText());
             if(cliente.estaCertoCPF()){
-                modelaCliente.atualizarCliente(cod, cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF());
-                p.carregarTabelaCliente();
-                dispose();
+                
+                if(cliente.estaCertoTelefone()){
+                    modelaCliente.atualizarCliente(cod, cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF());
+                    p.carregarTabelaCliente();
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Número de telefone inválido, tente outro");
+                }
             }else
                 JOptionPane.showMessageDialog(null, "CPF inválido, tente outro");
         }

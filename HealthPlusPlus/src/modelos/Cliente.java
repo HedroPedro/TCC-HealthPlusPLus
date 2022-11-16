@@ -101,4 +101,20 @@ public class Cliente {
             boolean confirmaCPF = (String.valueOf(resultados[0]).equals(String.valueOf(cpfTeste[9]))) && (String.valueOf(resultados[1]).equals(String.valueOf(cpfTeste[10])));
         return confirmaCPF;
     }
+    
+    public boolean estaCertoTelefone(){
+        boolean estaCerto = true;
+        char[] telefoneFormat = telefone.replaceAll("\\D", "").toCharArray();
+        
+        if(telefoneFormat.length != 11)
+            return false;
+        else if (telefoneFormat[0] == telefoneFormat[1] && telefoneFormat[1] == telefoneFormat[2] && telefoneFormat[2] == telefoneFormat[3]
+                && telefoneFormat[3] == telefoneFormat[4] && telefoneFormat[4] == telefoneFormat[5] && telefoneFormat[5] == telefoneFormat[6]
+                && telefoneFormat[6] == telefoneFormat[7] && telefoneFormat[7] == telefoneFormat[8] && telefoneFormat[8] == telefoneFormat[9]
+                && telefoneFormat[9] == telefoneFormat[10]) {
+            return false;
+        }
+            
+        return estaCerto;
+    }
 }

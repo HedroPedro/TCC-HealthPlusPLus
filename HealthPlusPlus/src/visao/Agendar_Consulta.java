@@ -1,6 +1,5 @@
 package visao;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -9,6 +8,7 @@ import javax.swing.JOptionPane;
 import modelador.JDBCAgendamento;
 import modelador.JDBCTiposDeConsulta;
 import modelos.Agendamento;
+import modelos.TiposDeConsulta;
 
 public class Agendar_Consulta extends javax.swing.JFrame {
 
@@ -110,8 +110,8 @@ public class Agendar_Consulta extends javax.swing.JFrame {
         lbl_data.setBounds(90, 140, 40, 30);
 
         int i = 1;
-        for(String tipo : nomesConsulta.pegarNome()){
-            ComboBox_Consultas.addItem(i+"- "+tipo);
+        for(TiposDeConsulta tipo : nomesConsulta.pegarTiposDeConsulta()){
+            ComboBox_Consultas.addItem(i+"- "+tipo.getNomeConsulta());
             i++;
         }
         ComboBox_Consultas.addActionListener(new java.awt.event.ActionListener() {
@@ -147,20 +147,22 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             Date parsedDate = new Date();
             try {
                 parsedDate = formartador.parse(edt_data.getText() + " " + edt_hora.getText());
-            } catch (ParseException ex) {
-                Logger.getLogger(Agendar_Consulta.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if(Agendamento.verificarData(parsedDate)){
+                if(Agendamento.verificarData(parsedDate)){
                 JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
             } else{
                if(modelaAgendamento.checarDataNoSistema(parsedDate)){
                    JOptionPane.showMessageDialog(null, "Data e hora já preenchida no sistema");
                }else{
-                   modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, cod, ComboBox_Consultas.getSelectedIndex()+1));
+                   modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, cod, ComboBox_Consultas.getSelectedItem().toString()));
                    p.carregarTabelaConsulta();
                    dispose();
                }
             }
+            } catch (Exception ex) {
+                Logger.getLogger(Agendar_Consulta.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Erro de data. Insira uma data válida");
+            }
+            
         }else{
             JOptionPane.showMessageDialog(null, "Umas das caixas está vazio, digite novamente");
         }
