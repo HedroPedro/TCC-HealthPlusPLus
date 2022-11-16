@@ -1,5 +1,8 @@
 package modelos;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Cliente {
     private int codigo;
     private String nome;
@@ -103,18 +106,17 @@ public class Cliente {
     }
     
     public boolean estaCertoTelefone(){
-        boolean estaCerto = true;
         char[] telefoneFormat = telefone.replaceAll("\\D", "").toCharArray();
         
-        if(telefoneFormat.length != 11)
-            return false;
-        else if (telefoneFormat[0] == telefoneFormat[1] && telefoneFormat[1] == telefoneFormat[2] && telefoneFormat[2] == telefoneFormat[3]
-                && telefoneFormat[3] == telefoneFormat[4] && telefoneFormat[4] == telefoneFormat[5] && telefoneFormat[5] == telefoneFormat[6]
-                && telefoneFormat[6] == telefoneFormat[7] && telefoneFormat[7] == telefoneFormat[8] && telefoneFormat[8] == telefoneFormat[9]
-                && telefoneFormat[9] == telefoneFormat[10]) {
+        if(telefoneFormat.length != 11){
             return false;
         }
-            
-        return estaCerto;
+        else if(telefoneFormat[0] == telefoneFormat[1] && telefoneFormat[1] == telefoneFormat[2] && telefoneFormat[3] == telefoneFormat[4]
+                && telefoneFormat[4] == telefoneFormat[5] && telefoneFormat[5] == telefoneFormat[6] && telefoneFormat[6] == telefoneFormat[7]
+                && telefoneFormat[7] == telefoneFormat[8] && telefoneFormat[8] == telefoneFormat[9] && telefoneFormat[9] == telefoneFormat[10]){
+            return false;
+        }
+        
+        return true;
     }
 }
