@@ -197,8 +197,8 @@ public class Principal extends javax.swing.JFrame {
         table_clientes.setShowGrid(true);
         table_clientes.getTableHeader().setReorderingAllowed(false);
         table_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table_clientesMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                table_clientesMousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(table_clientes);
@@ -285,8 +285,8 @@ public class Principal extends javax.swing.JFrame {
         table_consultas.setShowGrid(true);
         table_consultas.getTableHeader().setReorderingAllowed(false);
         table_consultas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table_consultasMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                table_consultasMousePressed(evt);
             }
         });
         jScrollPane2.setViewportView(table_consultas);
@@ -388,8 +388,8 @@ public class Principal extends javax.swing.JFrame {
         table_funcionarios.setShowGrid(true);
         table_funcionarios.getTableHeader().setReorderingAllowed(false);
         table_funcionarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table_funcionariosMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                table_funcionariosMousePressed(evt);
             }
         });
         jScrollPane3.setViewportView(table_funcionarios);
@@ -505,8 +505,8 @@ public class Principal extends javax.swing.JFrame {
         table_tipos_de_consulta.setShowGrid(true);
         table_tipos_de_consulta.getTableHeader().setReorderingAllowed(false);
         table_tipos_de_consulta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table_tipos_de_consultaMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                table_tipos_de_consultaMousePressed(evt);
             }
         });
         jScrollPane4.setViewportView(table_tipos_de_consulta);
@@ -599,22 +599,6 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_excluirCActionPerformed
 
-    private void table_consultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_consultasMouseClicked
-        index = table_consultas.getSelectedRow();
-        cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
-        btn_excluirC.setEnabled(true);
-        btn_editarC.setEnabled(true);
-    }//GEN-LAST:event_table_consultasMouseClicked
-
-    private void table_clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_clientesMouseClicked
-        index = table_clientes.getSelectedRow();
-        cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
-        btn_novaconsulta.setEnabled(true);
-        btn_excluir.setEnabled(true);
-        btn_editarlinha.setEnabled(true);
-        btn_novaconsulta.setEnabled(true);
-    }//GEN-LAST:event_table_clientesMouseClicked
-
     private void btn_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaconsultaActionPerformed
         index = table_clientes.getSelectedRow();
         String nome = table_clientes.getModel().getValueAt(index, 1).toString();
@@ -644,21 +628,6 @@ public class Principal extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btn_excluirActionPerformed
-
-    private void table_funcionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_funcionariosMouseClicked
-        btn_editarF.setEnabled(true);
-        btn_excluirF.setEnabled(true);
-        index = table_funcionarios.getSelectedRow();
-        cod = (int) table_funcionarios.getModel().getValueAt(index, 0);
-        
-    }//GEN-LAST:event_table_funcionariosMouseClicked
-
-    private void table_tipos_de_consultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_tipos_de_consultaMouseClicked
-        btn_excluirTC.setEnabled(true);
-        btn_editarTC.setEnabled(true);
-        index = table_tipos_de_consulta.getSelectedRow();
-        cod = (int) table_tipos_de_consulta.getModel().getValueAt(index, 0);
-    }//GEN-LAST:event_table_tipos_de_consultaMouseClicked
 
     private void btn_cadastrarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarFActionPerformed
         new Cadastrar_Funcionario(funcionario, this).setVisible(true);
@@ -721,6 +690,36 @@ public class Principal extends javax.swing.JFrame {
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
 
     }//GEN-LAST:event_formComponentResized
+
+    private void table_clientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_clientesMousePressed
+        index = table_clientes.getSelectedRow();
+        cod = Integer.parseInt(table_clientes.getModel().getValueAt(index, 0).toString());
+        btn_novaconsulta.setEnabled(true);
+        btn_excluir.setEnabled(true);
+        btn_editarlinha.setEnabled(true);
+        btn_novaconsulta.setEnabled(true);
+    }//GEN-LAST:event_table_clientesMousePressed
+
+    private void table_consultasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_consultasMousePressed
+        index = table_consultas.getSelectedRow();
+        cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
+        btn_excluirC.setEnabled(true);
+        btn_editarC.setEnabled(true);
+    }//GEN-LAST:event_table_consultasMousePressed
+
+    private void table_funcionariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_funcionariosMousePressed
+        index = table_funcionarios.getSelectedRow();
+        cod = (int) table_funcionarios.getModel().getValueAt(index, 0);
+        btn_editarF.setEnabled(true);
+        btn_excluirF.setEnabled(true);
+    }//GEN-LAST:event_table_funcionariosMousePressed
+
+    private void table_tipos_de_consultaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_tipos_de_consultaMousePressed
+        index = table_tipos_de_consulta.getSelectedRow();
+        cod = (int) table_tipos_de_consulta.getModel().getValueAt(index, 0);
+        btn_excluirTC.setEnabled(true);
+        btn_editarTC.setEnabled(true);
+    }//GEN-LAST:event_table_tipos_de_consultaMousePressed
 
       final void carregarTabelaCliente(){
         DefaultTableModel modelo = (DefaultTableModel) table_clientes.getModel();

@@ -53,8 +53,7 @@ public class Login extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new java.awt.BorderLayout());
 
-        btn_login.setBackground(new java.awt.Color(204, 204, 204));
-        btn_login.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btn_login.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         btn_login.setText("Login");
         btn_login.setToolTipText("");
         btn_login.setBorder(null);
@@ -73,7 +72,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_cancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
