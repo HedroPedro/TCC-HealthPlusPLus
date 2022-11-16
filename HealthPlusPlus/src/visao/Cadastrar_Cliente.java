@@ -147,13 +147,19 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
 
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
         Cliente cliente = new Cliente(Edt_Nome.getText(),edt_Telefone.getText(), Edt_Endereco.getText(), edt_CPF.getText());
-        if(cliente.estaCertoCPF() && cliente.estaCertoTelefone()){
-            lidaCliente.adicionarCliente(cliente);
-            p.carregarTabelaCliente();
-            dispose();
+        if(cliente.estaCertoCPF()){
+            
+            if(cliente.estaCertoTelefone()){
+            
+                lidaCliente.adicionarCliente(cliente);
+                p.carregarTabelaCliente();
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Número de telefone inválido, tente outro");
+            }
         }
         else
-            JOptionPane.showMessageDialog(null, "Digite um CPF válido");
+            JOptionPane.showMessageDialog(null, "CPF inválido, tente outro");
     }//GEN-LAST:event_btn_confirmarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
