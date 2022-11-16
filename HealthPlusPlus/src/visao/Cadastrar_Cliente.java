@@ -2,9 +2,6 @@ package visao;
 
 import javax.swing.JOptionPane;
 import bibliotecas.Formatador;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelador.JDBCCliente;
 import modelos.Cliente;
 
@@ -57,40 +54,45 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
-        jPanel1.add(Edt_Nome);
-        Edt_Nome.setBounds(190, 180, 510, 24);
 
-        lbl_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Edt_Nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jPanel1.add(Edt_Nome);
+        Edt_Nome.setBounds(200, 180, 510, 30);
+
+        lbl_nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_nome.setText("Nome:");
         jPanel1.add(lbl_nome);
-        lbl_nome.setBounds(140, 180, 40, 20);
+        lbl_nome.setBounds(140, 180, 60, 30);
 
-        lbl_end.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_end.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_end.setText("Endereço:");
         jPanel1.add(lbl_end);
-        lbl_end.setBounds(120, 210, 59, 20);
-        jPanel1.add(Edt_Endereco);
-        Edt_Endereco.setBounds(190, 210, 510, 24);
+        lbl_end.setBounds(110, 220, 90, 30);
 
-        lbl_telefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Edt_Endereco.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jPanel1.add(Edt_Endereco);
+        Edt_Endereco.setBounds(200, 220, 510, 30);
+
+        lbl_telefone.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_telefone.setText("Telefone:");
         jPanel1.add(lbl_telefone);
-        lbl_telefone.setBounds(410, 240, 54, 20);
+        lbl_telefone.setBounds(400, 260, 80, 30);
 
-        lbl_CPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_CPF.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_CPF.setText("CPF:");
         jPanel1.add(lbl_CPF);
-        lbl_CPF.setBounds(100, 240, 27, 20);
+        lbl_CPF.setBounds(150, 260, 60, 30);
 
         try {
             edt_CPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        edt_CPF.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPanel1.add(edt_CPF);
-        edt_CPF.setBounds(130, 240, 252, 22);
+        edt_CPF.setBounds(200, 260, 180, 30);
 
-        btn_confirmar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_confirmar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_confirmar.setText("Confirmar");
         btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +102,7 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         jPanel1.add(btn_confirmar);
         btn_confirmar.setBounds(620, 390, 130, 52);
 
-        btn_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_cancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,13 +117,14 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        edt_Telefone.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         edt_Telefone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 edt_TelefoneKeyPressed(evt);
             }
         });
         jPanel1.add(edt_Telefone);
-        edt_Telefone.setBounds(470, 240, 230, 22);
+        edt_Telefone.setBounds(490, 260, 220, 30);
 
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Cadastrar.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);

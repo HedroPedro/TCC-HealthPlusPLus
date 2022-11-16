@@ -57,17 +57,22 @@ public class EditarECadastrar_Linha_TipoDeConsulta extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(750, 300));
         jPanel1.setLayout(null);
 
+        lbl_nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_nome.setText("Nome:");
         jPanel1.add(lbl_nome);
-        lbl_nome.setBounds(30, 80, 50, 30);
-        jPanel1.add(edt_nome);
-        edt_nome.setBounds(30, 110, 320, 30);
+        lbl_nome.setBounds(50, 80, 70, 30);
 
+        edt_nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jPanel1.add(edt_nome);
+        edt_nome.setBounds(50, 110, 360, 30);
+
+        lbl_preco.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_preco.setText("Preço:");
         jPanel1.add(lbl_preco);
-        lbl_preco.setBounds(460, 80, 90, 30);
+        lbl_preco.setBounds(460, 80, 70, 30);
 
         edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0.00"))));
+        edt_preco.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         edt_preco.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 edt_precoFocusLost(evt);
@@ -79,8 +84,9 @@ public class EditarECadastrar_Linha_TipoDeConsulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(edt_preco);
-        edt_preco.setBounds(460, 110, 120, 30);
+        edt_preco.setBounds(460, 110, 210, 30);
 
+        btn_cancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,8 +94,9 @@ public class EditarECadastrar_Linha_TipoDeConsulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(460, 190, 120, 40);
+        btn_cancelar.setBounds(460, 210, 120, 50);
 
+        btn_editar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_editar.setText("Editar");
         btn_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +104,7 @@ public class EditarECadastrar_Linha_TipoDeConsulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_editar);
-        btn_editar.setBounds(600, 190, 120, 40);
+        btn_editar.setBounds(600, 210, 120, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(jLabel1);

@@ -54,27 +54,36 @@ public class Editar_Linha_Funcionário extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(750, 300));
         jPanel1.setLayout(null);
 
+        lbl_nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_nome.setText("Nome:");
         jPanel1.add(lbl_nome);
-        lbl_nome.setBounds(30, 80, 50, 30);
-        jPanel1.add(edt_nome);
-        edt_nome.setBounds(30, 110, 340, 30);
+        lbl_nome.setBounds(40, 50, 60, 30);
 
+        edt_nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jPanel1.add(edt_nome);
+        edt_nome.setBounds(40, 80, 660, 30);
+
+        lbl_nivelDeAcesso.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_nivelDeAcesso.setText("Nível de acesso:");
         jPanel1.add(lbl_nivelDeAcesso);
-        lbl_nivelDeAcesso.setBounds(440, 80, 190, 30);
+        lbl_nivelDeAcesso.setBounds(450, 130, 190, 30);
 
+        Combo_NivelDeAcesso.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         Combo_NivelDeAcesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionário", "Administrador" }));
         Combo_NivelDeAcesso.setSelectedIndex(-1);
         jPanel1.add(Combo_NivelDeAcesso);
-        Combo_NivelDeAcesso.setBounds(440, 110, 250, 30);
+        Combo_NivelDeAcesso.setBounds(450, 160, 250, 30);
 
-        lbl_nome1.setText("Senha");
+        lbl_nome1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lbl_nome1.setText("Senha:");
         jPanel1.add(lbl_nome1);
-        lbl_nome1.setBounds(30, 160, 50, 30);
-        jPanel1.add(edt_senha);
-        edt_senha.setBounds(30, 192, 210, 30);
+        lbl_nome1.setBounds(40, 130, 70, 30);
 
+        edt_senha.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jPanel1.add(edt_senha);
+        edt_senha.setBounds(40, 160, 210, 30);
+
+        btn_cancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,8 +91,9 @@ public class Editar_Linha_Funcionário extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(440, 190, 120, 40);
+        btn_cancelar.setBounds(450, 220, 120, 50);
 
+        btn_gerarSenha.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_gerarSenha.setText("Gerar senha");
         btn_gerarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,8 +101,9 @@ public class Editar_Linha_Funcionário extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_gerarSenha);
-        btn_gerarSenha.setBounds(250, 190, 120, 30);
+        btn_gerarSenha.setBounds(260, 160, 140, 30);
 
+        btn_atualizar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_atualizar.setText("Atualizar");
         btn_atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +111,7 @@ public class Editar_Linha_Funcionário extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_atualizar);
-        btn_atualizar.setBounds(570, 190, 120, 40);
+        btn_atualizar.setBounds(580, 220, 120, 50);
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(lbl_background);

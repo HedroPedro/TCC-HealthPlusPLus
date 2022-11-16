@@ -50,6 +50,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
+        btn_cancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,25 +58,29 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cancelar);
-        btn_cancelar.setBounds(380, 320, 130, 40);
+        btn_cancelar.setBounds(380, 320, 130, 50);
 
         edt_nome.setEditable(false);
+        edt_nome.setBackground(new java.awt.Color(255, 255, 255));
+        edt_nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPanel1.add(edt_nome);
-        edt_nome.setBounds(140, 102, 350, 30);
+        edt_nome.setBounds(140, 130, 350, 30);
 
         try {
             edt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        edt_data.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPanel1.add(edt_data);
-        edt_data.setBounds(140, 140, 110, 30);
+        edt_data.setBounds(140, 170, 110, 30);
 
         try {
             edt_hora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        edt_hora.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         edt_hora.setPreferredSize(new java.awt.Dimension(100, 22));
         edt_hora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,13 +88,14 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(edt_hora);
-        edt_hora.setBounds(320, 142, 120, 30);
+        edt_hora.setBounds(330, 170, 160, 30);
 
-        lbl_nome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_nome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_nome.setText("Nome:");
         jPanel1.add(lbl_nome);
-        lbl_nome.setBounds(90, 100, 40, 30);
+        lbl_nome.setBounds(70, 130, 52, 30);
 
+        btn_agendar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_agendar.setText("Agendar");
         btn_agendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,30 +103,31 @@ public class Agendar_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_agendar);
-        btn_agendar.setBounds(240, 320, 130, 40);
+        btn_agendar.setBounds(240, 320, 130, 50);
 
-        lbl_hora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_hora.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_hora.setText("Horário:");
         jPanel1.add(lbl_hora);
-        lbl_hora.setBounds(260, 140, 49, 30);
+        lbl_hora.setBounds(260, 170, 64, 30);
 
-        lbl_data.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_data.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbl_data.setText("Data:");
         jPanel1.add(lbl_data);
-        lbl_data.setBounds(90, 140, 40, 30);
+        lbl_data.setBounds(80, 170, 60, 30);
 
         int i = 1;
         for(TiposDeConsulta tipo : nomesConsulta.pegarTiposDeConsulta()){
             ComboBox_Consultas.addItem(i+"- "+tipo.getNomeConsulta());
             i++;
         }
+        ComboBox_Consultas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         ComboBox_Consultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBox_ConsultasActionPerformed(evt);
             }
         });
         jPanel1.add(ComboBox_Consultas);
-        ComboBox_Consultas.setBounds(320, 190, 110, 22);
+        ComboBox_Consultas.setBounds(320, 220, 170, 30);
 
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Agendar Consulta.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
