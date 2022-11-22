@@ -73,8 +73,7 @@ public class Cliente {
     }
     
     public boolean estaCertoCPF(){
-            String[] cpfTemp = CPF.replace('.', ' ').replace('-', ' ').split(" ");
-            char[] cpfTeste = (cpfTemp[0] + cpfTemp[1]+ cpfTemp[2] + cpfTemp[3]).toCharArray();
+            char[] cpfTeste = CPF.replaceAll("\\D", "").toCharArray();
             int[] resultados = {0, 0};
             if(cpfTeste[0] == cpfTeste[1] && cpfTeste[1] == cpfTeste[2] && cpfTeste[2] == cpfTeste[3] 
                     && cpfTeste[3] == cpfTeste[4] && cpfTeste[4] == cpfTeste[5] && cpfTeste[5] == cpfTeste[6]

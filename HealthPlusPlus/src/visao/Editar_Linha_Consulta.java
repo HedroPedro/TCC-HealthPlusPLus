@@ -69,7 +69,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Preço:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(510, 120, 200, 30);
+        jLabel2.setBounds(290, 120, 200, 30);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Nome do Cliente:");
@@ -84,7 +84,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("Hora:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(290, 120, 80, 30);
+        jLabel4.setBounds(510, 120, 80, 30);
 
         btn_confirmar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_confirmar.setText("Confirmar");
@@ -111,7 +111,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         jPanel1.add(btn_cancelar);
         btn_cancelar.setBounds(430, 210, 120, 50);
 
-        edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###.0#"))));
+        edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###.0##"))));
         edt_preco.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         edt_preco.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -202,7 +202,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
            }else{
                 if(modelaAgendamento.checarDataNoSistema(data, cod)){
                     modelaAgendamento.atualizarAgendamento(new Agendamento(cod, data, edt_nome.getText(), Float.valueOf(edt_preco.getText().replace(',', '.'))));
-                    p.carregarTabelaConsulta();
+                    this.p.carregarTabelaConsulta();
                     dispose();
                 }else
                     JOptionPane.showMessageDialog(null, "Data e hora cadastrada em outro cliente");
@@ -212,10 +212,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_confirmarActionPerformed
 
     private void edt_precoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_edt_precoFocusLost
-        if(!edt_preco.getText().contains("."))
-            edt_preco.setText(edt_preco.getText().replace('.',','));
-        else if(!edt_preco.getText().contains(","))
-            edt_preco.setText(edt_preco.getText().concat(",00"));
+
     }//GEN-LAST:event_edt_precoFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

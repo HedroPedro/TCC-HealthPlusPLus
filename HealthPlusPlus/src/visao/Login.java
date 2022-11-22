@@ -16,6 +16,7 @@ public class Login extends javax.swing.JFrame {
     
     Connection con = new Conectador().abrirConnection();
     JDBCUsuario checadorDeUsuario = new JDBCUsuario(con);
+
     public static Usuario usuario = new Usuario();
     
     public Login() {       

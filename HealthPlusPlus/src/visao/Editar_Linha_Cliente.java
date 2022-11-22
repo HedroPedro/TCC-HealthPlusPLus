@@ -146,13 +146,16 @@ public class Editar_Linha_Cliente extends javax.swing.JFrame {
         if(edt_nome.getText().equals("") || edt_endereco.getText().equals("") || edt_telefone.getText().equals("") || edt_CPF.getText().equals(""))
             JOptionPane.showMessageDialog(null, "Algum dos campos está vazio");
         else{
-            Cliente cliente = new Cliente(edt_nome.getText(), edt_telefone.getText(), edt_endereco.getText(), edt_CPF.getText());
+            Cliente cliente = new Cliente(cod, edt_nome.getText(), edt_telefone.getText(), edt_endereco.getText(), edt_CPF.getText());
             if(cliente.estaCertoCPF()){
-                
                 if(cliente.estaCertoTelefone()){
-                    modelaCliente.atualizarCliente(cod, cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getCPF());
-                    p.carregarTabelaCliente();
-                    dispose();
+                    if(modelaCliente.clienteNaoExiste(cliente.getCodigo(), cliente.getCPF())){
+                        modelaCliente.atualizarCliente(cliente);
+                        p.carregarTabelaCliente();
+                        dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "CPF já cadastrado");
+                }
                 }else{
                     JOptionPane.showMessageDialog(null, "Número de telefone inválido, tente outro");
                 }

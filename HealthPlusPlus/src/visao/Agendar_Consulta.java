@@ -117,7 +117,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
 
         int i = 1;
         for(TiposDeConsulta tipo : nomesConsulta.pegarTiposDeConsulta()){
-            ComboBox_Consultas.addItem(i+"- "+tipo.getNomeConsulta());
+            ComboBox_Consultas.addItem(tipo.getNomeConsulta());
             i++;
         }
         ComboBox_Consultas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -160,7 +160,7 @@ public class Agendar_Consulta extends javax.swing.JFrame {
                if(modelaAgendamento.checarDataNoSistema(parsedDate)){
                    JOptionPane.showMessageDialog(null, "Data e hora já preenchida no sistema");
                }else{
-                   modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, cod, ComboBox_Consultas.getSelectedItem().toString()));
+                   modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, cod, ComboBox_Consultas.getItemAt(ComboBox_Consultas.getSelectedIndex())));
                    p.carregarTabelaConsulta();
                    dispose();
                }

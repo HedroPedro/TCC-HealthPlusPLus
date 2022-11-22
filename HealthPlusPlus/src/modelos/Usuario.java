@@ -13,6 +13,12 @@ public class Usuario {
         this.nome = nome;
         this.senha = senha;
     }
+    
+    public Usuario(int cod, int nivelDeAcesso, String nome) {
+        this.cod = cod;
+        this.nivelDeAcesso = nivelDeAcesso;
+        this.nome = nome;
+    }
 
     public String getSenha() {
         return senha;

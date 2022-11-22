@@ -1,7 +1,6 @@
 package visao;
 
 import javax.swing.JOptionPane;
-import bibliotecas.Formatador;
 import modelador.JDBCCliente;
 import modelos.Cliente;
 
@@ -9,8 +8,6 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
 
     private JDBCCliente lidaCliente;
     private Principal p;
-    private Formatador formatador = new Formatador();
-    
     
     /**
      * Creates new form Cadastro
@@ -150,10 +147,13 @@ public class Cadastrar_Cliente extends javax.swing.JFrame {
         if(cliente.estaCertoCPF()){
             
             if(cliente.estaCertoTelefone()){
-            
-                lidaCliente.adicionarCliente(cliente);
-                p.carregarTabelaCliente();
-                dispose();
+                if(lidaCliente.clienteNaoExiste(cliente.getCPF())){
+                    lidaCliente.adicionarCliente(cliente);
+                    p.carregarTabelaCliente();
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "CPF já cadastrado");
+                }
             }else{
                 JOptionPane.showMessageDialog(null, "Número de telefone inválido, tente outro");
             }

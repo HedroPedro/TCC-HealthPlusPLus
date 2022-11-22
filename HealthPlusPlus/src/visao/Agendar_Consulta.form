@@ -184,7 +184,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBox_ConsultasActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="int i = 1;&#xa;for(TiposDeConsulta tipo : nomesConsulta.pegarTiposDeConsulta()){&#xa;    ComboBox_Consultas.addItem(i+&quot;- &quot;+tipo.getNomeConsulta());&#xa;    i++;&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="int i = 1;&#xa;for(TiposDeConsulta tipo : nomesConsulta.pegarTiposDeConsulta()){&#xa;    ComboBox_Consultas.addItem(tipo.getNomeConsulta());&#xa;    i++;&#xa;}"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
           <Constraints>

@@ -75,20 +75,59 @@ public class JDBCCliente {
         }
     }
     
-    public void atualizarCliente(int codigo, String nome, String endereco, String telefone, String CPF){
+    public void atualizarCliente(Cliente cliente){
         String sql = "UPDATE tb_cliente SET NOME_CLIENTE = ?, END_CLIENTE = ?, TEL_CLIENTE = ?, CPF_CLIENTE = ? WHERE COD_CLIENTE = ?";
         PreparedStatement ps;
         try {
             ps = this.con.prepareStatement(sql);
-            ps.setString(1, nome);
-            ps.setString(2, endereco);
-            ps.setString(3, telefone);
-            ps.setString(4, CPF);
-            ps.setInt(5, codigo);
+            ps.setString(1, cliente.getNome());
+            ps.setString(2, cliente.getEndereco());
+            ps.setString(3, cliente.getTelefone());
+            ps.setString(4, cliente.getCPF());
+            ps.setInt(5, cliente.getCodigo());
             ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public boolean clienteNaoExiste(String cpf){
+        String sql = "Select * from tb_cliente where CPF_CLIENTE like ?";
+        PreparedStatement ps;
+        
+        try {
+            ps = this.con.prepareStatement(sql);
+            ps.setString(1, cpf);
+            ResultSet rs = ps.executeQuery();
+            
+            return !rs.next(); //Se não tiver retorna true, caso tenha retorna false
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }
+    
+    public boolean clienteNaoExiste(int cod, String cpf){
+        String sql = "Select * from tb_cliente where CPF_CLIENTE like ? AND COD_CLIENTE != ?";
+        PreparedStatement ps;
+        
+        try {
+            ps = this.con.prepareStatement(sql);
+            ps.setString(1, cpf);
+            ps.setInt(2, cod);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            return !rs.next(); //Se não tiver retorna true, caso tenha retorna false
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }
+    
     
 }
