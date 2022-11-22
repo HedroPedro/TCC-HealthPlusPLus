@@ -20,11 +20,15 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
      * @param nome
      * @param p
      */
-    public Editar_Linha_Consulta(int cod, String nome, Principal p){
+    public Editar_Linha_Consulta(int cod, String nome, String dataEHora, String preco, Principal p){
         initComponents();
+        String[] DataEHoraQuebrada = dataEHora.split(" ");
         modelaAgendamento = p.agendamentos;
         this.cod = cod;
         edt_nome.setText(nome);
+        edt_data.setText(DataEHoraQuebrada[0]);
+        edt_hora.setText(DataEHoraQuebrada[1]);
+        edt_preco.setText(preco);
         this.p = p;
     }
 

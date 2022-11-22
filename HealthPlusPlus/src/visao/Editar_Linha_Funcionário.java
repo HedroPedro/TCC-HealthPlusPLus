@@ -17,13 +17,14 @@ public class Editar_Linha_Funcionário extends javax.swing.JFrame {
     
     int cod;
     Principal p;
-    JDBCUsuario usuarioEditado;
+    JDBCUsuario editorUsuario;
     
-    public Editar_Linha_Funcionário(int cod, Principal p, JDBCUsuario usuarioEditado) {
+    public Editar_Linha_Funcionário(int cod, String nome, Principal p, JDBCUsuario editorUsuario) {
         initComponents();
         this.cod = cod;
         this.p = p;
-        this.usuarioEditado = usuarioEditado;
+        this.editorUsuario = editorUsuario;
+        edt_nome.setText(nome);
     }
     
     @SuppressWarnings("unchecked")
@@ -155,7 +156,7 @@ public class Editar_Linha_Funcionário extends javax.swing.JFrame {
         if(edt_nome.getText().equals("") || edt_senha.getText().equals("") || Combo_NivelDeAcesso.getSelectedIndex() == -1)
             JOptionPane.showMessageDialog(null, "Verifique os campos novamentes");
         else{
-            usuarioEditado.editarUsuario(cod, edt_nome.getText(), edt_senha.getText(), Combo_NivelDeAcesso.getSelectedIndex());
+            editorUsuario.editarUsuario(cod, edt_nome.getText(), edt_senha.getText(), Combo_NivelDeAcesso.getSelectedIndex());
             p.carregarTabelaFuncionarios();
             dispose();
         }

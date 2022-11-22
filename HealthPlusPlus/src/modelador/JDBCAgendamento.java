@@ -107,16 +107,16 @@ public class JDBCAgendamento {
     }
     
     public boolean checarDataNoSistema(java.util.Date data){
-        String sql = "SELECT DATAHORA from TB_AGENDAMENTO";
+        String sql = "SELECT DATAHORA from TB_AGENDAMENTO where DATAHORA like ?";
         Timestamp tmstamp = new Timestamp(data.getTime());
-        Statement ps;
+        PreparedStatement ps;
         try {
-            ps = c.createStatement();
+            ps = c.prepareStatement(sql);
+            ps.setTimestamp(1, tmstamp);
             ResultSet rs = ps.executeQuery(sql);
-            while(rs.next()){
-                if(rs.getTimestamp(1).equals(tmstamp))
-                    return true;
-            }    
+            
+            return !rs.next();
+            
             }catch(SQLException ex) {
                 Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -124,12 +124,13 @@ public class JDBCAgendamento {
     }
     
     public boolean checarDataNoSistema(java.util.Date data, int cod){
-        String sql = "SELECT DATAHORA from TB_AGENDAMENTO where DATAHORA like ?";
+        String sql = "SELECT DATAHORA from TB_AGENDAMENTO where DATAHORA like ? AND COD <> ?";
         Timestamp tmstamp = new Timestamp(data.getTime());
         PreparedStatement pr;
         try {
             pr = this.c.prepareStatement(sql);
             pr.setTimestamp(1, tmstamp);
+            pr.setInt(2, cod);
             ResultSet rs = pr.executeQuery();
             
             return !rs.next();  //Se não tiver retorna true, caso tenha retorna false

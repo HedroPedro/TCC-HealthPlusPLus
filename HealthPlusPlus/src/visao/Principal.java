@@ -588,7 +588,9 @@ public class Principal extends javax.swing.JFrame {
     private void btn_editarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarCActionPerformed
         index = table_consultas.getSelectedRow();
         String nome = table_consultas.getModel().getValueAt(index, 3).toString();
-        new Editar_Linha_Consulta(cod, nome, this).setVisible(true);
+        String dataEHora = table_consultas.getModel().getValueAt(index, 1).toString();
+        String preco = table_consultas.getModel().getValueAt(index, 2).toString();
+        new Editar_Linha_Consulta(cod, nome, dataEHora, preco, this).setVisible(true);
         pn_guia_consultas.requestFocus();
     }//GEN-LAST:event_btn_editarCActionPerformed
 
@@ -634,7 +636,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cadastrarFActionPerformed
 
     private void btn_editarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarFActionPerformed
-        new Editar_Linha_Funcionário(cod, this, funcionario).setVisible(true);
+        String nome = table_funcionarios.getModel().getValueAt(index, 2).toString();
+        new Editar_Linha_Funcionário(cod, nome, this, funcionario).setVisible(true);
     }//GEN-LAST:event_btn_editarFActionPerformed
 
     private void btn_excluirFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirFActionPerformed
