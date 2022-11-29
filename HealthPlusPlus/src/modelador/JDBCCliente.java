@@ -63,7 +63,7 @@ public class JDBCCliente {
     }
 
     public void deletarCliente(int codigo){
-        new JDBCAgendamento(this.con).deletarAgendamentoComCodCliente(codigo);
+        new JDBCAgendamento(con).deletarAgendamentoComCodCliente(codigo);
         String sql = "DELETE FROM tb_cliente where COD_CLIENTE = ?";
         PreparedStatement ps;
         try{

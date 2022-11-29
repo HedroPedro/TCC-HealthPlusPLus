@@ -627,7 +627,7 @@ public class Principal extends javax.swing.JFrame {
         if(JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este campo?", "Aviso", JOptionPane.YES_NO_OPTION) == 0){
             clientes.deletarCliente(cod);
             carregarTabelaCliente();
-            
+            carregarTabelaConsulta();
         }
     }//GEN-LAST:event_btn_excluirActionPerformed
 
