@@ -73,7 +73,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Preço:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(290, 120, 200, 30);
+        jLabel2.setBounds(490, 120, 200, 30);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Nome do Cliente:");
@@ -88,7 +88,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("Hora:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(510, 120, 80, 30);
+        jLabel4.setBounds(260, 120, 80, 30);
 
         btn_confirmar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btn_confirmar.setText("Confirmar");
@@ -115,7 +115,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
         jPanel1.add(btn_cancelar);
         btn_cancelar.setBounds(430, 210, 120, 50);
 
-        edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###.0##"))));
+        edt_preco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###.0#"))));
         edt_preco.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         edt_preco.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -123,7 +123,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(edt_preco);
-        edt_preco.setBounds(290, 150, 180, 30);
+        edt_preco.setBounds(490, 150, 180, 30);
 
         try {
             edt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -151,7 +151,7 @@ public class Editar_Linha_Consulta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(edt_hora);
-        edt_hora.setBounds(510, 150, 180, 30);
+        edt_hora.setBounds(260, 150, 180, 30);
 
         lbl_fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/imgs/Tela Editar Registro.jpg"))); // NOI18N
         jPanel1.add(lbl_fundo);
