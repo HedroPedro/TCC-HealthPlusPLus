@@ -19,7 +19,7 @@ public class Login extends javax.swing.JFrame {
 
     public static Usuario usuario = new Usuario();
     
-    public Login() {       
+    public Login() {
         initComponents();
         
         
@@ -49,9 +49,11 @@ public class Login extends javax.swing.JFrame {
         setTitle("Login");
         setBackground(new java.awt.Color(0, 0, 255));
         setLocation(new java.awt.Point(1600, 900));
+        setMaximumSize(new java.awt.Dimension(600, 800));
         setMinimumSize(new java.awt.Dimension(600, 800));
         setName("LOGIN"); // NOI18N
         setUndecorated(true);
+        setSize(new java.awt.Dimension(600, 800));
         getContentPane().setLayout(new java.awt.BorderLayout());
 
         btn_login.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -114,7 +116,7 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jBackgroundPanel1, java.awt.BorderLayout.PAGE_START);
 
-        setSize(new java.awt.Dimension(600, 800));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
