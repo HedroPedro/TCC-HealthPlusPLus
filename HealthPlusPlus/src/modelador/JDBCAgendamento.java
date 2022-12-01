@@ -107,33 +107,33 @@ public class JDBCAgendamento {
     }
     
     public boolean checarDataNoSistema(java.util.Date data){
-        String sql = "SELECT DATAHORA from TB_AGENDAMENTO where DATAHORA like ?";
+        String sql = "SELECT COD from TB_AGENDAMENTO where DATAHORA = ?";
         Timestamp tmstamp = new Timestamp(data.getTime());
         PreparedStatement ps;
         try {
             ps = c.prepareStatement(sql);
             ps.setTimestamp(1, tmstamp);
-            ResultSet rs = ps.executeQuery(sql);
+            ResultSet rs = ps.executeQuery();
             
-            return !rs.next();
+            return rs.isBeforeFirst();
             
             }catch(SQLException ex) {
                 Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+        return true;
     }
     
     public boolean checarDataNoSistema(java.util.Date data, int cod){
-        String sql = "SELECT DATAHORA from TB_AGENDAMENTO where DATAHORA like ? AND COD <> ?";
+        String sql = "SELECT COD from TB_AGENDAMENTO where COD <> ? AND DATAHORA = ?";
         Timestamp tmstamp = new Timestamp(data.getTime());
         PreparedStatement pr;
         try {
-            pr = this.c.prepareStatement(sql);
-            pr.setTimestamp(1, tmstamp);
-            pr.setInt(2, cod);
+            pr = c.prepareStatement(sql);
+            pr.setInt(1, cod);
+            pr.setTimestamp(2, tmstamp);
             ResultSet rs = pr.executeQuery();
             
-            return !rs.next();  //Se não tiver retorna true, caso tenha retorna false
+            return rs.next();
             
             }catch(SQLException ex) {
                 Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);

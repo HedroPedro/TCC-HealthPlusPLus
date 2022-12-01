@@ -705,7 +705,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void table_consultasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_consultasMousePressed
         index = table_consultas.getSelectedRow();
-        cod = Integer.parseInt(table_consultas.getModel().getValueAt(index, 0).toString());
+        cod = (int) table_consultas.getModel().getValueAt(index, 0);
         btn_excluirC.setEnabled(true);
         btn_editarC.setEnabled(true);
     }//GEN-LAST:event_table_consultasMousePressed
