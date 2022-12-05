@@ -115,7 +115,7 @@ public class JDBCAgendamento {
             ps.setTimestamp(1, tmstamp);
             ResultSet rs = ps.executeQuery();
             
-            return rs.isBeforeFirst();
+            return !rs.next();
             
             }catch(SQLException ex) {
                 Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);
@@ -133,7 +133,7 @@ public class JDBCAgendamento {
             pr.setTimestamp(2, tmstamp);
             ResultSet rs = pr.executeQuery();
             
-            return rs.next();
+            return !rs.next();
             
             }catch(SQLException ex) {
                 Logger.getLogger(JDBCAgendamento.class.getName()).log(Level.SEVERE, null, ex);

@@ -116,7 +116,7 @@ CREATE TABLE `tb_usuario` (
 
 INSERT INTO `tb_usuario` (`COD_USUARIO`, `NIVELDEACESSO`, `NOME`, `SENHA`) VALUES
 (1, 1, 'Carlos', 'AaaAa'),
-(2, 0, 'Pedro', 'JalILjzU'),
+(2, 0, 'Pedro', 'pedro2005'),
 (3, 1, 'Cavalo', 'kx5EXV'),
 (4, 1, 'Antônio Baptista', 'kXZx5EXV');
 

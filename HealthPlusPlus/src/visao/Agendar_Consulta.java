@@ -158,11 +158,11 @@ public class Agendar_Consulta extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Digite uma data e hora válida");
             } else{
                if(modelaAgendamento.checarDataNoSistema(parsedDate)){
-                   JOptionPane.showMessageDialog(null, "Data e hora já preenchida no sistema");
+                    modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, cod, ComboBox_Consultas.getItemAt(ComboBox_Consultas.getSelectedIndex())));
+                    p.carregarTabelaConsulta();
+                    dispose();
                }else{
-                   modelaAgendamento.inserirAgendamento(new Agendamento(parsedDate, cod, ComboBox_Consultas.getItemAt(ComboBox_Consultas.getSelectedIndex())));
-                   p.carregarTabelaConsulta();
-                   dispose();
+                    JOptionPane.showMessageDialog(null, "Data e hora já preenchida no sistema");
                }
             }
             } catch (Exception ex) {
