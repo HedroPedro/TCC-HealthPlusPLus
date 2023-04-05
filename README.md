@@ -14,7 +14,7 @@ Java SE deve ser a versão 17 ou superior
 JDK deve ser a versão 17 ou superior
 Bando de dados MYSQL
 Microsoft Office para a vizualização do manuscrito
-#Observações
+# Observações
 Existe alguns pontos que devido ao tempo não foram concluídas
 - [ ] Fazer que o banco de dados formate os dados caso uma linha seja excluída da tabela 
 - [ ] Formatação apropriada para telefone fixos
