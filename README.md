@@ -6,18 +6,17 @@ Health++ é um sistema de gerenciamento de uma fictícia clínica médica. O obj
 - Pedro Oliveira 
 - Rafael Malosti
 # Componentes
-- Banco de dados
-- Cópia do manuscrito do trabalho de conclusão de curso
 - Software escrito em java e Projeto de Netbeans
+- Banco de dados
+- Slides da apresentação do TCC
 # Requirimentos
-Java SE deve ser a versão 17 ou superior
-JDK deve ser a versão 17 ou superior
-Bando de dados MYSQL
-Microsoft Office para a vizualização do manuscrito
+- JRE e JDK >= 17
+- Banco de dados MYSQL
+- Netbeans (opicional)
 # Observações
 Existe alguns pontos que devido ao tempo não foram concluídas
 - [ ] Fazer que o banco de dados formate os dados caso uma linha seja excluída da tabela 
 - [ ] Formatação apropriada para telefone fixos
-- [x] Utilizar orientação a objeto nas classes modeladoras e modelos
+- [ ] Utilizar orientação a objeto nas classes modeladoras e modelos
 - [ ] Otimização no uso de memória
 - [ ] Documentar código
